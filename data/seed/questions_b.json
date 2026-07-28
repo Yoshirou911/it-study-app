@@ -1,0 +1,38 @@
+[
+  {
+    "category": "アルゴリズム",
+    "difficulty": 3,
+    "body": "次の擬似言語で書かれた関数 findMax は、配列 data の中の最大値を返す。data ← {3, 7, 2, 9, 4} のとき、findMax(data) の戻り値を答えよ。",
+    "pseudocode": "○整数型: findMax(整数型の配列: data)\n  整数型: i, max\n  max ← data[0]\n  i を 1 から (dataの要素数 - 1) まで 1 ずつ増やす\n    if (data[i] > max)\n      max ← data[i]\n    endif\n  endfor\n  return max",
+    "answer_type": "value",
+    "expected_answer": "9",
+    "explanation": "配列の先頭要素を初期値としてmaxに設定し、2番目以降の要素と順に比較しながら、より大きい値が見つかるたびにmaxを更新します。data={3,7,2,9,4}では、7→9の順にmaxが更新され、最終的な戻り値は9になります。"
+  },
+  {
+    "category": "アルゴリズム",
+    "difficulty": 2,
+    "body": "次の擬似言語で書かれた関数 sumEven は、1 から n までの整数のうち偶数の合計を返す。sumEven(10) の戻り値を答えよ。",
+    "pseudocode": "○整数型: sumEven(整数型: n)\n  整数型: i, sum\n  sum ← 0\n  i を 1 から n まで 1 ずつ増やす\n    if (i を 2 で割った余り が 0 と等しい)\n      sum ← sum + i\n    endif\n  endfor\n  return sum",
+    "answer_type": "value",
+    "expected_answer": "30",
+    "explanation": "1からnまでの整数を1つずつ調べ、2で割った余りが0(偶数)のときだけsumに加算します。1〜10のうち偶数は2,4,6,8,10なので、合計は30になります。"
+  },
+  {
+    "category": "アルゴリズム",
+    "difficulty": 3,
+    "body": "次の擬似言語で書かれた関数 reverseArray は、配列の要素を逆順に並べ替える。data ← {1, 2, 3, 4, 5} のとき、reverseArray(data) 実行後の配列の中身を答えよ(例: {1, 2, 3} の形式で答えること)。",
+    "pseudocode": "○整数型の配列: reverseArray(整数型の配列: data)\n  整数型: i, tmp, n\n  n ← dataの要素数\n  i を 0 から (n ÷ 2 - 1) まで 1 ずつ増やす\n    tmp ← data[i]\n    data[i] ← data[n - 1 - i]\n    data[n - 1 - i] ← tmp\n  endfor\n  return data",
+    "answer_type": "value",
+    "expected_answer": "{5, 4, 3, 2, 1}",
+    "explanation": "配列の前半と後半の要素を i 番目と n-1-i 番目で1つずつ入れ替えることで、配列全体を逆順にします。{1,2,3,4,5} は {5,4,3,2,1} になります。"
+  },
+  {
+    "category": "アルゴリズム",
+    "difficulty": 4,
+    "body": "次の擬似言語で書かれた再帰関数 fib は、フィボナッチ数列の第n項を返す。fib(6) の戻り値を答えよ。",
+    "pseudocode": "○整数型: fib(整数型: n)\n  if (n が 0 と等しい)\n    return 0\n  elseif (n が 1 と等しい)\n    return 1\n  else\n    return fib(n - 1) + fib(n - 2)\n  endif",
+    "answer_type": "value",
+    "expected_answer": "8",
+    "explanation": "fib(n) は fib(n-1) + fib(n-2) を再帰的に計算します。fib(0)=0, fib(1)=1 から順に 1, 2, 3, 5, 8 と続くため、fib(6) = 8 になります。"
+  }
+]

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>基本情報技術者試験 学習アプリ</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-kicker">FE EXAM PREP</span>
+        <h1>基本情報技術者試験 学習アプリ</h1>
+      </div>
+      <nav>
+        <button class="tab-btn active" data-tab="textbook">教本</button>
+        <button class="tab-btn" data-tab="quiz-a" data-subject="A">科目A</button>
+        <button class="tab-btn" data-tab="quiz-b" data-subject="B">科目B</button>
+        <button class="tab-btn" data-tab="dashboard">ダッシュボード</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="textbook-view" class="view active">
+      <h2>教本</h2>
+      <div id="textbook-category-nav" class="category-group-nav"></div>
+      <div id="textbook-content" class="note-body"></div>
+    </section>
+
+    <section id="quiz-view" class="view">
+      <div id="quiz-card">
+        <div class="meta">
+          <span id="q-category" class="badge-category"></span>
+          <span class="difficulty-wrap">難易度 <span id="q-difficulty"></span></span>
+        </div>
+        <p id="q-body" class="q-body"></p>
+        <pre id="q-pseudocode" class="pseudocode" hidden></pre>
+
+        <div id="choices-area" hidden></div>
+        <div id="text-answer-area" hidden>
+          <input type="text" id="text-answer-input" placeholder="解答を入力" />
+          <button id="submit-text-answer" class="btn-primary">解答する</button>
+        </div>
+
+        <div id="result-area" hidden>
+          <p id="result-message"></p>
+          <div id="explanation-block" hidden>
+            <h4>解説</h4>
+            <div id="explanation-area" class="note-body"></div>
+          </div>
+          <button id="next-question" class="btn-primary">次の問題へ</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="dashboard-view" class="view">
+      <h2>分野別正答率</h2>
+
+      <div id="rank-hero" hidden>
+        <div class="rank-ring" id="rank-hero-ring">
+          <span id="rank-hero-letter"></span>
+        </div>
+        <div class="rank-hero-info">
+          <span class="rank-hero-label">総合ランク</span>
+          <span class="rank-hero-figures"><span id="rank-hero-pct"></span>% <span id="rank-hero-count" class="rank-hero-count"></span></span>
+        </div>
+      </div>
+
+      <div class="subject-switch">
+        <button class="dash-subject-btn active" data-subject="A">科目A</button>
+        <button class="dash-subject-btn" data-subject="B">科目B</button>
+      </div>
+      <div id="stats-list"></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
