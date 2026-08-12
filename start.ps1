@@ -1,5 +1,6 @@
 ﻿$ErrorActionPreference = "Stop"
 Set-Location -Path $PSScriptRoot
+$host.UI.RawUI.WindowTitle = "STACK - IT学習帳"
 
 $port = 8000
 $venvPy = Join-Path $PSScriptRoot ".venv\Scripts\python.exe"
