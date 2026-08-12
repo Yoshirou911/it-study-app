@@ -69,10 +69,27 @@ if ($lanIp -and -not $fwAllowed) {
 Write-Host "  このウィンドウを閉じるとアプリは終了します。"
 Write-Host ""
 
+# 固定秒数待ってから開くと、初回セットアップ直後やOneDrive同期などで起動が
+# 遅れたときに「まだ何も答えていないアドレス」を開いてしまい、
+# 「接続が拒否されました」の画面になる。そこで、サーバーが実際に応答するまで
+# 待ってからブラウザを開く。
 Start-Job -ScriptBlock {
-    Start-Sleep -Seconds 3
-    Start-Process "http://127.0.0.1:8000/"
-} | Out-Null
+    param($Port)
+    $deadline = (Get-Date).AddSeconds(60)
+    while ((Get-Date) -lt $deadline) {
+        try {
+            $response = Invoke-WebRequest "http://127.0.0.1:$Port/" -UseBasicParsing -TimeoutSec 2
+            if ($response.StatusCode -eq 200) {
+                Start-Process "http://127.0.0.1:$Port/"
+                return
+            }
+        } catch {
+            Start-Sleep -Milliseconds 500
+        }
+    }
+    # 60秒待っても応答しない場合でも、いちおう開いておく(手動再読み込みで復帰できる)
+    Start-Process "http://127.0.0.1:$Port/"
+} -ArgumentList $port | Out-Null
 
 # 0.0.0.0 で待ち受けると、LAN内の他の端末からも接続できるようになる。
 # 認証機能はないため、信頼できるネットワークでのみ使うこと。
