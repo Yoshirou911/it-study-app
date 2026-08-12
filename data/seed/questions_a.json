@@ -5,10 +5,26 @@
     "body": "サブネットマスクが 255.255.255.192 のとき、1つのサブネットに割り当てられるホストアドレスの最大数はどれか。",
     "explanation": "ホスト部は 32 - 26 = 6 ビットのため、表現できるアドレスは 2^6 = 64 通りです。ただしネットワークアドレスとブロードキャストアドレスの2つは端末に割り当てられないため、実際に使えるホストアドレスは 64 - 2 = 62 個になります。",
     "choices": [
-      { "label": "ア", "text": "62", "is_correct": true },
-      { "label": "イ", "text": "64", "is_correct": false },
-      { "label": "ウ", "text": "126", "is_correct": false },
-      { "label": "エ", "text": "128", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "62",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "64",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "126",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "128",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -17,10 +33,26 @@
     "body": "OSI基本参照モデルにおいて、IPアドレスによる経路制御(ルーティング)を担う層はどれか。",
     "explanation": "IPアドレスによる経路制御(ルーティング)を担うのはネットワーク層です。データリンク層はMACアドレスによる隣接機器間の通信、トランスポート層はTCP/UDPによる通信の信頼性を担います。",
     "choices": [
-      { "label": "ア", "text": "物理層", "is_correct": false },
-      { "label": "イ", "text": "データリンク層", "is_correct": false },
-      { "label": "ウ", "text": "ネットワーク層", "is_correct": true },
-      { "label": "エ", "text": "トランスポート層", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "物理層",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "データリンク層",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "ネットワーク層",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "トランスポート層",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -29,10 +61,26 @@
     "body": "インターネットにおいて、ドメイン名とIPアドレスを対応づける仕組みはどれか。",
     "explanation": "DNS(Domain Name System)は、人が読みやすいドメイン名(例: example.com)と、コンピュータが通信に使うIPアドレスを対応づける仕組みです。",
     "choices": [
-      { "label": "ア", "text": "DNS", "is_correct": true },
-      { "label": "イ", "text": "DHCP", "is_correct": false },
-      { "label": "ウ", "text": "NAT", "is_correct": false },
-      { "label": "エ", "text": "VPN", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "DNS",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "DHCP",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "NAT",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "VPN",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -41,10 +89,26 @@
     "body": "LAN内の複数の端末が、限られた数のグローバルIPアドレスを共有してインターネットに接続できるようにする技術はどれか。",
     "explanation": "NAT(Network Address Translation)は、LAN内で使われるプライベートIPアドレスとインターネット上のグローバルIPアドレスを変換し、複数端末でグローバルIPアドレスを共有できるようにする技術です。",
     "choices": [
-      { "label": "ア", "text": "DNS", "is_correct": false },
-      { "label": "イ", "text": "NAT", "is_correct": true },
-      { "label": "ウ", "text": "DHCP", "is_correct": false },
-      { "label": "エ", "text": "VLAN", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "DNS",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "NAT",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "DHCP",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "VLAN",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -53,10 +117,26 @@
     "body": "関係データベースにおいて、主キーの値がテーブル内で重複してはならないという制約を何と呼ぶか。",
     "explanation": "主キーの値がテーブル内で重複しないことを保証する制約を一意性制約と呼びます。参照制約は、外部キーが参照先テーブルに実在する値であることを保証する制約です。",
     "choices": [
-      { "label": "ア", "text": "参照制約", "is_correct": false },
-      { "label": "イ", "text": "一意性制約", "is_correct": true },
-      { "label": "ウ", "text": "非NULL制約", "is_correct": false },
-      { "label": "エ", "text": "外部キー制約", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "参照制約",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "一意性制約",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "非NULL制約",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "外部キー制約",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -65,10 +145,26 @@
     "body": "関係データベースの正規化において、部分関数従属を排除して得られる正規形はどれか。",
     "explanation": "部分関数従属(主キーの一部にのみ従属する列)を別テーブルに分離した状態を第2正規形と呼びます。第3正規形はさらに推移的関数従属を排除した状態です。",
     "choices": [
-      { "label": "ア", "text": "第1正規形", "is_correct": false },
-      { "label": "イ", "text": "第2正規形", "is_correct": true },
-      { "label": "ウ", "text": "第3正規形", "is_correct": false },
-      { "label": "エ", "text": "ボイスコッド正規形", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "第1正規形",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "第2正規形",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "第3正規形",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ボイスコッド正規形",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -77,10 +173,26 @@
     "body": "送信されたメッセージが改ざんされていないこと、及び送信者本人であることを受信者が確認できるようにする技術はどれか。",
     "explanation": "送信者の秘密鍵で暗号化した署名を、受信者が送信者の公開鍵で検証することで、改ざんの有無と送信者本人であることの両方を確認できます。これをディジタル署名と呼びます。",
     "choices": [
-      { "label": "ア", "text": "共通鍵暗号", "is_correct": false },
-      { "label": "イ", "text": "ディジタル署名", "is_correct": true },
-      { "label": "ウ", "text": "VPN", "is_correct": false },
-      { "label": "エ", "text": "ファイアウォール", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "共通鍵暗号",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "ディジタル署名",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "VPN",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ファイアウォール",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -89,10 +201,26 @@
     "body": "ネットワークを介して自己複製しながら他のコンピュータに感染を広げる、単体で動作するマルウェアはどれか。",
     "explanation": "ネットワークを介して自己複製しながら単体で感染を広げるマルウェアをワームと呼びます。トロイの木馬は正規のプログラムを装って侵入しますが、自己増殖はしません。",
     "choices": [
-      { "label": "ア", "text": "ワーム", "is_correct": true },
-      { "label": "イ", "text": "トロイの木馬", "is_correct": false },
-      { "label": "ウ", "text": "マクロウイルス", "is_correct": false },
-      { "label": "エ", "text": "スパイウェア", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "ワーム",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "トロイの木馬",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "マクロウイルス",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "スパイウェア",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -101,10 +229,26 @@
     "body": "Webサイトの入力フォームなどを悪用し、悪意のあるスクリプトを他の利用者のブラウザ上で実行させる攻撃はどれか。",
     "explanation": "クロスサイトスクリプティング(XSS)は、Webサイトの脆弱性を悪用して悪意のあるスクリプトを埋め込み、他の利用者のブラウザ上で実行させる攻撃です。SQLインジェクションはデータベースへの不正な問い合わせを注入する攻撃です。",
     "choices": [
-      { "label": "ア", "text": "SQLインジェクション", "is_correct": false },
-      { "label": "イ", "text": "クロスサイトスクリプティング(XSS)", "is_correct": true },
-      { "label": "ウ", "text": "DoS攻撃", "is_correct": false },
-      { "label": "エ", "text": "ブルートフォース攻撃", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "SQLインジェクション",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "クロスサイトスクリプティング(XSS)",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "DoS攻撃",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ブルートフォース攻撃",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -113,10 +257,26 @@
     "body": "考えられるパスワードの組み合わせを片っ端から試し、不正にログインを試みる攻撃はどれか。",
     "explanation": "ブルートフォース攻撃(総当たり攻撃)は、考えられるパスワードの組み合わせを片っ端から試して不正ログインを試みる攻撃です。対策として、ログイン試行回数の制限などが有効です。",
     "choices": [
-      { "label": "ア", "text": "フィッシング", "is_correct": false },
-      { "label": "イ", "text": "ブルートフォース攻撃(総当たり攻撃)", "is_correct": true },
-      { "label": "ウ", "text": "ゼロデイ攻撃", "is_correct": false },
-      { "label": "エ", "text": "標的型攻撃", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "フィッシング",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "ブルートフォース攻撃(総当たり攻撃)",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "ゼロデイ攻撃",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "標的型攻撃",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -125,10 +285,26 @@
     "body": "クイックソートの平均計算時間量として適切なものはどれか。",
     "explanation": "クイックソートは基準値(ピボット)を選んでデータを分割していく方式で、平均的な計算量はO(n log n)です。分割が偏った最悪の場合はO(n^2)になります。",
     "choices": [
-      { "label": "ア", "text": "O(n)", "is_correct": false },
-      { "label": "イ", "text": "O(n log n)", "is_correct": true },
-      { "label": "ウ", "text": "O(n^2)", "is_correct": false },
-      { "label": "エ", "text": "O(log n)", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "O(n)",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "O(n log n)",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "O(n^2)",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "O(log n)",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -137,10 +313,26 @@
     "body": "データを追加した順に取り出す、先入れ先出し(FIFO)のデータ構造はどれか。",
     "explanation": "追加した順番にデータを取り出す先入れ先出し(FIFO)の構造をキューと呼びます。スタックは後入れ先出し(LIFO)の構造です。",
     "choices": [
-      { "label": "ア", "text": "スタック", "is_correct": false },
-      { "label": "イ", "text": "キュー", "is_correct": true },
-      { "label": "ウ", "text": "二分木", "is_correct": false },
-      { "label": "エ", "text": "ハッシュ表", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "スタック",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "キュー",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "二分木",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ハッシュ表",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -149,10 +341,26 @@
     "body": "2進数 1101 を10進数で表したものはどれか。",
     "explanation": "1101(2) = 1×2^3 + 1×2^2 + 0×2^1 + 1×2^0 = 8+4+0+1 = 13 です。",
     "choices": [
-      { "label": "ア", "text": "11", "is_correct": false },
-      { "label": "イ", "text": "13", "is_correct": true },
-      { "label": "ウ", "text": "15", "is_correct": false },
-      { "label": "エ", "text": "17", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "11",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "13",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "15",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "17",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -161,10 +369,26 @@
     "body": "論理演算において、両方の入力が1のときだけ出力が1になる演算はどれか。",
     "explanation": "AND(論理積)は入力が両方とも1のときのみ出力が1になります。ORはどちらか一方でも1なら1、XORは入力が異なるときに1になります。",
     "choices": [
-      { "label": "ア", "text": "OR", "is_correct": false },
-      { "label": "イ", "text": "AND", "is_correct": true },
-      { "label": "ウ", "text": "NOT", "is_correct": false },
-      { "label": "エ", "text": "XOR", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "OR",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "AND",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "NOT",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "XOR",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -173,10 +397,26 @@
     "body": "CPUとメモリの速度差を埋め、処理の高速化を図るために使われる高速な記憶装置はどれか。",
     "explanation": "キャッシュメモリはCPUと主記憶(メインメモリ)の間に置かれる高速な記憶装置で、アクセス頻度の高いデータを一時的に保持することで処理を高速化します。",
     "choices": [
-      { "label": "ア", "text": "レジスタ", "is_correct": false },
-      { "label": "イ", "text": "キャッシュメモリ", "is_correct": true },
-      { "label": "ウ", "text": "補助記憶装置", "is_correct": false },
-      { "label": "エ", "text": "仮想記憶", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "レジスタ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "キャッシュメモリ",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "補助記憶装置",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "仮想記憶",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -185,10 +425,26 @@
     "body": "コンピュータの5大装置のうち、演算と制御を行う装置はどれか。",
     "explanation": "コンピュータの5大装置は入力・出力・記憶・演算・制御からなり、演算と制御はCPU(中央処理装置)が担います。",
     "choices": [
-      { "label": "ア", "text": "入力装置", "is_correct": false },
-      { "label": "イ", "text": "出力装置", "is_correct": false },
-      { "label": "ウ", "text": "記憶装置", "is_correct": false },
-      { "label": "エ", "text": "演算装置及び制御装置(CPU)", "is_correct": true }
+      {
+        "label": "ア",
+        "text": "入力装置",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "出力装置",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "記憶装置",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "演算装置及び制御装置(CPU)",
+        "is_correct": true
+      }
     ]
   },
   {
@@ -197,10 +453,26 @@
     "body": "コンピュータのハードウェア資源を管理し、アプリケーションソフトウェアに実行環境を提供する基本ソフトウェアはどれか。",
     "explanation": "OSはCPU・メモリ・入出力装置などのハードウェア資源を管理し、アプリケーションソフトウェアが動作するための基盤を提供します。",
     "choices": [
-      { "label": "ア", "text": "OS(オペレーティングシステム)", "is_correct": true },
-      { "label": "イ", "text": "ミドルウェア", "is_correct": false },
-      { "label": "ウ", "text": "デバイスドライバ", "is_correct": false },
-      { "label": "エ", "text": "ファームウェア", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "OS(オペレーティングシステム)",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "ミドルウェア",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "デバイスドライバ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ファームウェア",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -209,10 +481,26 @@
     "body": "複数のプログラムを短い時間間隔で切り替えながら実行し、同時に処理が進んでいるように見せるOSの機能を何と呼ぶか。",
     "explanation": "マルチタスクは、CPUの処理時間を細かく分割して複数のプログラムに割り当てることで、あたかも同時に実行されているように見せる仕組みです。",
     "choices": [
-      { "label": "ア", "text": "マルチタスク", "is_correct": true },
-      { "label": "イ", "text": "シングルタスク", "is_correct": false },
-      { "label": "ウ", "text": "バッチ処理", "is_correct": false },
-      { "label": "エ", "text": "リアルタイム処理", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "マルチタスク",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "シングルタスク",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "バッチ処理",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "リアルタイム処理",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -221,10 +509,26 @@
     "body": "要件定義→設計→実装→テストの各工程を順番に進め、前工程に戻らないことを前提とする開発モデルはどれか。",
     "explanation": "ウォーターフォールモデルは、工程を上流から下流へ順番に進める開発モデルです。前工程への手戻りを想定していないため、要件を早期に確定させる必要があります。",
     "choices": [
-      { "label": "ア", "text": "ウォーターフォールモデル", "is_correct": true },
-      { "label": "イ", "text": "アジャイル開発", "is_correct": false },
-      { "label": "ウ", "text": "スパイラルモデル", "is_correct": false },
-      { "label": "エ", "text": "プロトタイピングモデル", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "ウォーターフォールモデル",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "アジャイル開発",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "スパイラルモデル",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "プロトタイピングモデル",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -233,10 +537,26 @@
     "body": "短い期間(イテレーション)で開発とリリースを繰り返し、変化する要求に柔軟に対応する開発手法はどれか。",
     "explanation": "アジャイル開発は、短いサイクルで計画・実装・テスト・レビューを繰り返しながら、変化する要求に柔軟に対応する開発手法です。",
     "choices": [
-      { "label": "ア", "text": "ウォーターフォールモデル", "is_correct": false },
-      { "label": "イ", "text": "アジャイル開発", "is_correct": true },
-      { "label": "ウ", "text": "V字モデル", "is_correct": false },
-      { "label": "エ", "text": "構造化分析", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "ウォーターフォールモデル",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "アジャイル開発",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "V字モデル",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "構造化分析",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -245,10 +565,26 @@
     "body": "プロジェクトの作業を階層的に分解し、管理可能な単位まで細分化した構成図を何と呼ぶか。",
     "explanation": "WBS(Work Breakdown Structure)は、プロジェクトの成果物や作業を階層的に分解し、管理しやすい単位にまとめた構成図です。",
     "choices": [
-      { "label": "ア", "text": "WBS(作業分解構成図)", "is_correct": true },
-      { "label": "イ", "text": "ガントチャート", "is_correct": false },
-      { "label": "ウ", "text": "PERT図", "is_correct": false },
-      { "label": "エ", "text": "特性要因図", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "WBS(作業分解構成図)",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "ガントチャート",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "PERT図",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "特性要因図",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -257,10 +593,26 @@
     "body": "プロジェクトの各作業の開始・終了予定日や進捗を横棒で表す図はどれか。",
     "explanation": "ガントチャートは、縦軸に作業項目、横軸に時間をとり、各作業の予定期間や進捗を横棒で表す図です。スケジュール管理によく使われます。",
     "choices": [
-      { "label": "ア", "text": "ガントチャート", "is_correct": true },
-      { "label": "イ", "text": "WBS", "is_correct": false },
-      { "label": "ウ", "text": "特性要因図", "is_correct": false },
-      { "label": "エ", "text": "パレート図", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "ガントチャート",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "WBS",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "特性要因図",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "パレート図",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -269,10 +621,26 @@
     "body": "ITサービスの運用において、発生した障害を迅速に復旧させ、サービスへの影響を最小限に抑える活動を何と呼ぶか。",
     "explanation": "インシデント管理は、発生した障害(インシデント)を可能な限り迅速に解消し、サービスへの影響を最小化することを目的とした活動です。根本原因の恒久的な解決を目指す「問題管理」とは区別されます。",
     "choices": [
-      { "label": "ア", "text": "インシデント管理", "is_correct": true },
-      { "label": "イ", "text": "変更管理", "is_correct": false },
-      { "label": "ウ", "text": "構成管理", "is_correct": false },
-      { "label": "エ", "text": "問題管理", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "インシデント管理",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "変更管理",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "構成管理",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "問題管理",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -281,10 +649,26 @@
     "body": "インシデントの根本原因を調査し、再発防止のための恒久的な対策を行う活動を何と呼ぶか。",
     "explanation": "問題管理は、インシデントの根本原因(問題)を調査・特定し、恒久的な対策を講じることで再発を防止する活動です。",
     "choices": [
-      { "label": "ア", "text": "インシデント管理", "is_correct": false },
-      { "label": "イ", "text": "問題管理", "is_correct": true },
-      { "label": "ウ", "text": "リリース管理", "is_correct": false },
-      { "label": "エ", "text": "資産管理", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "インシデント管理",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "問題管理",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "リリース管理",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "資産管理",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -293,10 +677,26 @@
     "body": "企業の強み(Strengths)・弱み(Weaknesses)・機会(Opportunities)・脅威(Threats)を分析する経営分析手法はどれか。",
     "explanation": "SWOT分析は、内部要因である強み・弱みと、外部要因である機会・脅威を整理し、経営戦略の立案に活用する分析手法です。",
     "choices": [
-      { "label": "ア", "text": "SWOT分析", "is_correct": true },
-      { "label": "イ", "text": "3C分析", "is_correct": false },
-      { "label": "ウ", "text": "PPM分析", "is_correct": false },
-      { "label": "エ", "text": "バリューチェーン分析", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "SWOT分析",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "3C分析",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "PPM分析",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "バリューチェーン分析",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -305,10 +705,26 @@
     "body": "経営戦略の実現に向けて、中長期的に情報システムをどのように整備・活用していくかをまとめた計画を何と呼ぶか。",
     "explanation": "情報システム化基本計画は、経営戦略・事業戦略を踏まえ、中長期的に情報システムをどう整備・活用していくかを定めた計画です。",
     "choices": [
-      { "label": "ア", "text": "情報システム化基本計画", "is_correct": true },
-      { "label": "イ", "text": "システム要件定義書", "is_correct": false },
-      { "label": "ウ", "text": "プロジェクト憲章", "is_correct": false },
-      { "label": "エ", "text": "運用マニュアル", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "情報システム化基本計画",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "システム要件定義書",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "プロジェクト憲章",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "運用マニュアル",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -317,10 +733,26 @@
     "body": "プログラムやデータベースなどの著作物を保護し、作者の権利を守る法律はどれか。",
     "explanation": "著作権法は、プログラムを含む著作物の創作者の権利を保護する法律です。プログラムの著作物は、アイデア自体ではなく具体的な表現が保護対象となります。",
     "choices": [
-      { "label": "ア", "text": "著作権法", "is_correct": true },
-      { "label": "イ", "text": "特許法", "is_correct": false },
-      { "label": "ウ", "text": "個人情報保護法", "is_correct": false },
-      { "label": "エ", "text": "不正競争防止法", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "著作権法",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "特許法",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "個人情報保護法",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "不正競争防止法",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -329,10 +761,26 @@
     "body": "新規性・進歩性のある発明を保護し、一定期間その発明を独占的に実施できる権利を付与する法律はどれか。",
     "explanation": "特許法は、新規性・進歩性のある発明を保護し、一定期間その発明を独占的に実施できる権利(特許権)を付与する法律です。",
     "choices": [
-      { "label": "ア", "text": "著作権法", "is_correct": false },
-      { "label": "イ", "text": "特許法", "is_correct": true },
-      { "label": "ウ", "text": "商標法", "is_correct": false },
-      { "label": "エ", "text": "意匠法", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "著作権法",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "特許法",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "商標法",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "意匠法",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -341,10 +789,26 @@
     "body": "サーバーやストレージ、ネットワークなどのインフラをインターネット経由で提供するクラウドサービスの形態はどれか。",
     "explanation": "IaaS(Infrastructure as a Service)は、サーバーやストレージ、ネットワークといったインフラ資源をインターネット経由で提供するサービス形態です。PaaSはアプリケーションの実行基盤、SaaSはアプリケーション自体を提供します。",
     "choices": [
-      { "label": "ア", "text": "SaaS", "is_correct": false },
-      { "label": "イ", "text": "PaaS", "is_correct": false },
-      { "label": "ウ", "text": "IaaS", "is_correct": true },
-      { "label": "エ", "text": "DaaS", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "SaaS",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "PaaS",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "IaaS",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "DaaS",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -353,10 +817,26 @@
     "body": "Webメールやオンラインの表計算ソフトのように、ソフトウェアの機能そのものをインターネット経由で提供するサービス形態はどれか。",
     "explanation": "SaaS(Software as a Service)は、ソフトウェアの機能をインターネット経由でサービスとして提供する形態です。利用者は自分でサーバーやソフトウェアを管理する必要がありません。",
     "choices": [
-      { "label": "ア", "text": "IaaS", "is_correct": false },
-      { "label": "イ", "text": "PaaS", "is_correct": false },
-      { "label": "ウ", "text": "SaaS", "is_correct": true },
-      { "label": "エ", "text": "オンプレミス", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "IaaS",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "PaaS",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "SaaS",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "オンプレミス",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -365,10 +845,26 @@
     "body": "Webブラウザとサーバーの間でHTMLなどのデータをやり取りするために使われるプロトコルはどれか。",
     "explanation": "HTTP(HyperText Transfer Protocol)は、Webブラウザとサーバーの間でHTMLなどのリソースをやり取りするための通信プロトコルです。暗号化されたやり取りにはHTTPSが使われます。",
     "choices": [
-      { "label": "ア", "text": "FTP", "is_correct": false },
-      { "label": "イ", "text": "HTTP", "is_correct": true },
-      { "label": "ウ", "text": "SMTP", "is_correct": false },
-      { "label": "エ", "text": "SSH", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "FTP",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "HTTP",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "SMTP",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "SSH",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -377,10 +873,26 @@
     "body": "Webシステムにおいて、ログイン状態などクライアントとサーバー間の状態を維持するためによく使われる仕組みはどれか。",
     "explanation": "HTTPは本来、リクエストごとに状態を保持しないステートレスな通信ですが、Cookieを使ってクライアント側に情報を保存することで、ログイン状態などを維持できます。",
     "choices": [
-      { "label": "ア", "text": "Cookie(クッキー)", "is_correct": true },
-      { "label": "イ", "text": "DNS", "is_correct": false },
-      { "label": "ウ", "text": "ARP", "is_correct": false },
-      { "label": "エ", "text": "NAT", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "Cookie(クッキー)",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "DNS",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "ARP",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "NAT",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -389,10 +901,26 @@
     "body": "大量のデータからコンピュータが自動的にパターンやルールを学習し、未知のデータに対する予測や分類を行う技術はどれか。",
     "explanation": "機械学習は、大量のデータからパターンやルールを自動的に学習し、その学習結果を使って未知のデータに対する予測・分類などを行う技術です。",
     "choices": [
-      { "label": "ア", "text": "機械学習", "is_correct": true },
-      { "label": "イ", "text": "データベース管理", "is_correct": false },
-      { "label": "ウ", "text": "表計算", "is_correct": false },
-      { "label": "エ", "text": "ファイル圧縮", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "機械学習",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "データベース管理",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "表計算",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ファイル圧縮",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -401,10 +929,26 @@
     "body": "人間のように自然な文章や画像などを新たに生成できるAIの総称として、近年広く使われる用語はどれか。",
     "explanation": "生成AI(Generative AI)は、学習したデータをもとに文章・画像・音声などの新しいコンテンツを生成できるAIの総称です。",
     "choices": [
-      { "label": "ア", "text": "生成AI", "is_correct": true },
-      { "label": "イ", "text": "RPA", "is_correct": false },
-      { "label": "ウ", "text": "OCR", "is_correct": false },
-      { "label": "エ", "text": "IoT", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "生成AI",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "RPA",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "OCR",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "IoT",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -413,10 +957,26 @@
     "body": "Linuxにおいて、カレントディレクトリ内のファイル一覧を表示するコマンドはどれか。",
     "explanation": "lsはカレントディレクトリのファイル・ディレクトリ一覧を表示するコマンドです。cdはディレクトリ移動、pwdはカレントディレクトリのパス表示、mkdirはディレクトリ作成を行います。",
     "choices": [
-      { "label": "ア", "text": "cd", "is_correct": false },
-      { "label": "イ", "text": "ls", "is_correct": true },
-      { "label": "ウ", "text": "pwd", "is_correct": false },
-      { "label": "エ", "text": "mkdir", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "cd",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "ls",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "pwd",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "mkdir",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -425,10 +985,26 @@
     "body": "Linuxのファイルパーミッションを表す \"rwxr-xr--\" において、所有者(owner)に許可されている権限はどれか。",
     "explanation": "パーミッション表記は「所有者(owner)/グループ(group)/その他(other)」の3つに分かれ、それぞれr(読み取り)・w(書き込み)・x(実行)の可否を示します。\"rwxr-xr--\"の先頭3文字「rwx」は所有者が読み取り・書き込み・実行のすべてを許可されていることを表します。",
     "choices": [
-      { "label": "ア", "text": "読み取りのみ", "is_correct": false },
-      { "label": "イ", "text": "読み取りと書き込み", "is_correct": false },
-      { "label": "ウ", "text": "読み取り・書き込み・実行", "is_correct": true },
-      { "label": "エ", "text": "実行のみ", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "読み取りのみ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "読み取りと書き込み",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "読み取り・書き込み・実行",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "実行のみ",
+        "is_correct": false
+      }
     ]
   },
   {
@@ -437,10 +1013,1650 @@
     "body": "Linuxで、あるコマンドの標準出力を別のコマンドの標準入力に接続し、複数のコマンドを連結して処理する仕組みを何と呼ぶか。",
     "explanation": "あるコマンドの標準出力を別のコマンドの標準入力へつなぐ仕組みをパイプ(|)と呼びます。リダイレクト(>や<)はファイルとの入出力の付け替えを指します。",
     "choices": [
-      { "label": "ア", "text": "リダイレクト", "is_correct": false },
-      { "label": "イ", "text": "パイプ", "is_correct": true },
-      { "label": "ウ", "text": "シンボリックリンク", "is_correct": false },
-      { "label": "エ", "text": "ジョブ制御", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "リダイレクト",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "パイプ",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "シンボリックリンク",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ジョブ制御",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "データ表現",
+    "difficulty": 3,
+    "body": "8ビットの2の補数表現で表せる整数の範囲はどれか。",
+    "explanation": "2の補数では最上位ビットが符号を表します。8ビットで表せるパターンは2^8 = 256通りで、そのうち負の数に128通り(-128〜-1)、0と正の数に128通り(0〜127)を割り当てます。負側が1つ多いのは、0が正側に含まれるためです。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "-128 〜 127",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "-127 〜 128",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "-127 〜 127",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "0 〜 255",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "データ表現",
+    "difficulty": 3,
+    "body": "浮動小数点数の計算で、絶対値がほぼ等しい2つの数を減算したときに有効桁数が大きく失われる現象を何というか。",
+    "explanation": "桁落ちです。例えば1.234567 - 1.234566 のような計算では、上位の桁が打ち消し合い、残った下位の桁だけが結果になるため有効桁数が激減します。対策としては、式を変形して減算を避ける(有理化するなど)方法が使われます。なお情報落ちは、極端に大きい数と小さい数を加算したときに小さい数が無視される現象です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "桁落ち",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "情報落ち",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "丸め誤差",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "オーバーフロー",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "データ表現",
+    "difficulty": 2,
+    "body": "文字符号化方式UTF-8の説明として適切なものはどれか。",
+    "explanation": "UTF-8は1文字を1〜4バイトで表す可変長の符号化方式です。ASCII文字は1バイトのまま表現されるため既存のASCIIと互換性があり、現在のWebやファイルの事実上の標準となっています。日本語は通常3バイトで表されます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "1〜4バイトの可変長で、ASCII部分は1バイトのまま表現される",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "すべての文字を必ず2バイトで表現する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "日本語専用の文字コードで、英数字は表現できない",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "Unicodeとは無関係に定義された独自の文字集合である",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "オペレーティングシステム",
+    "difficulty": 3,
+    "body": "プロセスとスレッドの違いに関する記述として適切なものはどれか。",
+    "explanation": "プロセスはそれぞれ独立したメモリ空間を持つため互いに干渉しませんが、同じプロセス内のスレッドはメモリ空間を共有します。この共有により通信は高速になる一方、同じデータを同時に更新すると壊れるため排他制御が必要になります。また生成や切り替えのコストはスレッドのほうが小さくなります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "同一プロセス内のスレッドはメモリ空間を共有するが、プロセス同士は共有しない",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "スレッドはプロセスより生成コストが大きい",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "1つのプロセスは必ず1つのスレッドしか持てない",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "プロセス同士はメモリを共有するが、スレッド同士は共有しない",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "オペレーティングシステム",
+    "difficulty": 4,
+    "body": "仮想記憶方式において、ページの置換えが頻発して本来の処理よりページング処理に時間を取られ、システム全体の処理能力が著しく低下する現象はどれか。",
+    "explanation": "スラッシングです。実行中のプロセスが必要とするページの合計が実記憶容量を超えると、ページインとページアウトが繰り返し発生します。対策は多重度(同時実行プロセス数)を下げるか、実記憶を増設することです。フラグメンテーションは記憶領域が細切れになる現象で別物です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "スラッシング",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "フラグメンテーション",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "デッドロック",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "コンテキストスイッチ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "オペレーティングシステム",
+    "difficulty": 3,
+    "body": "デッドロックが発生する4つの必要条件に含まれないものはどれか。",
+    "explanation": "デッドロックの4条件は「相互排除」「保持と待ち」「横取り不可」「循環待ち」です。これら4つがすべて同時に成立したときに発生するため、どれか1つを崩せば防止できます。実務では資源の獲得順序を統一して循環待ちを崩す方法が最もよく使われます。「資源の共有」は排他制御を必要としない状態であり、むしろデッドロックが起きない条件です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "資源の共有",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "循環待ち",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "保持と待ち",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "横取り不可",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "オペレーティングシステム",
+    "difficulty": 3,
+    "body": "ページ置換えアルゴリズムのうち、最も長い間参照されていないページを置換え対象とする方式はどれか。",
+    "explanation": "LRU(Least Recently Used)です。「最近使われたページは、またすぐ使われる可能性が高い」という時間的局所性に基づく方式で、実際のヒット率が良好なため広く使われます。FIFOは読み込んだ順に追い出す方式、LFUは参照頻度が最も低いものを追い出す方式です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "LRU",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "FIFO",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "LFU",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ラウンドロビン",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "プログラミング基礎",
+    "difficulty": 2,
+    "body": "要素数nの配列に対して、添字を0から始める言語で全要素を走査するループの終了条件として適切なものはどれか。",
+    "explanation": "添字が0から始まる場合、有効な添字は0からn-1までです。したがってループ変数iに対する継続条件は i < n(または i <= n-1)となります。i <= n と書くと1回多く回り、範囲外アクセスを起こします。この誤りはoff-by-oneエラーと呼ばれ、最も頻出するバグの1つです。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "i < n",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "i <= n",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "i < n + 1",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "i <= n + 1",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "プログラミング基礎",
+    "difficulty": 3,
+    "body": "例外処理におけるfinallyブロックの役割として適切なものはどれか。",
+    "explanation": "finallyブロックは、例外が発生してもしなくても必ず実行されます。そのため、ファイルのクローズやデータベース接続の解放といった、確実に行う必要がある後始末を記述するのに使われます。これらをtryブロックの末尾に書くと、例外発生時に実行されず資源が解放されないままになります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "例外の発生有無にかかわらず必ず実行され、資源の解放などの後始末に使う",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "例外が発生したときだけ実行される",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "例外が発生しなかったときだけ実行される",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "発生した例外を上位に再送出する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "プログラミング基礎",
+    "difficulty": 3,
+    "body": "変数のスコープに関する記述のうち、保守性の観点から推奨される方針はどれか。",
+    "explanation": "グローバル変数はどこからでも参照・変更できるため、値がいつ誰に書き換えられたのか追跡が困難になり、不具合の温床となります。値は引数で渡し結果は戻り値で返す設計にし、変数の有効範囲はできる限り狭く保つのが基本方針です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "変数の有効範囲は可能な限り狭くし、グローバル変数の使用は避ける",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "再利用しやすいよう、変数は可能な限りグローバルに宣言する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "すべての変数を関数の先頭でまとめて宣言し、関数全体で使えるようにする",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "変数名は短くするほど保守性が高まる",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "プログラミング基礎",
+    "difficulty": 2,
+    "body": "while型の繰り返しとdo-while型の繰り返しの違いとして適切なものはどれか。",
+    "explanation": "while型は繰り返しの前に条件を判定するため、最初から条件が偽であれば処理は一度も実行されません(0回)。do-while型は処理を実行してから条件を判定するため、条件にかかわらず必ず1回は実行されます。この違いは擬似言語の問題で頻出します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "while型は0回のこともあるが、do-while型は必ず1回以上実行される",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "while型は必ず1回以上実行されるが、do-while型は0回のこともある",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "どちらも必ず1回以上実行される",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "どちらも実行回数はあらかじめ決まっている必要がある",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "データ構造",
+    "difficulty": 2,
+    "body": "スタックに対して push(1)、push(2)、push(3)、pop()、push(4)、pop() の順に操作を行った。最後のpop()で取り出される値はどれか。",
+    "explanation": "スタックは後入れ先出し(LIFO)です。push(1),push(2),push(3)でスタックは下から1,2,3となり、1回目のpop()で3が取り出されて1,2が残ります。次にpush(4)で1,2,4となり、2回目のpop()では最後に入れた4が取り出されます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "4",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "3",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "2",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "1",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "データ構造",
+    "difficulty": 3,
+    "body": "配列と連結リストの比較に関する記述として適切なものはどれか。",
+    "explanation": "配列はメモリ上に連続して配置されるため、先頭アドレスと添字から位置を計算でき、k番目の要素にO(1)でアクセスできます。一方、途中への挿入や削除は後続要素をずらす必要がありO(n)です。連結リストはその逆で、位置が分かっていれば挿入・削除はポインタの付け替えだけでO(1)ですが、k番目を得るには先頭からたどるためO(n)かかります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "配列はk番目の要素へO(1)でアクセスできるが、連結リストはO(n)かかる",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "配列は途中への挿入がO(1)で、連結リストはO(n)かかる",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "どちらもk番目の要素へO(1)でアクセスできる",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "連結リストは要素が連続したメモリ領域に配置される",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "データ構造",
+    "difficulty": 3,
+    "body": "ハッシュ表を用いた探索において、異なるキーが同じ格納位置に割り当てられることを何というか。",
+    "explanation": "衝突(コリジョン)です。ハッシュ関数の出力を表のサイズで割った余りを格納位置とするため、異なるキーが同じ位置になることは避けられません。対処法として、同じ位置の要素を連結リストでつなぐチェイン法や、空いている別の位置を探すオープンアドレス法があります。衝突が多発するとO(1)の性能が失われます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "衝突(コリジョン)",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "オーバーフロー",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "フラグメンテーション",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "デッドロック",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "データ構造",
+    "difficulty": 3,
+    "body": "二分探索木を中間順(通りがけ順)で走査したとき、得られる要素の並びはどれか。",
+    "explanation": "中間順は「左部分木 → 自分 → 右部分木」の順に処理します。二分探索木では常に「左の子 < 自分 < 右の子」が成り立つため、中間順走査を行うと必ず値の昇順に並びます。この性質は、木構造からソート済みのデータを取り出す際に利用されます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "値の昇順に並ぶ",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "値の降順に並ぶ",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "根に近い順に並ぶ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "挿入した順に並ぶ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "データ構造",
+    "difficulty": 2,
+    "body": "先入れ先出し(FIFO)で要素を取り出すデータ構造はどれか。",
+    "explanation": "キューです。最初に入れた要素が最初に取り出されるため、順番待ちの行列と同じ動作をします。プリンタの印刷ジョブ管理、CPUスケジューリングの待ち行列、幅優先探索などで使われます。スタックは後入れ先出し(LIFO)で、動作が逆になります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "キュー",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "スタック",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "二分探索木",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ハッシュ表",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "オブジェクト指向",
+    "difficulty": 3,
+    "body": "オブジェクト指向におけるカプセル化の説明として適切なものはどれか。",
+    "explanation": "カプセル化は、データ(属性)とそれを操作する手続き(メソッド)を1つにまとめ、内部のデータへの直接アクセスを禁じて公開メソッド経由でのみ操作させることです。これにより不正な状態になることを防ぎ、内部実装を変更しても外部への影響を閉じ込められます。上位クラスの性質を引き継ぐのは継承です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "データとその操作を1つにまとめ、内部データへの直接アクセスを制限すること",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "上位クラスの属性と操作を下位クラスが引き継ぐこと",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "同じ呼び出しに対して、オブジェクトごとに異なる動作をすること",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "共通する性質を抽出して抽象的なクラスを定義すること",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "オブジェクト指向",
+    "difficulty": 3,
+    "body": "オーバーライドの説明として適切なものはどれか。",
+    "explanation": "オーバーライドは、上位クラスで定義されたメソッドを下位クラスで再定義し、動作を上書きすることです。これによりポリモーフィズムが実現されます。一方オーバーロードは、同じクラス内で同名のメソッドを引数の型や個数を変えて複数定義することで、まったく別の概念です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "上位クラスのメソッドを、下位クラスで再定義して動作を上書きすること",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "同じ名前で引数の型や個数が異なるメソッドを複数定義すること",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "クラスからインスタンスを生成すること",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "複数のクラスから同時に継承すること",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "オブジェクト指向",
+    "difficulty": 4,
+    "body": "「動物」クラスを継承した「犬」「猫」クラスがそれぞれ独自に鳴き声メソッドを実装しており、呼び出し側は相手の具体的な型を知らずに同じ呼び出しで異なる動作を得られる。この性質を何というか。",
+    "explanation": "ポリモーフィズム(多態性)です。呼び出し側が具体的な型を意識せずに済むため、新しい種類のクラスを追加しても呼び出し側のコードを変更する必要がありません。型による条件分岐を並べる実装と比べ、拡張時の変更範囲が小さくなるのが大きな利点です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ポリモーフィズム(多態性)",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "カプセル化",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "インスタンス化",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "委譲",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "オブジェクト指向",
+    "difficulty": 3,
+    "body": "クラス間の関係において、継承(is-a関係)ではなくコンポジション(has-a関係)を用いるべき場面はどれか。",
+    "explanation": "継承は「AはBの一種である」というis-a関係が成り立つときに使うものです。「車はエンジンを持つ」のような部品としての関係はhas-a関係であり、コンポジション(委譲)で表現します。単なるコード再利用を目的とした継承は、上位クラスの変更が下位クラス全体に波及するため保守性を損ないます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "「車」と「エンジン」のように、一方が他方を部品として保持する関係",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "「犬」と「動物」のように、一方が他方の一種である関係",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "「正方形」と「図形」のように、特殊と一般の関係",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "「社員」と「人」のように、性質を引き継ぐ関係",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "SQL",
+    "difficulty": 3,
+    "body": "SQLにおけるWHERE句とHAVING句の違いとして適切なものはどれか。",
+    "explanation": "WHERE句はグループ化(GROUP BY)される前の個々の行に対する絞り込みを行い、HAVING句はグループ化した後の集計結果に対する絞り込みを行います。したがって集約関数を使った条件はHAVING句に書きます。可能な条件はWHERE句で先に絞ったほうが、集計対象の行数が減るため処理効率が良くなります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "WHEREは集計前の行を絞り込み、HAVINGは集計後のグループを絞り込む",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "WHEREは集計後のグループを絞り込み、HAVINGは集計前の行を絞り込む",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "どちらも同じ機能であり、記述位置が違うだけである",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "HAVINGはGROUP BYを使わない場合にのみ利用できる",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "SQL",
+    "difficulty": 3,
+    "body": "表Aと表Bを結合するとき、表Aのすべての行を残し、対応する行が表Bに存在しない場合は表B側の列をNULLとする結合はどれか。",
+    "explanation": "左外部結合(LEFT OUTER JOIN)です。左側の表の行をすべて残すため、「部署が未設定の社員も含めて一覧を出したい」といった場合に使います。内部結合(INNER JOIN)では、両方に対応する行があるものだけが返るため、対応のない行は結果から消えてしまいます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "左外部結合(LEFT OUTER JOIN)",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "内部結合(INNER JOIN)",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "交差結合(CROSS JOIN)",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "右外部結合(RIGHT OUTER JOIN)",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "SQL",
+    "difficulty": 3,
+    "body": "SQLにおいて、ある列の値がNULLである行を抽出する条件として正しいものはどれか。",
+    "explanation": "NULLは「値が存在しない」ことを表す特別な状態であり、値ではないため比較演算子では判定できません。「= NULL」と書いても真にならず、結果は常に不定(UNKNOWN)となって1行も抽出されません。NULLの判定には必ずIS NULL / IS NOT NULLを使います。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "WHERE 列名 IS NULL",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "WHERE 列名 = NULL",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "WHERE 列名 == NULL",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "WHERE 列名 = ''",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "SQL",
+    "difficulty": 4,
+    "body": "SQLの各句が評価される順序として正しいものはどれか。",
+    "explanation": "SQLは記述順とは異なる順序で評価されます。FROMでデータ源を決め、WHEREで行を絞り、GROUP BYでまとめ、HAVINGでグループを絞り、SELECTで列を取り出し、最後にORDER BYで並べ替えます。SELECT句で付けた別名をWHERE句で使えないのは、WHEREのほうが先に評価されるためです。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "FROM → SELECT → WHERE → GROUP BY → ORDER BY → HAVING",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "WHERE → FROM → SELECT → HAVING → GROUP BY → ORDER BY",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "HTTP・API設計",
+    "difficulty": 3,
+    "body": "HTTPステータスコード401と403の違いとして適切なものはどれか。",
+    "explanation": "401 Unauthorizedは名称に反して「認証が必要である(あなたが誰か分からない)」ことを示し、ログインすれば解決する可能性があります。403 Forbiddenは「認証は済んでいるが、その操作を行う権限がない」ことを示し、ログインし直しても解決しません。この2つの使い分けはAPI設計で頻出します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "401は認証が必要であること、403は認証済みだが権限がないことを示す",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "401は権限がないこと、403は認証が必要であることを示す",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "401はサーバ側の障害、403はクライアント側の障害を示す",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "どちらも同じ意味であり、実装者の好みで選んでよい",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "HTTP・API設計",
+    "difficulty": 4,
+    "body": "HTTPメソッドの冪等性(べきとうせい)に関する記述として適切なものはどれか。",
+    "explanation": "冪等とは、同じ要求を何度実行しても結果の状態が変わらない性質です。GET、PUT、DELETEは冪等で、同じDELETEを2回送っても「削除済み」という状態は変わりません。一方POSTは冪等ではなく、2回送れば2件作成されてしまいます。通信の再送が起こりうる環境では、この違いが二重登録や二重課金の有無を左右します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "GET、PUT、DELETEは冪等だが、POSTは冪等ではない",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "POSTは冪等だが、PUTとDELETEは冪等ではない",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "すべてのHTTPメソッドは冪等である",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "冪等性とは、応答が必ずキャッシュされる性質のことである",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "HTTP・API設計",
+    "difficulty": 3,
+    "body": "REST APIの設計として適切なURLはどれか。",
+    "explanation": "RESTでは、URLは操作対象の資源(リソース)を名詞で表し、それに対して何をするかはHTTPメソッドで表現します。したがって利用者ID123の取得は GET /users/123 となります。/getUser のように動作をURLに含めると、メソッドと役割が重複し、RESTの利点である統一されたインタフェースが失われます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "GET /users/123",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "GET /getUser?id=123",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "POST /deleteUser/123",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "GET /user/update/123",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "HTTP・API設計",
+    "difficulty": 4,
+    "body": "ブラウザ上のJavaScriptから、異なるオリジンのAPIへアクセスしようとして拒否された。この制限と、それを緩和する仕組みの組合せとして適切なものはどれか。",
+    "explanation": "ブラウザは既定で同一オリジンポリシーにより、別オリジンへのリクエストの結果をスクリプトから読み取ることを禁止しています。これは悪意あるサイトが利用者の権限で他サイトのデータを盗むことを防ぐためです。CORSは、サーバ側がAccess-Control-Allow-Originヘッダなどで明示的に許可を与える仕組みです。制限しているのはブラウザなので、サーバ間の通信には適用されません。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "同一オリジンポリシー と CORS",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "CSRF と CSRFトークン",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "XSS と Content Security Policy",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "SQLインジェクション と プレースホルダ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "フロントエンド",
+    "difficulty": 3,
+    "body": "JavaScriptで、利用者から受け取った文字列を画面に表示する際に、XSSを防ぐ観点から適切な方法はどれか。",
+    "explanation": "innerHTMLに文字列を代入すると、その内容がHTMLとして解釈されるため、スクリプトタグやイベント属性が実行されXSSの原因になります。単に文字列を表示したいだけであればtextContentを使えば、内容は必ず文字列として扱われHTMLとして解釈されません。要素を組み立てる必要がある場合はcreateElementを使います。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "textContentに代入する",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "innerHTMLに代入する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "document.writeで出力する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "evalで評価してから出力する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "フロントエンド",
+    "difficulty": 3,
+    "body": "JavaScriptのfetch関数を使ったHTTP通信について、正しい記述はどれか。",
+    "explanation": "fetchが返すPromiseは、ネットワーク障害などで通信そのものが失敗した場合にのみrejectされます。404や500といったHTTPエラーは「通信としては成功している」ため、Promiseはresolveされてしまいます。したがってresponse.okやresponse.statusを自分で確認する必要があります。これは実務で見落とされやすい重要な仕様です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "404や500が返っても例外にはならないため、response.okの確認が必要である",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "404や500が返ると自動的に例外が送出される",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "同期的に実行されるため、await は不要である",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "同一オリジンへのリクエストにしか使用できない",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "フロントエンド",
+    "difficulty": 3,
+    "body": "互いに依存しない2つの非同期処理AとBを実行するとき、全体の待ち時間を最小にする方法はどれか。",
+    "explanation": "await を順番に並べると、Aが完了してからBが始まるため合計時間はA+Bになります。Promise.allで両方を同時に開始すれば、合計時間は遅いほう(max(A,B))で済みます。依存関係のない外部API呼び出しを直列に実行してしまうのは、Webアプリの応答遅延の典型的な原因です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "Promise.allで両方を同時に開始し、まとめて待つ",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "awaitを1つずつ順番に記述する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "同期処理に書き換えて順番に実行する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "setTimeoutで実行間隔を空ける",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "暗号・認証",
+    "difficulty": 3,
+    "body": "公開鍵暗号方式を用いて、送信者が受信者だけに読める形でメッセージを送りたい。暗号化に使う鍵はどれか。",
+    "explanation": "受信者の公開鍵で暗号化すると、対応する秘密鍵を持つ受信者だけが復号できます。公開鍵は誰に配ってもよいため、鍵配送問題が解決されます。なお送信者の秘密鍵で暗号化する場合は、誰でも送信者の公開鍵で復号できるため秘匿にはならず、これはデジタル署名(本人性の証明)の用途になります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "受信者の公開鍵",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "受信者の秘密鍵",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "送信者の公開鍵",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "送信者の秘密鍵",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "暗号・認証",
+    "difficulty": 4,
+    "body": "パスワードをデータベースに保存する方法として、最も適切なものはどれか。",
+    "explanation": "パスワードは復号する必要がないため、暗号化ではなくハッシュ化して保存します。さらに利用者ごとに異なるソルトを加えることで、同じパスワードでも異なるハッシュ値になり、事前計算した対応表(レインボーテーブル)による解読を防げます。ストレッチングで計算を何万回も繰り返し、総当たり攻撃の速度を落とすことも必須です。bcryptやArgon2はこれらを内包しています。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "利用者ごとのソルトを付与し、ストレッチングを行ったハッシュ値を保存する",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "共通鍵暗号で暗号化して保存する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "MD5でハッシュ化した値をそのまま保存する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "平文のまま保存し、データベースへのアクセス権限で保護する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "暗号・認証",
+    "difficulty": 3,
+    "body": "多要素認証として適切な組合せはどれか。",
+    "explanation": "多要素認証では、知識情報(パスワードなど本人が知っているもの)、所持情報(スマートフォンやICカードなど本人が持っているもの)、生体情報(指紋や顔など本人自身の特徴)という異なる種類の要素を2つ以上組み合わせる必要があります。パスワードと秘密の質問はどちらも知識情報のため、2要素にはなりません。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "パスワードと、スマートフォンの認証アプリが生成するワンタイムコード",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "パスワードと、秘密の質問への回答",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "パスワードと、暗証番号(PIN)",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "利用者IDと、パスワード",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "暗号・認証",
+    "difficulty": 3,
+    "body": "デジタル署名によって確認できることの組合せとして適切なものはどれか。",
+    "explanation": "デジタル署名は、送信者がデータのハッシュ値を自分の秘密鍵で暗号化したものです。受信者は送信者の公開鍵で復号し、自分で計算したハッシュ値と照合します。一致すれば、秘密鍵の持ち主が作成したこと(真正性・否認防止)と、内容が改ざんされていないこと(完全性)が確認できます。ただし内容自体は暗号化されないため、機密性は得られません。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "作成者が本人であること と、内容が改ざんされていないこと",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "内容が第三者に読まれていないこと と、作成者が本人であること",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "内容が暗号化されていること と、通信経路が安全であること",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "送信日時が正確であること と、内容が圧縮されていること",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "コンテナ・仮想化",
+    "difficulty": 3,
+    "body": "コンテナ型仮想化とハイパーバイザ型のサーバ仮想化を比較した記述として適切なものはどれか。",
+    "explanation": "コンテナはホストOSのカーネルを共有し、プロセスの実行環境だけを分離します。ゲストOSを起動しないため軽量で起動も高速ですが、カーネルを共有する分だけ分離の度合いは仮想マシンより弱くなります。仮想マシンはOSごと分離するため分離性は高い一方、資源消費が大きく起動も遅くなります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "コンテナはホストOSのカーネルを共有するため軽量だが、分離性は仮想マシンより弱い",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "コンテナはゲストOSを含むため、仮想マシンよりイメージサイズが大きい",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "コンテナはホストと異なる種類のカーネルを自由に選択できる",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "仮想マシンのほうがコンテナより起動が高速である",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "コンテナ・仮想化",
+    "difficulty": 3,
+    "body": "コンテナを本番運用する際の設計方針として適切なものはどれか。",
+    "explanation": "コンテナはいつ停止・再作成されてもよい使い捨ての実行単位として扱います。そのためデータをコンテナ内部のファイルシステムに保存すると、再作成時に失われます。永続化が必要なデータは、ボリュームやマネージドデータベースなどコンテナの外に置くのが原則です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "コンテナは状態を持たせず、永続データはボリュームや外部サービスに保存する",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "永続データはコンテナ内部のファイルシステムに保存する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "1つのコンテナにできるだけ多くのプロセスを詰め込む",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "本番稼働中のコンテナに直接ログインして設定を変更し、その状態を維持する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "コンテナ・仮想化",
+    "difficulty": 3,
+    "body": "Kubernetesが提供する機能として適切でないものはどれか。",
+    "explanation": "Kubernetesはコンテナオーケストレーションツールであり、コンテナの自動配置、障害時の自動再起動(自己修復)、負荷に応じたスケーリング、無停止での順次入れ替え(ローリングアップデート)などを提供します。一方、アプリケーションのソースコードをコンパイルしてコンテナイメージを作る処理はCI/CDツールやビルド環境の役割で、Kubernetes自体の機能ではありません。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ソースコードのコンパイルとコンテナイメージのビルド",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "停止したコンテナの自動再起動",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "負荷に応じたコンテナ数の増減",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "サービスを停止せずに新バージョンへ順次入れ替える",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "インフラ運用・監視",
+    "difficulty": 3,
+    "body": "MTBFが990時間、MTTRが10時間のシステムの稼働率はいくらか。",
+    "explanation": "稼働率 = MTBF ÷ (MTBF + MTTR) で求めます。990 ÷ (990 + 10) = 990 ÷ 1000 = 0.99 です。この式から、稼働率を上げるには故障しにくくする(MTBFを伸ばす)か、復旧を速くする(MTTRを縮める)かの2通りがあることが分かります。実務では後者への投資のほうが費用対効果が高いことが多いとされます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.99",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "0.90",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "0.999",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "0.01",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "インフラ運用・監視",
+    "difficulty": 3,
+    "body": "システムの応答時間を評価する指標として、平均値よりもパーセンタイル値(p95、p99など)を重視する理由として適切なものはどれか。",
+    "explanation": "平均値は極端に遅い少数のリクエストの影響が薄まるため、一部の利用者が体験している深刻な遅さを覆い隠してしまいます。p99が5秒であれば、100回に1回は5秒待たされることを意味し、何度も操作する利用者はほぼ確実に遭遇します。分布の裾を見るためにパーセンタイルが使われます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "平均値では、一部の利用者が体験している極端な遅さが埋もれてしまうから",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "パーセンタイル値のほうが計算が簡単だから",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "平均値は必ず実測値より大きくなるから",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "パーセンタイル値は負荷が変動しても常に一定になるから",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "インフラ運用・監視",
+    "difficulty": 3,
+    "body": "バックアップ方式のうち、前回のバックアップ以降に変更されたデータだけを取得する方式で、取得は最も速いが復元時に複数世代を順に適用する必要があるものはどれか。",
+    "explanation": "増分バックアップです。前回のバックアップ(種類を問わない)からの変更分だけを取得するため取得は高速ですが、復元にはフルバックアップとそれ以降のすべての増分を順に適用する必要があります。差分バックアップは前回のフルバックアップからの変更分を毎回取得するため、復元はフルと最新の差分の2つで済みます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "増分バックアップ",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "差分バックアップ",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "フルバックアップ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "スナップショット",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "インフラ運用・監視",
+    "difficulty": 4,
+    "body": "災害対策の指標であるRPOの説明として適切なものはどれか。",
+    "explanation": "RPO(Recovery Point Objective、目標復旧時点)は「どの時点のデータまで復旧させるか」を示し、実質的に許容できるデータ損失量を表します。1時間ごとにバックアップを取っていれば、最大1時間分のデータ損失を許容することになります。一方RTO(目標復旧時間)は、復旧までにかけてよい時間を示します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "どの時点のデータまで復旧させるかを示し、許容できるデータ損失量を表す",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "障害発生から復旧完了までに許容される時間を表す",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "システムが故障せずに稼働する平均時間を表す",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "1年間に許容される最大の停止回数を表す",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "システム構成・性能",
+    "difficulty": 3,
+    "body": "スケールアウトの説明として適切なものはどれか。",
+    "explanation": "スケールアウトはサーバの台数を増やして処理能力を高める方法です。台数を増やせるため理論上の上限がなく、1台が故障しても継続できます。ただし各サーバが状態を持たない設計であることが前提になります。1台の性能を上げるのはスケールアップで、単純ですが上限があり、その1台が単一障害点になります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "サーバの台数を増やして全体の処理能力を高める",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "1台のサーバのCPUやメモリを増強して処理能力を高める",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "使用するサーバの台数を減らして運用コストを下げる",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "処理を夜間バッチにまとめて実行する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "システム構成・性能",
+    "difficulty": 4,
+    "body": "複数のWebサーバをロードバランサで負荷分散した構成に変更したところ、利用者が操作の途中で頻繁にログアウトするようになった。原因として最も考えられるものはどれか。",
+    "explanation": "セッション情報を各Webサーバのメモリ上に保持していると、ロードバランサによって別のサーバへ振り分けられた時点でセッションが見つからず、未ログイン扱いになります。対策は、セッションをRedisなどの共有ストアやデータベースに外出しするか、トークン方式にしてサーバ側に状態を持たせないことです。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "セッション情報が各Webサーバのメモリ上に保持されている",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "ロードバランサのヘルスチェック間隔が短すぎる",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "Webサーバの台数が多すぎてCPU使用率が下がっている",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "データベースのインデックスが不足している",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "システム構成・性能",
+    "difficulty": 3,
+    "body": "2系統で同じ処理を並行して行い、結果を照合することで高い信頼性を得るシステム構成はどれか。",
+    "explanation": "デュアルシステムです。2系統が同じ処理を行い結果を突き合わせるため、誤りを検出でき信頼性が非常に高くなりますが、コストも高くなります。金融や交通の基幹システムで採用されます。デュプレックスシステムは主系と待機系を用意する構成で、待機系は通常別の処理を行っているか停止しています。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "デュアルシステム",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "デュプレックスシステム",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "シンプレックスシステム",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "コールドスタンバイ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "設計原則・パターン",
+    "difficulty": 3,
+    "body": "モジュール設計における望ましい状態を表す組合せはどれか。",
+    "explanation": "凝集度はモジュール内部の要素がどれだけ関連し合っているかを表し、高いほど良い状態です。結合度はモジュール間の依存の強さを表し、低いほど良い状態です。「高凝集・疎結合」は、関連するものを1か所にまとめ、無関係なものへの依存を減らすという設計の基本方針を示しています。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "凝集度は高く、結合度は低い",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "凝集度は低く、結合度は高い",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "凝集度も結合度も高い",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "凝集度も結合度も低い",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "設計原則・パターン",
+    "difficulty": 4,
+    "body": "SOLID原則のうち「単一責任の原則」の説明として適切なものはどれか。",
+    "explanation": "単一責任の原則は、クラスが変更される理由は1つだけであるべきとする原則です。集計と画面表示とファイル保存を1つのクラスが担っていると、3つの異なる理由で変更が発生し、互いに影響し合って壊れやすくなります。なお「拡張に対して開き修正に対して閉じる」のは開放閉鎖の原則、「抽象に依存する」のは依存性逆転の原則です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "クラスが変更される理由は1つだけであるべきである",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "拡張に対しては開き、修正に対しては閉じているべきである",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "上位モジュールは下位モジュールではなく抽象に依存すべきである",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "上位クラスは下位クラスで置き換えても正しく動作すべきである",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "設計原則・パターン",
+    "difficulty": 3,
+    "body": "「今は必要ない機能を、将来必要になるかもしれないという理由で実装すべきではない」という設計上の指針はどれか。",
+    "explanation": "YAGNI(You Aren't Gonna Need It)です。予測で作った機能の多くは実際には使われず、保守対象だけが増えて設計を複雑にします。DRYは同じ知識を複数箇所に書かないという原則、KISSは単純に保つという原則で、いずれも別の指針です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "YAGNI",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "DRY",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "KISS",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "SOLID",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "テスト",
+    "difficulty": 3,
+    "body": "料金が年齢によって「0〜11歳は子供料金、12〜64歳は大人料金、65歳以上はシニア料金」と決まっている。限界値分析によるテストデータとして最も適切なものはどれか。",
+    "explanation": "限界値分析は、区分の境界とその前後を重点的に検証する技法です。バグは境界条件の記述ミス(「以上」と「より大きい」の取り違えなど)に集中するため、11と12、64と65を試すことで最も効率よく欠陥を検出できます。5、30、70のような区分の代表値を選ぶのは同値分割の考え方です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "11、12、64、65",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "5、30、70",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "0、50、100",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "1、2、3、4",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "テスト",
+    "difficulty": 3,
+    "body": "結合テストをトップダウン方式で進める場合、まだ完成していない下位モジュールの代わりに用意するものはどれか。",
+    "explanation": "スタブです。上位モジュールから呼び出されたときに、あらかじめ決められた値を返す仮の下位モジュールとして機能します。逆にボトムアップ方式では、下位モジュールを呼び出す仮の上位モジュールとしてドライバを用意します。「スタブは下位の代役、ドライバは上位の代役」と覚えます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "スタブ",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "ドライバ",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "エミュレータ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "シミュレータ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "テスト",
+    "difficulty": 4,
+    "body": "テストのコード網羅率(カバレッジ)に関する記述として適切なものはどれか。",
+    "explanation": "カバレッジはコードが実行されたかどうかを示す指標にすぎず、実行結果が正しいかは検証していません。また、そもそも実装されていない機能(実装漏れ)は検出できません。したがってカバレッジ100%はバグがないことを保証しません。カバレッジは「テストが不足している箇所を見つける手がかり」として使うべき指標です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "カバレッジ100%でも、実装漏れや結果の誤りは検出できない",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "カバレッジ100%であれば、そのプログラムにバグがないことが保証される",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "命令網羅(C0)は分岐網羅(C1)より厳密な基準である",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "カバレッジはブラックボックステストの網羅性を測る指標である",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "バージョン管理",
+    "difficulty": 2,
+    "body": "Gitにおいて、変更をコミットに含めるために一時的に登録しておく領域はどれか。",
+    "explanation": "ステージングエリア(インデックス)です。git addで変更をここに登録し、git commitでリポジトリの履歴に記録します。この領域があることで、作業中の変更のうち一部だけを選んでコミットでき、意味のある単位で履歴を残せます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ステージングエリア(インデックス)",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "ワーキングツリー",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "リモートリポジトリ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "スタッシュ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "バージョン管理",
+    "difficulty": 3,
+    "body": "Gitのような分散型バージョン管理システムが、集中型に対して持つ利点はどれか。",
+    "explanation": "分散型では各開発者の手元に完全な履歴の複製があるため、サーバに接続できない状態でもコミットや履歴の参照ができます。またサーバが失われても、いずれかの複製から復旧できます。集中型では履歴が中央サーバにしかないため、接続できないと作業が止まります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "各開発者の手元に完全な履歴があり、サーバに接続できなくても作業できる",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "コンフリクトが原理的に発生しない",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "中央サーバが不要なため、共同作業でも一切の同期操作がいらない",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ファイルの排他ロックにより、同時編集が防止される",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "バージョン管理",
+    "difficulty": 3,
+    "body": "APIキーを誤ってリポジトリにコミットし、リモートへプッシュしてしまった。取るべき対応として最も適切なものはどれか。",
+    "explanation": "一度プッシュした情報は、後のコミットで削除しても過去の履歴に残り続け、複製した他者の手元にも存在します。履歴からの削除だけでは不十分であり、まず該当のAPIキーを無効化して新しいものを再発行することが必須です。その上で履歴の除去と、再発防止のための.gitignore設定やシークレット検出の導入を行います。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "直ちに該当のAPIキーを無効化し、新しいキーを再発行する",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "次のコミットでファイルを削除すれば十分である",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": ".gitignoreに追加すれば、過去の履歴からも自動的に削除される",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "リポジトリが非公開であれば、特に対応は不要である",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "アジャイル・DevOps",
+    "difficulty": 3,
+    "body": "スクラムにおけるスプリントレトロスペクティブの目的として適切なものはどれか。",
+    "explanation": "レトロスペクティブ(振り返り)は、チームの仕事の進め方そのものを検査し改善するためのイベントです。成果物を関係者に見せてフィードバックを得るのはスプリントレビューで、目的が異なります。レトロスペクティブを省略すると、反復しているだけでやり方が改善されない状態に陥ります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "チームの仕事の進め方を振り返り、改善点を見つけて次に活かす",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "完成した成果物を関係者に見せ、フィードバックを得る",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "次のスプリントで取り組む項目を選び、計画を立てる",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "メンバーの個人成績を評価し、順位付けする",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "アジャイル・DevOps",
+    "difficulty": 3,
+    "body": "継続的インテグレーション(CI)の説明として適切なものはどれか。",
+    "explanation": "CIは、開発者の変更を頻繁に共有ブランチへ統合し、その都度自動でビルドとテストを実行する実践です。統合を頻繁に行うことで、問題が小さいうちに発見でき、原因の特定も容易になります。長期間統合を先延ばしにすると、大量の競合と原因不明の不具合が一度に噴出します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "変更を頻繁に統合し、その都度自動でビルドとテストを実行する",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "リリース直前にすべての変更をまとめて統合し、一括でテストする",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "本番環境へのデプロイを手作業の手順書に従って行う",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "開発者ごとに独立したブランチを長期間維持する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "アジャイル・DevOps",
+    "difficulty": 4,
+    "body": "新バージョンをまず一部の利用者にだけ提供し、問題がないことを確認してから全体へ展開するデプロイ手法はどれか。",
+    "explanation": "カナリアリリースです。少数の利用者に先行提供して指標を観察し、問題があれば影響を限定したまま切り戻せます。ブルーグリーンデプロイは本番と同じ環境をもう一組用意して一斉に切り替える手法で、切り戻しは速いものの、切り替え時点では全利用者が新バージョンを使うことになります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "カナリアリリース",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "ブルーグリーンデプロイ",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "ビッグバンリリース",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ロールバック",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "category": "アジャイル・DevOps",
+    "difficulty": 3,
+    "body": "サーバやネットワークの構成をコードとして記述し、バージョン管理する手法はどれか。",
+    "explanation": "IaC(Infrastructure as Code)です。構成をコード化することで、レビューやバージョン管理の対象にでき、同じ環境を何度でも正確に再現できます。手作業で設定すると環境ごとに差異が蓄積し(構成ドリフト)、「検証環境では動くのに本番では動かない」といった問題の原因になります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "IaC(Infrastructure as Code)",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "TDD(テスト駆動開発)",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "BPR(ビジネスプロセス・リエンジニアリング)",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "SLA(サービスレベル合意)",
+        "is_correct": false
+      }
     ]
   }
 ]
