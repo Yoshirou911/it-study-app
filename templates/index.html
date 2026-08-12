@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>基本情報技術者試験 学習アプリ</title>
+  <title>STACK — IT学習帳</title>
   <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
   <header>
     <div class="header-inner">
       <div class="brand">
-        <span class="brand-kicker">FE EXAM PREP</span>
-        <h1>基本情報技術者試験 学習アプリ</h1>
+        <div class="brand-text">
+          <span class="brand-kicker">IT LEARNING</span>
+          <h1>STACK</h1>
+          <p class="brand-tagline">基礎から応用まで、ITを積み上げる</p>
+        </div>
+        <a class="connect-link" href="/connect">スマホで開く</a>
       </div>
       <nav>
         <button class="tab-btn active" data-tab="textbook">教本</button>
@@ -25,6 +29,7 @@
   <main>
     <section id="textbook-view" class="view active">
       <h2>教本</h2>
+      <div id="textbook-level-nav" class="level-switch"></div>
       <div id="textbook-category-nav" class="category-group-nav"></div>
       <div id="textbook-content" class="note-body"></div>
     </section>

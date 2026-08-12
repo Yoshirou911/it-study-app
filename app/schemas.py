@@ -47,6 +47,7 @@ class ProgressSummary(BaseModel):
 class NoteOut(BaseModel):
     id: int
     category: str
+    level: str
     title: str
     body: str
     order: int
@@ -58,3 +59,10 @@ class NoteOut(BaseModel):
 class CategoryGroupOut(BaseModel):
     group: str
     categories: list[str]
+
+
+class CurriculumOut(BaseModel):
+    """レベルごとの分野一覧。教本タブのナビゲーション構築に使う。"""
+
+    level: str
+    groups: list[CategoryGroupOut]

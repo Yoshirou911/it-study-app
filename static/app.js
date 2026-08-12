@@ -2,7 +2,9 @@ const state = {
   subject: "A",
   currentQuestion: null,
   dashboardSubject: "A",
+  textbookLevel: null,
   textbookCategory: null,
+  curriculum: null, // [{ level, groups: [{ group, categories }] }]
 };
 
 const el = {
@@ -24,6 +26,7 @@ const el = {
   nextQuestion: document.getElementById("next-question"),
   dashSubjectBtns: document.querySelectorAll(".dash-subject-btn"),
   statsList: document.getElementById("stats-list"),
+  textbookLevelNav: document.getElementById("textbook-level-nav"),
   textbookCategoryNav: document.getElementById("textbook-category-nav"),
   textbookContent: document.getElementById("textbook-content"),
   rankHero: document.getElementById("rank-hero"),
@@ -61,7 +64,7 @@ el.tabBtns.forEach((btn) => {
       loadDashboard(state.dashboardSubject);
     } else if (tab === "textbook") {
       switchView("textbook-view");
-      loadTextbookCategories();
+      loadTextbook();
     } else {
       state.subject = btn.dataset.subject;
       switchView("quiz-view");
@@ -264,25 +267,69 @@ async function loadDashboard(subject) {
   });
 }
 
-async function loadTextbookCategories() {
-  const res = await fetch("/api/notes/categories");
-  const groups = await res.json();
-  const allCategories = groups.flatMap((g) => g.categories);
-  el.textbookCategoryNav.innerHTML = "";
+/** カリキュラム(レベル→大分類→分野)は初回だけ取得し、以降は state から描画する。 */
+async function loadTextbook() {
+  if (state.curriculum === null) {
+    const res = await fetch("/api/notes/curriculum");
+    state.curriculum = await res.json();
+  }
+  renderTextbookNav();
+}
 
-  if (allCategories.length === 0) {
-    el.textbookContent.innerHTML = "";
-    const empty = document.createElement("div");
-    empty.className = "empty-state";
-    empty.textContent = "教本データがまだ登録されていません。";
-    el.textbookContent.appendChild(empty);
+function showTextbookEmptyState() {
+  el.textbookLevelNav.innerHTML = "";
+  el.textbookCategoryNav.innerHTML = "";
+  el.textbookContent.innerHTML = "";
+  const empty = document.createElement("div");
+  empty.className = "empty-state";
+  empty.textContent = "教本データがまだ登録されていません。";
+  el.textbookContent.appendChild(empty);
+}
+
+function renderTextbookNav() {
+  const curriculum = state.curriculum;
+  if (!curriculum || curriculum.length === 0) {
+    showTextbookEmptyState();
     return;
   }
 
-  if (!state.textbookCategory || !allCategories.includes(state.textbookCategory)) {
-    state.textbookCategory = allCategories[0];
+  const levels = curriculum.map((c) => c.level);
+  if (!levels.includes(state.textbookLevel)) {
+    state.textbookLevel = levels[0];
+    state.textbookCategory = null;
   }
 
+  const current = curriculum.find((c) => c.level === state.textbookLevel);
+  const categories = current.groups.flatMap((g) => g.categories);
+  if (!categories.includes(state.textbookCategory)) {
+    state.textbookCategory = categories[0];
+  }
+
+  renderLevelNav(levels);
+  renderCategoryNav(current.groups);
+  loadTextbookNotes(state.textbookLevel, state.textbookCategory);
+}
+
+function renderLevelNav(levels) {
+  el.textbookLevelNav.innerHTML = "";
+  levels.forEach((level) => {
+    const btn = document.createElement("button");
+    btn.className = "level-btn";
+    btn.textContent = level;
+    if (level === state.textbookLevel) btn.classList.add("active");
+    btn.addEventListener("click", () => {
+      if (level === state.textbookLevel) return;
+      state.textbookLevel = level;
+      // レベルによって分野の顔ぶれが変わるため、選択中の分野は選び直させる
+      state.textbookCategory = null;
+      renderTextbookNav();
+    });
+    el.textbookLevelNav.appendChild(btn);
+  });
+}
+
+function renderCategoryNav(groups) {
+  el.textbookCategoryNav.innerHTML = "";
   groups.forEach((groupEntry) => {
     const groupBlock = document.createElement("div");
     groupBlock.className = "category-group";
@@ -301,19 +348,18 @@ async function loadTextbookCategories() {
       if (category === state.textbookCategory) btn.classList.add("active");
       btn.addEventListener("click", () => {
         state.textbookCategory = category;
-        loadTextbookCategories();
+        renderTextbookNav();
       });
       row.appendChild(btn);
     });
     groupBlock.appendChild(row);
     el.textbookCategoryNav.appendChild(groupBlock);
   });
-
-  loadTextbookNotes(state.textbookCategory);
 }
 
-async function loadTextbookNotes(category) {
-  const res = await fetch(`/api/notes?category=${encodeURIComponent(category)}`);
+async function loadTextbookNotes(level, category) {
+  const params = new URLSearchParams({ category, level });
+  const res = await fetch(`/api/notes?${params}`);
   const notes = await res.json();
   el.textbookContent.innerHTML = "";
   notes.forEach((note) => {
@@ -324,43 +370,132 @@ async function loadTextbookNotes(category) {
 }
 
 /**
- * 簡易マークダウン("# "見出し, "## "小見出し, "- "箇条書き, "**強調**")をDOMに描画する。
+ * 簡易マークダウンをDOMに描画する。対応する記法は次のとおり。
+ *   "# " 見出し / "## " 小見出し / "### " 小々見出し
+ *   "- " 箇条書き / "1. " 番号付き箇条書き
+ *   "**強調**" / "`コード`"
+ *   ``` で囲んだコードブロック
+ *   "|" 区切りの表
  * 信頼できる自前コンテンツのみを対象とし、innerHTMLは使わずDOM要素を組み立てる。
  */
 function renderMarkdownLite(container, text) {
   container.innerHTML = "";
-  let currentList = null;
+  const lines = text.split("\n");
+  let i = 0;
 
-  text.split("\n").forEach((rawLine) => {
-    const line = rawLine.trim();
-    currentList = line.startsWith("- ") ? currentList : null;
+  while (i < lines.length) {
+    const raw = lines[i];
+    const line = raw.trim();
 
-    if (line === "") return;
-
-    if (line.startsWith("## ")) {
-      container.appendChild(buildInlineElement("h3", line.slice(3)));
-    } else if (line.startsWith("# ")) {
-      container.appendChild(buildInlineElement("h2", line.slice(2)));
+    if (line.startsWith("```")) {
+      i = appendCodeBlock(container, lines, i);
+    } else if (isTableRow(line) && isTableSeparator(lines[i + 1])) {
+      i = appendTable(container, lines, i);
     } else if (line.startsWith("- ")) {
-      if (!currentList) {
-        currentList = document.createElement("ul");
-        container.appendChild(currentList);
-      }
-      currentList.appendChild(buildInlineElement("li", line.slice(2)));
+      i = appendList(container, lines, i, "ul", /^-\s+/);
+    } else if (/^\d+\.\s/.test(line)) {
+      i = appendList(container, lines, i, "ol", /^\d+\.\s+/);
     } else {
-      container.appendChild(buildInlineElement("p", line));
+      if (line !== "") container.appendChild(buildBlockElement(line));
+      i += 1;
     }
+  }
+}
+
+function buildBlockElement(line) {
+  if (line.startsWith("### ")) return buildInlineElement("h4", line.slice(4));
+  if (line.startsWith("## ")) return buildInlineElement("h3", line.slice(3));
+  if (line.startsWith("# ")) return buildInlineElement("h2", line.slice(2));
+  return buildInlineElement("p", line);
+}
+
+/** ``` から次の ``` までをそのまま <pre> に流し込み、閉じ行の次の位置を返す。 */
+function appendCodeBlock(container, lines, start) {
+  const body = [];
+  let i = start + 1;
+  while (i < lines.length && !lines[i].trim().startsWith("```")) {
+    body.push(lines[i]);
+    i += 1;
+  }
+  const pre = document.createElement("pre");
+  pre.className = "code-block";
+  pre.textContent = body.join("\n");
+  container.appendChild(pre);
+  return i + 1; // 閉じる ``` を読み飛ばす
+}
+
+function appendList(container, lines, start, tagName, markerPattern) {
+  const list = document.createElement(tagName);
+  let i = start;
+  while (i < lines.length && markerPattern.test(lines[i].trim())) {
+    const content = lines[i].trim().replace(markerPattern, "");
+    list.appendChild(buildInlineElement("li", content));
+    i += 1;
+  }
+  container.appendChild(list);
+  return i;
+}
+
+function isTableRow(line) {
+  return line.startsWith("|") && line.endsWith("|");
+}
+
+function isTableSeparator(line) {
+  if (line === undefined) return false;
+  const trimmed = line.trim();
+  return isTableRow(trimmed) && /^\|[\s:|-]+\|$/.test(trimmed);
+}
+
+function splitTableRow(line) {
+  // 前後の "|" を落としてから分割する(空セルが混ざらないようにするため)
+  return line.trim().slice(1, -1).split("|").map((cell) => cell.trim());
+}
+
+function appendTable(container, lines, start) {
+  const table = document.createElement("table");
+  table.className = "note-table";
+
+  const thead = document.createElement("thead");
+  const headRow = document.createElement("tr");
+  splitTableRow(lines[start]).forEach((cell) => {
+    headRow.appendChild(buildInlineElement("th", cell));
   });
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+  let i = start + 2; // 見出し行と区切り行を飛ばす
+  while (i < lines.length && isTableRow(lines[i].trim())) {
+    const row = document.createElement("tr");
+    splitTableRow(lines[i]).forEach((cell) => {
+      row.appendChild(buildInlineElement("td", cell));
+    });
+    tbody.appendChild(row);
+    i += 1;
+  }
+  table.appendChild(tbody);
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "table-wrapper";
+  wrapper.appendChild(table);
+  container.appendChild(wrapper);
+  return i;
 }
 
 function buildInlineElement(tagName, text) {
   const node = document.createElement(tagName);
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  // **強調** と `コード` を1回の分割で拾う。
+  // 強調の中身は "**" 以外なら何でも許す(`**COUNT(*)**` のように * を含む場合があるため)。
+  const parts = text.split(/(\*\*(?:(?!\*\*)[\s\S])+\*\*|`[^`]+`)/g);
   parts.forEach((part) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       const strong = document.createElement("strong");
       strong.textContent = part.slice(2, -2);
       node.appendChild(strong);
+    } else if (part.length > 1 && part.startsWith("`") && part.endsWith("`")) {
+      const code = document.createElement("code");
+      code.textContent = part.slice(1, -1);
+      node.appendChild(code);
     } else if (part) {
       node.appendChild(document.createTextNode(part));
     }
@@ -368,4 +503,4 @@ function buildInlineElement(tagName, text) {
   return node;
 }
 
-loadTextbookCategories();
+loadTextbook();

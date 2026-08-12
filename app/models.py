@@ -93,6 +93,7 @@ class StudyNote(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     category: Mapped[str] = mapped_column(String(50), index=True)
+    level: Mapped[str] = mapped_column(String(4), default="基礎", index=True)  # 基礎 / 応用
     title: Mapped[str] = mapped_column(String(100))
     body: Mapped[str] = mapped_column(Text)  # 簡易マークダウン(#見出し, -箇条書き, **強調**)
     order: Mapped[int] = mapped_column(Integer, default=0)

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>スマホで開く — STACK</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-text">
+          <span class="brand-kicker">IT LEARNING</span>
+          <h1>STACK</h1>
+          <p class="brand-tagline">基礎から応用まで、ITを積み上げる</p>
+        </div>
+      </div>
+      <nav>
+        <a class="tab-btn" href="/">← 学習に戻る</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>スマホ・タブレットで開く</h2>
+
+    {% if lan_url %}
+    <div class="connect-card">
+      <div class="qr-frame">{{ qr_svg | safe }}</div>
+
+      <div class="connect-body">
+        <p class="connect-lead">スマホのカメラでこのQRコードを読み取ってください。</p>
+
+        <p class="connect-url-label">読み取れない場合は、この住所を直接入力しても開けます</p>
+        <a class="connect-url" href="{{ lan_url }}">{{ lan_url }}</a>
+
+        <ul class="connect-notes">
+          <li><strong>同じWi-Fi</strong>につないだ端末から開けます</li>
+          <li>このPCの電源が入っている間だけ使えます</li>
+          <li>スマホのブラウザで「ホーム画面に追加」しておくと、アプリのように開けます</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="connect-help">
+      <h3>つながらないときは</h3>
+      <ul>
+        <li>スマホがモバイル回線になっていないか確認してください（Wi-Fiに接続が必要です）</li>
+        <li>Windowsファイアウォールでブロックされている可能性があります。管理者として起動したPowerShellで、次を1度だけ実行してください。</li>
+      </ul>
+      <pre class="code-block">New-NetFirewallRule -DisplayName 'STACK IT学習帳' -Direction Inbound -Protocol TCP -LocalPort {{ port }} -Action Allow -Profile Private</pre>
+    </div>
+    {% else %}
+    <div class="connect-card">
+      <div class="connect-body">
+        <p class="connect-lead">このPCがネットワークにつながっていないため、他の端末から開くことができません。</p>
+        <ul class="connect-notes">
+          <li>Wi-Fiまたは有線LANに接続してから、このページを再読み込みしてください</li>
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+  </main>
+</body>
+</html>

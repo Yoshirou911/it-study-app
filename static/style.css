@@ -50,7 +50,35 @@ header {
   padding: 1.5rem 1.5rem 0;
 }
 
-.brand { margin-bottom: 1.1rem; }
+.brand {
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.connect-link {
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid rgba(169, 120, 47, 0.5);
+  border-radius: 999px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+}
+
+.connect-link::before { content: "▢ "; }
+
+.connect-link:hover {
+  background: rgba(169, 120, 47, 0.14);
+  color: #d9b46a;
+  border-color: rgba(169, 120, 47, 0.8);
+}
 
 .brand-kicker {
   display: block;
@@ -64,10 +92,17 @@ header {
 header h1 {
   margin: 0;
   font-family: var(--serif);
-  font-size: 1.4rem;
+  font-size: 1.75rem;
   font-weight: 600;
   color: var(--header-ink);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.16em;
+}
+
+.brand-tagline {
+  margin: 0.3rem 0 0;
+  font-size: 0.78rem;
+  color: rgba(243, 237, 224, 0.55);
+  letter-spacing: 0.06em;
 }
 
 nav { display: flex; gap: 1.6rem; }
@@ -292,10 +327,66 @@ h2 {
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--border);
 }
+.note-body h4 {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  margin: 0.9rem 0 0.4rem;
+  color: var(--ink);
+  font-weight: 700;
+}
 .note-body p { line-height: 1.85; margin: 0.5rem 0; color: var(--ink); }
-.note-body ul { margin: 0.4rem 0 0.9rem; padding-left: 1.3rem; }
+.note-body ul,
+.note-body ol { margin: 0.4rem 0 0.9rem; padding-left: 1.5rem; }
 .note-body li { line-height: 1.75; margin-bottom: 0.3rem; }
 .note-body strong { color: var(--accent-dark); }
+
+.note-body code {
+  font-family: "Consolas", "SF Mono", "Menlo", monospace;
+  font-size: 0.85em;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+.note-body .code-block {
+  font-family: "Consolas", "SF Mono", "Menlo", monospace;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  background: var(--header-bg);
+  color: var(--header-ink);
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  margin: 0.8rem 0 1.1rem;
+  overflow-x: auto;
+  white-space: pre;
+  tab-size: 2;
+}
+
+.note-body .table-wrapper { overflow-x: auto; margin: 0.8rem 0 1.2rem; }
+
+.note-body .note-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.85rem;
+}
+
+.note-body .note-table th,
+.note-body .note-table td {
+  border: 1px solid var(--border);
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.note-body .note-table th {
+  background: var(--surface-alt);
+  color: var(--ink);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.note-body .note-table tbody tr:nth-child(even) { background: var(--surface-alt); }
 
 /* ---------- Textbook view ---------- */
 
@@ -306,6 +397,39 @@ h2 {
   padding: 2rem 2.2rem;
   margin-top: 1.2rem;
   box-shadow: var(--shadow-md);
+}
+
+/* ---------- Level switch (textbook 基礎 / 応用) ---------- */
+
+.level-switch {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  margin-bottom: 1.4rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.level-btn {
+  padding: 0.45rem 1.5rem;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  transition: all 0.18s ease;
+}
+
+.level-btn:hover { color: var(--accent-dark); }
+
+.level-btn.active {
+  background: var(--accent);
+  color: #fffaf0;
+  box-shadow: var(--shadow-sm);
 }
 
 /* ---------- Tab-style switches (dashboard subject / textbook category) ---------- */
@@ -342,6 +466,99 @@ h2 {
   color: var(--ink-faint);
   font-weight: 700;
   text-transform: uppercase;
+}
+
+/* ---------- Connect (スマホで開く) ---------- */
+
+.connect-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 2.2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.qr-frame {
+  flex: 0 0 auto;
+  width: 200px;
+  padding: 0.9rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  line-height: 0;
+}
+
+.qr-frame svg { width: 100%; height: auto; }
+
+.connect-body { flex: 1; min-width: 0; }
+
+.connect-lead {
+  margin: 0 0 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+.connect-url-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+}
+
+.connect-url {
+  display: inline-block;
+  font-family: "Consolas", "SF Mono", "Menlo", monospace;
+  font-size: 1.05rem;
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.connect-url:hover { text-decoration: underline; }
+
+.connect-notes {
+  margin: 1.2rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.connect-notes li { line-height: 1.75; margin-bottom: 0.25rem; }
+
+.connect-help { margin-top: 1.8rem; }
+
+.connect-help h3 {
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin: 0 0 0.6rem;
+}
+
+.connect-help ul {
+  margin: 0 0 0.9rem;
+  padding-left: 1.2rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.connect-help li { line-height: 1.75; margin-bottom: 0.3rem; }
+
+.connect-help .code-block {
+  font-family: "Consolas", "SF Mono", "Menlo", monospace;
+  font-size: 0.74rem;
+  background: var(--header-bg);
+  color: var(--header-ink);
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  white-space: pre;
+  margin: 0;
 }
 
 /* ---------- Dashboard ---------- */
@@ -508,7 +725,40 @@ h2 {
 }
 
 @media (max-width: 640px) {
-  #quiz-card, #textbook-content { padding: 1.4rem 1.3rem; }
+  #quiz-card, #textbook-content { padding: 1.4rem 1.1rem; }
   .header-inner { padding: 1.2rem 1.1rem 0; }
-  main { padding: 0 1.1rem; }
+  main { padding: 0 1.1rem; margin: 1.6rem auto 3rem; }
+
+  header h1 { font-size: 1.45rem; }
+  .brand-tagline { font-size: 0.72rem; }
+
+  /* QRを見るのはPC側なので、スマホでは縦積みにして詰める */
+  .connect-card { flex-direction: column; gap: 1.4rem; padding: 1.5rem 1.2rem; }
+  .qr-frame { width: 100%; max-width: 240px; align-self: center; }
+  .connect-url { font-size: 0.95rem; }
+
+  /* タブが増えても折り返さず、横スクロールで全部たどれるようにする */
+  nav {
+    gap: 1.2rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  .tab-btn { flex: 0 0 auto; }
+
+  /* 指で押せる大きさを確保する */
+  .dash-subject-btn { padding: 0.55rem 0.95rem; font-size: 0.82rem; }
+  .level-btn { padding: 0.55rem 1.6rem; }
+  .choice-btn { padding: 0.9rem 1rem; }
+
+  /* 本文は狭い画面でも読める下限を保つ */
+  .note-body p, .note-body li { font-size: 0.94rem; line-height: 1.8; }
+  .note-body .code-block { font-size: 0.76rem; padding: 0.85rem 0.9rem; }
+  .note-body .note-table { font-size: 0.8rem; }
+  .note-body .note-table th,
+  .note-body .note-table td { padding: 0.45rem 0.6rem; }
+
+  /* 入力欄のフォントが16px未満だと、iOSが自動でズームしてしまう */
+  #text-answer-input { font-size: 16px; }
 }
