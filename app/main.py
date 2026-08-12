@@ -19,6 +19,23 @@ app = FastAPI(title="STACK — IT学習帳")
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
+
+def static_url(filename: str) -> str:
+    """静的ファイルのURLに更新時刻を付け、ブラウザの古いキャッシュを無効化する。
+
+    StaticFilesはCache-Controlを明示的に指定していないため、ブラウザは
+    ヒューリスティックにキャッシュを使うことがある。ファイルを直せても
+    利用者のブラウザには届かず、直したはずの不具合が再現し続ける事故を防ぐため、
+    ファイルの更新時刻(mtime)をクエリ文字列に付け、変更のたびに別URLとして
+    強制的に再取得させる。
+    """
+    path = BASE_DIR / "static" / filename
+    version = int(path.stat().st_mtime) if path.exists() else 0
+    return f"/static/{filename}?v={version}"
+
+
+templates.env.globals["static_url"] = static_url
+
 app.include_router(quiz.router)
 app.include_router(progress.router)
 app.include_router(notes.router)

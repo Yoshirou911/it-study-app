@@ -307,7 +307,17 @@ function renderTextbookNav() {
 
   renderLevelNav(levels);
   renderCategoryNav(current.groups);
-  loadTextbookNotes(state.textbookLevel, state.textbookCategory);
+  // 呼び出し元がクリック後にスクロールできるよう、読み込みのPromiseを返す
+  return loadTextbookNotes(state.textbookLevel, state.textbookCategory);
+}
+
+/**
+ * 選んだ分野の解説は画面より下にあるため、選び直しても見た目が変わらず
+ * 「反応がない」ように見えてしまう。クリックのたびに解説エリアまで
+ * スクロールし、選択がちゃんと反映されたことが分かるようにする。
+ */
+function scrollToTextbookContent() {
+  el.textbookContent.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function renderLevelNav(levels) {
@@ -318,11 +328,14 @@ function renderLevelNav(levels) {
     btn.textContent = level;
     if (level === state.textbookLevel) btn.classList.add("active");
     btn.addEventListener("click", () => {
-      if (level === state.textbookLevel) return;
+      if (level === state.textbookLevel) {
+        scrollToTextbookContent();
+        return;
+      }
       state.textbookLevel = level;
       // レベルによって分野の顔ぶれが変わるため、選択中の分野は選び直させる
       state.textbookCategory = null;
-      renderTextbookNav();
+      renderTextbookNav().then(scrollToTextbookContent);
     });
     el.textbookLevelNav.appendChild(btn);
   });
@@ -348,7 +361,7 @@ function renderCategoryNav(groups) {
       if (category === state.textbookCategory) btn.classList.add("active");
       btn.addEventListener("click", () => {
         state.textbookCategory = category;
-        renderTextbookNav();
+        renderTextbookNav().then(scrollToTextbookContent);
       });
       row.appendChild(btn);
     });
