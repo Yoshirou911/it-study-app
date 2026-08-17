@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from app.db import Base, engine
-from app.routers import notes, progress, quiz
+from app.routers import courses, notes, progress, quiz
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -17,6 +17,7 @@ app = FastAPI(title="基本情報技術者試験 学習アプリ")
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
+app.include_router(courses.router)
 app.include_router(quiz.router)
 app.include_router(progress.router)
 app.include_router(notes.router)

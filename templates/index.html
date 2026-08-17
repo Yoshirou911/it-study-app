@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>基本情報技術者試験 学習アプリ</title>
+  <title>IT学習アプリ</title>
   <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
   <header>
     <div class="header-inner">
       <div class="brand">
-        <span class="brand-kicker">FE EXAM PREP</span>
-        <h1>基本情報技術者試験 学習アプリ</h1>
+        <span class="brand-kicker">IT STUDY</span>
+        <h1 id="brand-title">IT学習アプリ</h1>
       </div>
-      <nav>
+      <div id="course-bar" hidden>
+        <button id="back-to-home" class="back-btn">← コース選択にもどる</button>
+      </div>
+      <nav id="course-nav" hidden>
         <button class="tab-btn active" data-tab="textbook">教本</button>
         <button class="tab-btn" data-tab="quiz-a" data-subject="A">科目A</button>
         <button class="tab-btn" data-tab="quiz-b" data-subject="B">科目B</button>
@@ -23,7 +26,12 @@
   </header>
 
   <main>
-    <section id="textbook-view" class="view active">
+    <section id="home-view" class="view active">
+      <p class="home-lead">学習したいコースを選んでください。</p>
+      <div id="course-list"></div>
+    </section>
+
+    <section id="textbook-view" class="view">
       <h2>教本</h2>
       <div id="textbook-category-nav" class="category-group-nav"></div>
       <div id="textbook-chapter-nav" class="chapter-nav" hidden></div>
@@ -69,10 +77,7 @@
         </div>
       </div>
 
-      <div class="subject-switch">
-        <button class="dash-subject-btn active" data-subject="A">科目A</button>
-        <button class="dash-subject-btn" data-subject="B">科目B</button>
-      </div>
+      <div class="subject-switch" id="dash-subject-switch"></div>
       <div id="stats-list"></div>
     </section>
   </main>

@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import case, func
 from sqlalchemy.orm import Session
 
+from app.courses import categories_of
 from app.db import get_db
 from app.models import Attempt, Question
 from app.schemas import CategoryStat, ProgressSummary
@@ -10,11 +11,13 @@ router = APIRouter(prefix="/api/progress", tags=["progress"])
 
 
 @router.get("/summary", response_model=ProgressSummary)
-def summary(subject: str, db: Session = Depends(get_db)):
+def summary(
+    subject: str, course: str | None = None, db: Session = Depends(get_db)
+):
     if subject not in ("A", "B"):
         raise HTTPException(status_code=400, detail="subject must be 'A' or 'B'")
 
-    rows = (
+    query = (
         db.query(
             Question.category,
             func.count(Attempt.id),
@@ -22,9 +25,10 @@ def summary(subject: str, db: Session = Depends(get_db)):
         )
         .join(Attempt, Attempt.question_id == Question.id)
         .filter(Question.subject == subject)
-        .group_by(Question.category)
-        .all()
     )
+    if course:
+        query = query.filter(Question.category.in_(categories_of(course)))
+    rows = query.group_by(Question.category).all()
 
     stats = []
     for category, total, correct in rows:

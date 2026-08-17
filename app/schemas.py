@@ -59,3 +59,14 @@ class NoteOut(BaseModel):
 class CategoryGroupOut(BaseModel):
     group: str
     categories: list[str]
+
+
+class CourseOut(BaseModel):
+    id: str
+    name: str
+    subtitle: str
+    description: str
+    subjects: list[str]
+    category_count: int
+    question_count: int
+    chapter_count: int

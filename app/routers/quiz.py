@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+from app.courses import categories_of
 from app.db import get_db
 from app.models import Attempt, Question
 from app.schemas import AnswerIn, AnswerResult, ChoiceOut, QuestionOut
@@ -25,11 +26,19 @@ def _to_question_out(question: Question) -> QuestionOut:
 
 
 @router.get("/next", response_model=QuestionOut)
-def next_question(subject: str, exclude_id: int | None = None, db: Session = Depends(get_db)):
+def next_question(
+    subject: str,
+    exclude_id: int | None = None,
+    course: str | None = None,
+    db: Session = Depends(get_db),
+):
     if subject not in ("A", "B"):
         raise HTTPException(status_code=400, detail="subject must be 'A' or 'B'")
 
-    question = select_next_question(db, subject, exclude_id=exclude_id)
+    categories = categories_of(course) if course else None
+    question = select_next_question(
+        db, subject, exclude_id=exclude_id, categories=categories
+    )
     if question is None:
         raise HTTPException(status_code=404, detail="出題可能な問題がありません")
     return _to_question_out(question)

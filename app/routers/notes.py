@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.category_groups import group_categories
+from app.courses import categories_of
 from app.db import get_db
 from app.models import StudyNote
 from app.schemas import CategoryGroupOut, NoteOut
@@ -10,9 +11,11 @@ router = APIRouter(prefix="/api/notes", tags=["notes"])
 
 
 @router.get("/categories", response_model=list[CategoryGroupOut])
-def list_categories(db: Session = Depends(get_db)):
-    rows = db.query(StudyNote.category).distinct().all()
-    return group_categories([r[0] for r in rows])
+def list_categories(course: str | None = None, db: Session = Depends(get_db)):
+    query = db.query(StudyNote.category).distinct()
+    if course:
+        query = query.filter(StudyNote.category.in_(categories_of(course)))
+    return group_categories([r[0] for r in query.all()])
 
 
 @router.get("", response_model=list[NoteOut])

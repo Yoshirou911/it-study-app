@@ -1,4 +1,5 @@
 const state = {
+  course: null, // 選択中のコース(ホーム画面ではnull)
   subject: "A",
   currentQuestion: null,
   dashboardSubject: "A",
@@ -8,6 +9,12 @@ const state = {
 
 const el = {
   tabBtns: document.querySelectorAll(".tab-btn"),
+  courseNav: document.getElementById("course-nav"),
+  courseBar: document.getElementById("course-bar"),
+  backToHome: document.getElementById("back-to-home"),
+  brandTitle: document.getElementById("brand-title"),
+  courseList: document.getElementById("course-list"),
+  dashSubjectSwitch: document.getElementById("dash-subject-switch"),
   quizView: document.getElementById("quiz-view"),
   dashboardView: document.getElementById("dashboard-view"),
   category: document.getElementById("q-category"),
@@ -23,7 +30,6 @@ const el = {
   explanationBlock: document.getElementById("explanation-block"),
   explanationArea: document.getElementById("explanation-area"),
   nextQuestion: document.getElementById("next-question"),
-  dashSubjectBtns: document.querySelectorAll(".dash-subject-btn"),
   statsList: document.getElementById("stats-list"),
   textbookCategoryNav: document.getElementById("textbook-category-nav"),
   textbookChapterNav: document.getElementById("textbook-chapter-nav"),
@@ -72,20 +78,123 @@ el.tabBtns.forEach((btn) => {
   });
 });
 
-el.dashSubjectBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    el.dashSubjectBtns.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    state.dashboardSubject = btn.dataset.subject;
-    loadDashboard(state.dashboardSubject);
+el.backToHome.addEventListener("click", showHome);
+
+/** コース選択画面へ戻る */
+function showHome() {
+  state.course = null;
+  state.textbookCategory = null;
+  state.textbookChapter = null;
+  state.currentQuestion = null;
+
+  el.courseNav.hidden = true;
+  el.courseBar.hidden = true;
+  el.brandTitle.textContent = "IT学習アプリ";
+  switchView("home-view");
+  loadCourses();
+}
+
+async function loadCourses() {
+  const res = await fetch("/api/courses");
+  const courses = await res.json();
+  el.courseList.innerHTML = "";
+
+  courses.forEach((course) => {
+    const card = document.createElement("button");
+    card.className = "course-card";
+
+    const name = document.createElement("h3");
+    name.textContent = course.name;
+
+    const subtitle = document.createElement("span");
+    subtitle.className = "course-subtitle";
+    subtitle.textContent = course.subtitle;
+
+    const desc = document.createElement("p");
+    desc.className = "course-desc";
+    desc.textContent = course.description;
+
+    const stats = document.createElement("div");
+    stats.className = "course-stats";
+    [
+      [course.category_count, "分野"],
+      [course.chapter_count, "章の教本"],
+      [course.question_count, "問"],
+    ].forEach(([value, label]) => {
+      const item = document.createElement("span");
+      const num = document.createElement("strong");
+      num.textContent = value;
+      item.appendChild(num);
+      item.appendChild(document.createTextNode(label));
+      stats.appendChild(item);
+    });
+
+    card.appendChild(name);
+    card.appendChild(subtitle);
+    card.appendChild(desc);
+    card.appendChild(stats);
+    card.addEventListener("click", () => openCourse(course));
+    el.courseList.appendChild(card);
   });
-});
+}
+
+/** コース専用画面に入る */
+function openCourse(course) {
+  state.course = course;
+  state.subject = course.subjects[0];
+  state.dashboardSubject = course.subjects[0];
+  state.textbookCategory = null;
+  state.textbookChapter = null;
+  state.currentQuestion = null;
+
+  el.brandTitle.textContent = course.name;
+  el.courseNav.hidden = false;
+  el.courseBar.hidden = false;
+
+  // このコースに無い科目のタブは隠す(実務IT知識には科目Bが無い)
+  el.tabBtns.forEach((btn) => {
+    const subject = btn.dataset.subject;
+    btn.hidden = subject ? !course.subjects.includes(subject) : false;
+    btn.classList.toggle("active", btn.dataset.tab === "textbook");
+  });
+
+  renderDashboardSubjectSwitch(course);
+  switchView("textbook-view");
+  loadTextbookCategories();
+}
+
+function renderDashboardSubjectSwitch(course) {
+  el.dashSubjectSwitch.innerHTML = "";
+  if (course.subjects.length < 2) return; // 科目が1つだけなら切替は不要
+
+  course.subjects.forEach((subject) => {
+    const btn = document.createElement("button");
+    btn.className = "dash-subject-btn";
+    btn.textContent = `科目${subject}`;
+    if (subject === state.dashboardSubject) btn.classList.add("active");
+    btn.addEventListener("click", () => {
+      el.dashSubjectSwitch
+        .querySelectorAll("button")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      state.dashboardSubject = subject;
+      loadDashboard(subject);
+    });
+    el.dashSubjectSwitch.appendChild(btn);
+  });
+}
+
+/** APIに渡すコース絞り込みパラメータ */
+function courseParam() {
+  return state.course ? `course=${encodeURIComponent(state.course.id)}` : "";
+}
 
 async function loadNextQuestion() {
   el.resultArea.hidden = true;
   const excludeId = state.currentQuestion ? state.currentQuestion.id : "";
   const params = new URLSearchParams({ subject: state.subject });
   if (excludeId) params.set("exclude_id", excludeId);
+  if (state.course) params.set("course", state.course.id);
 
   const res = await fetch(`/api/quiz/next?${params}`);
   if (!res.ok) {
@@ -208,7 +317,7 @@ function buildRankBadge(pct) {
 }
 
 async function loadDashboard(subject) {
-  const res = await fetch(`/api/progress/summary?subject=${subject}`);
+  const res = await fetch(`/api/progress/summary?subject=${subject}&${courseParam()}`);
   const data = await res.json();
   el.statsList.innerHTML = "";
 
@@ -267,7 +376,7 @@ async function loadDashboard(subject) {
 }
 
 async function loadTextbookCategories() {
-  const res = await fetch("/api/notes/categories");
+  const res = await fetch(`/api/notes/categories?${courseParam()}`);
   const groups = await res.json();
   const allCategories = groups.flatMap((g) => g.categories);
   el.textbookCategoryNav.innerHTML = "";
@@ -601,4 +710,4 @@ function buildInlineElement(tagName, text) {
   return node;
 }
 
-loadTextbookCategories();
+loadCourses();

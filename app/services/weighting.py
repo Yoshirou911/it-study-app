@@ -6,20 +6,19 @@ from sqlalchemy.orm import Session
 from app.models import Attempt, Question
 
 
-def category_weights(db: Session, subject: str) -> dict[str, float]:
+def category_weights(
+    db: Session, subject: str, categories: list[str] | None = None
+) -> dict[str, float]:
     """分野ごとの出題重みを計算する。
 
     weight = (誤答数 + 1) / (出題数 + 2)
     出題実績が少ない/ない分野は 0.5 に近い重みになり、極端な偏りを避ける
     (ベイズ的な平滑化)。誤答が多い分野ほど重みが大きくなり、優先的に出題される。
     """
-    categories = [
-        row[0]
-        for row in db.query(Question.category)
-        .filter(Question.subject == subject)
-        .distinct()
-        .all()
-    ]
+    query = db.query(Question.category).filter(Question.subject == subject)
+    if categories is not None:
+        query = query.filter(Question.category.in_(categories))
+    available = [row[0] for row in query.distinct().all()]
 
     counts = dict(
         db.query(
@@ -43,25 +42,30 @@ def category_weights(db: Session, subject: str) -> dict[str, float]:
     )
 
     weights: dict[str, float] = {}
-    for category in categories:
+    for category in available:
         total = counts.get(category, 0)
         incorrect = incorrects.get(category, 0)
         weights[category] = (incorrect + 1) / (total + 2)
     return weights
 
 
-def pick_category(db: Session, subject: str) -> str | None:
-    weights = category_weights(db, subject)
+def pick_category(
+    db: Session, subject: str, categories: list[str] | None = None
+) -> str | None:
+    weights = category_weights(db, subject, categories)
     if not weights:
         return None
-    categories = list(weights.keys())
-    return random.choices(categories, weights=[weights[c] for c in categories], k=1)[0]
+    names = list(weights.keys())
+    return random.choices(names, weights=[weights[c] for c in names], k=1)[0]
 
 
 def select_next_question(
-    db: Session, subject: str, exclude_id: int | None = None
+    db: Session,
+    subject: str,
+    exclude_id: int | None = None,
+    categories: list[str] | None = None,
 ) -> Question | None:
-    category = pick_category(db, subject)
+    category = pick_category(db, subject, categories)
     if category is None:
         return None
 
