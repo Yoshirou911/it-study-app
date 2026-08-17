@@ -281,21 +281,209 @@ h2 {
 
 /* ---------- Prose (textbook / explanation) ---------- */
 
-.note-body h2 { font-size: 1.2rem; margin: 1.3rem 0 0.6rem; color: var(--ink); }
+.note-body h2 {
+  font-size: 1.35rem;
+  margin: 1.3rem 0 0.9rem;
+  color: var(--ink);
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--accent-soft);
+}
 .note-body h2:first-child { margin-top: 0; }
 .note-body h3 {
   font-family: var(--sans);
-  font-size: 0.95rem;
-  margin: 1.1rem 0 0.5rem;
+  font-size: 1rem;
+  margin: 1.8rem 0 0.6rem;
   color: var(--accent-dark);
   font-weight: 700;
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--border);
 }
-.note-body p { line-height: 1.85; margin: 0.5rem 0; color: var(--ink); }
-.note-body ul { margin: 0.4rem 0 0.9rem; padding-left: 1.3rem; }
-.note-body li { line-height: 1.75; margin-bottom: 0.3rem; }
+.note-body h4 {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  margin: 1.2rem 0 0.4rem;
+  color: var(--ink);
+  font-weight: 700;
+}
+.note-body p { line-height: 1.95; margin: 0.6rem 0; color: var(--ink); }
+.note-body ul, .note-body ol { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+.note-body li { line-height: 1.85; margin-bottom: 0.4rem; }
 .note-body strong { color: var(--accent-dark); }
+.note-body code {
+  font-family: "Cascadia Code", "Consolas", monospace;
+  font-size: 0.88em;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  padding: 0.12em 0.4em;
+  border-radius: 4px;
+}
+
+/* 計算例などの整形済みブロック */
+.example-block {
+  margin: 1rem 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1c1a22;
+}
+
+.example-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: #d9b46a;
+  background: rgba(169, 120, 47, 0.16);
+  padding: 0.5rem 1.1rem;
+  border-bottom: 1px solid rgba(169, 120, 47, 0.3);
+}
+
+.example-block pre {
+  margin: 0;
+  padding: 1.1rem 1.3rem;
+  color: #e7e0cf;
+  font-family: "Cascadia Code", "Consolas", monospace;
+  font-size: 0.86rem;
+  line-height: 1.85;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* 補足・注意などの囲み枠 */
+.callout {
+  margin: 1.1rem 0;
+  padding: 1rem 1.3rem;
+  background: var(--surface-alt);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px 10px 10px 4px;
+}
+
+.callout p { margin: 0.3rem 0; font-size: 0.94rem; }
+.callout ul { margin: 0.4rem 0 0.2rem; }
+.callout li { font-size: 0.94rem; }
+
+.callout-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-bottom: 0.4rem;
+}
+
+.callout[data-kind="よくある勘違い"],
+.callout[data-kind="注意"] {
+  background: var(--incorrect-soft);
+  border-left-color: var(--incorrect);
+}
+.callout[data-kind="よくある勘違い"] .callout-label,
+.callout[data-kind="注意"] .callout-label { color: var(--incorrect); }
+
+.callout[data-kind="試験ではこう出る"],
+.callout[data-kind="覚え方"] {
+  background: var(--correct-soft);
+  border-left-color: var(--correct);
+}
+.callout[data-kind="試験ではこう出る"] .callout-label,
+.callout[data-kind="覚え方"] .callout-label { color: var(--correct); }
+
+/* 表 */
+.table-wrapper { overflow-x: auto; margin: 1rem 0; }
+
+.note-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: var(--surface);
+}
+
+.note-body th, .note-body td {
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.note-body th {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.note-body tbody tr:nth-child(even) { background: var(--surface-alt); }
+
+/* 章ナビゲーション */
+.chapter-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.7rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.chapter-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: var(--sans);
+  color: var(--ink-soft);
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.chapter-btn:hover { background: var(--surface-alt); color: var(--ink); }
+
+.chapter-btn.active {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+.chapter-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.chapter-btn.active .chapter-num {
+  background: var(--accent);
+  color: #fff8ec;
+}
+
+.next-chapter-btn {
+  display: block;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-family: var(--sans);
+  color: var(--accent-dark);
+  font-weight: 600;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.next-chapter-btn:hover { border-color: var(--accent); background: var(--accent-soft); }
 
 /* ---------- Textbook view ---------- */
 

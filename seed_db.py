@@ -124,7 +124,12 @@ def upsert_questions(db, items: list[dict], subject: str) -> tuple[int, int]:
     return added, updated
 
 
-def upsert_notes(db, items: list[dict]) -> tuple[int, int]:
+def upsert_notes(db, items: list[dict]) -> tuple[int, int, int]:
+    """教本を投入する。
+
+    教本には学習履歴が紐づかない純粋なコンテンツなので、
+    シードから消えたページはDBからも削除してよい(問題とは扱いが異なる)。
+    """
     existing = {n.key: n for n in db.query(StudyNote)}
     added = updated = 0
 
@@ -142,7 +147,14 @@ def upsert_notes(db, items: list[dict]) -> tuple[int, int]:
         note.body = item["body"]
         note.order = item.get("order", 0)
 
-    return added, updated
+    seed_keys = {i["key"] for i in items}
+    removed = 0
+    for key, note in existing.items():
+        if key not in seed_keys:
+            db.delete(note)
+            removed += 1
+
+    return added, updated, removed
 
 
 def report_orphans(db, seed_keys: set[str]) -> None:
@@ -189,13 +201,13 @@ def main():
 
         added_a, updated_a = upsert_questions(db, questions_a, "A")
         added_b, updated_b = upsert_questions(db, questions_b, "B")
-        added_n, updated_n = upsert_notes(db, notes)
+        added_n, updated_n, removed_n = upsert_notes(db, notes)
         db.commit()
 
         print(
             f"科目A: 新規{added_a}件 / 更新{updated_a}件\n"
             f"科目B: 新規{added_b}件 / 更新{updated_b}件\n"
-            f"教本  : 新規{added_n}件 / 更新{updated_n}件"
+            f"教本  : 新規{added_n}件 / 更新{updated_n}件 / 削除{removed_n}件"
         )
 
         seed_keys = {i["key"] for i in questions_a + questions_b}

@@ -46,6 +46,7 @@ class ProgressSummary(BaseModel):
 
 class NoteOut(BaseModel):
     id: int
+    key: str
     category: str
     title: str
     body: str
