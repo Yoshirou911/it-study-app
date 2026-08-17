@@ -18,6 +18,9 @@ class Question(Base):
     __tablename__ = "questions"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    # シードデータ側で管理する固定キー。再投入時の同一性判定に使うため、
+    # 一度公開したキーは変更しないこと(変更すると別問題として扱われ履歴が切れる)。
+    key: Mapped[str] = mapped_column(String(50), unique=True, index=True)
     subject: Mapped[str] = mapped_column(String(1))  # "A" or "B"
     category: Mapped[str] = mapped_column(String(50), index=True)
     difficulty: Mapped[int] = mapped_column(Integer, default=3)  # 1(易)〜5(難)
@@ -92,6 +95,7 @@ class StudyNote(Base):
     __tablename__ = "study_notes"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    key: Mapped[str] = mapped_column(String(50), unique=True, index=True)
     category: Mapped[str] = mapped_column(String(50), index=True)
     title: Mapped[str] = mapped_column(String(100))
     body: Mapped[str] = mapped_column(Text)  # 簡易マークダウン(#見出し, -箇条書き, **強調**)

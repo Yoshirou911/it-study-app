@@ -1,446 +1,1075 @@
 [
   {
+    "key": "nw-01",
     "category": "ネットワーク",
     "difficulty": 3,
     "body": "サブネットマスクが 255.255.255.192 のとき、1つのサブネットに割り当てられるホストアドレスの最大数はどれか。",
     "explanation": "ホスト部は 32 - 26 = 6 ビットのため、表現できるアドレスは 2^6 = 64 通りです。ただしネットワークアドレスとブロードキャストアドレスの2つは端末に割り当てられないため、実際に使えるホストアドレスは 64 - 2 = 62 個になります。",
     "choices": [
-      { "label": "ア", "text": "62", "is_correct": true },
-      { "label": "イ", "text": "64", "is_correct": false },
-      { "label": "ウ", "text": "126", "is_correct": false },
-      { "label": "エ", "text": "128", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "62",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "64",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "126",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "128",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "nw-02",
     "category": "ネットワーク",
     "difficulty": 2,
     "body": "OSI基本参照モデルにおいて、IPアドレスによる経路制御(ルーティング)を担う層はどれか。",
     "explanation": "IPアドレスによる経路制御(ルーティング)を担うのはネットワーク層です。データリンク層はMACアドレスによる隣接機器間の通信、トランスポート層はTCP/UDPによる通信の信頼性を担います。",
     "choices": [
-      { "label": "ア", "text": "物理層", "is_correct": false },
-      { "label": "イ", "text": "データリンク層", "is_correct": false },
-      { "label": "ウ", "text": "ネットワーク層", "is_correct": true },
-      { "label": "エ", "text": "トランスポート層", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "物理層",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "データリンク層",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "ネットワーク層",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "トランスポート層",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "nw-03",
     "category": "ネットワーク",
     "difficulty": 2,
     "body": "インターネットにおいて、ドメイン名とIPアドレスを対応づける仕組みはどれか。",
     "explanation": "DNS(Domain Name System)は、人が読みやすいドメイン名(例: example.com)と、コンピュータが通信に使うIPアドレスを対応づける仕組みです。",
     "choices": [
-      { "label": "ア", "text": "DNS", "is_correct": true },
-      { "label": "イ", "text": "DHCP", "is_correct": false },
-      { "label": "ウ", "text": "NAT", "is_correct": false },
-      { "label": "エ", "text": "VPN", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "DNS",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "DHCP",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "NAT",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "VPN",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "nw-04",
     "category": "ネットワーク",
     "difficulty": 3,
     "body": "LAN内の複数の端末が、限られた数のグローバルIPアドレスを共有してインターネットに接続できるようにする技術はどれか。",
     "explanation": "NAT(Network Address Translation)は、LAN内で使われるプライベートIPアドレスとインターネット上のグローバルIPアドレスを変換し、複数端末でグローバルIPアドレスを共有できるようにする技術です。",
     "choices": [
-      { "label": "ア", "text": "DNS", "is_correct": false },
-      { "label": "イ", "text": "NAT", "is_correct": true },
-      { "label": "ウ", "text": "DHCP", "is_correct": false },
-      { "label": "エ", "text": "VLAN", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "DNS",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "NAT",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "DHCP",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "VLAN",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "db-01",
     "category": "データベース",
     "difficulty": 2,
     "body": "関係データベースにおいて、主キーの値がテーブル内で重複してはならないという制約を何と呼ぶか。",
     "explanation": "主キーの値がテーブル内で重複しないことを保証する制約を一意性制約と呼びます。参照制約は、外部キーが参照先テーブルに実在する値であることを保証する制約です。",
     "choices": [
-      { "label": "ア", "text": "参照制約", "is_correct": false },
-      { "label": "イ", "text": "一意性制約", "is_correct": true },
-      { "label": "ウ", "text": "非NULL制約", "is_correct": false },
-      { "label": "エ", "text": "外部キー制約", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "参照制約",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "一意性制約",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "非NULL制約",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "外部キー制約",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "db-02",
     "category": "データベース",
     "difficulty": 3,
     "body": "関係データベースの正規化において、部分関数従属を排除して得られる正規形はどれか。",
     "explanation": "部分関数従属(主キーの一部にのみ従属する列)を別テーブルに分離した状態を第2正規形と呼びます。第3正規形はさらに推移的関数従属を排除した状態です。",
     "choices": [
-      { "label": "ア", "text": "第1正規形", "is_correct": false },
-      { "label": "イ", "text": "第2正規形", "is_correct": true },
-      { "label": "ウ", "text": "第3正規形", "is_correct": false },
-      { "label": "エ", "text": "ボイスコッド正規形", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "第1正規形",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "第2正規形",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "第3正規形",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ボイスコッド正規形",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "sec-01",
     "category": "セキュリティ",
     "difficulty": 3,
     "body": "送信されたメッセージが改ざんされていないこと、及び送信者本人であることを受信者が確認できるようにする技術はどれか。",
     "explanation": "送信者の秘密鍵で暗号化した署名を、受信者が送信者の公開鍵で検証することで、改ざんの有無と送信者本人であることの両方を確認できます。これをディジタル署名と呼びます。",
     "choices": [
-      { "label": "ア", "text": "共通鍵暗号", "is_correct": false },
-      { "label": "イ", "text": "ディジタル署名", "is_correct": true },
-      { "label": "ウ", "text": "VPN", "is_correct": false },
-      { "label": "エ", "text": "ファイアウォール", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "共通鍵暗号",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "ディジタル署名",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "VPN",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ファイアウォール",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "sec-02",
     "category": "セキュリティ",
     "difficulty": 2,
     "body": "ネットワークを介して自己複製しながら他のコンピュータに感染を広げる、単体で動作するマルウェアはどれか。",
     "explanation": "ネットワークを介して自己複製しながら単体で感染を広げるマルウェアをワームと呼びます。トロイの木馬は正規のプログラムを装って侵入しますが、自己増殖はしません。",
     "choices": [
-      { "label": "ア", "text": "ワーム", "is_correct": true },
-      { "label": "イ", "text": "トロイの木馬", "is_correct": false },
-      { "label": "ウ", "text": "マクロウイルス", "is_correct": false },
-      { "label": "エ", "text": "スパイウェア", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "ワーム",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "トロイの木馬",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "マクロウイルス",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "スパイウェア",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "sec-03",
     "category": "セキュリティ",
     "difficulty": 3,
     "body": "Webサイトの入力フォームなどを悪用し、悪意のあるスクリプトを他の利用者のブラウザ上で実行させる攻撃はどれか。",
     "explanation": "クロスサイトスクリプティング(XSS)は、Webサイトの脆弱性を悪用して悪意のあるスクリプトを埋め込み、他の利用者のブラウザ上で実行させる攻撃です。SQLインジェクションはデータベースへの不正な問い合わせを注入する攻撃です。",
     "choices": [
-      { "label": "ア", "text": "SQLインジェクション", "is_correct": false },
-      { "label": "イ", "text": "クロスサイトスクリプティング(XSS)", "is_correct": true },
-      { "label": "ウ", "text": "DoS攻撃", "is_correct": false },
-      { "label": "エ", "text": "ブルートフォース攻撃", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "SQLインジェクション",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "クロスサイトスクリプティング(XSS)",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "DoS攻撃",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ブルートフォース攻撃",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "sec-04",
     "category": "セキュリティ",
     "difficulty": 2,
     "body": "考えられるパスワードの組み合わせを片っ端から試し、不正にログインを試みる攻撃はどれか。",
     "explanation": "ブルートフォース攻撃(総当たり攻撃)は、考えられるパスワードの組み合わせを片っ端から試して不正ログインを試みる攻撃です。対策として、ログイン試行回数の制限などが有効です。",
     "choices": [
-      { "label": "ア", "text": "フィッシング", "is_correct": false },
-      { "label": "イ", "text": "ブルートフォース攻撃(総当たり攻撃)", "is_correct": true },
-      { "label": "ウ", "text": "ゼロデイ攻撃", "is_correct": false },
-      { "label": "エ", "text": "標的型攻撃", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "フィッシング",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "ブルートフォース攻撃(総当たり攻撃)",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "ゼロデイ攻撃",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "標的型攻撃",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "algo-01",
     "category": "アルゴリズム",
     "difficulty": 3,
     "body": "クイックソートの平均計算時間量として適切なものはどれか。",
     "explanation": "クイックソートは基準値(ピボット)を選んでデータを分割していく方式で、平均的な計算量はO(n log n)です。分割が偏った最悪の場合はO(n^2)になります。",
     "choices": [
-      { "label": "ア", "text": "O(n)", "is_correct": false },
-      { "label": "イ", "text": "O(n log n)", "is_correct": true },
-      { "label": "ウ", "text": "O(n^2)", "is_correct": false },
-      { "label": "エ", "text": "O(log n)", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "O(n)",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "O(n log n)",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "O(n^2)",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "O(log n)",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "algo-02",
     "category": "アルゴリズム",
     "difficulty": 2,
     "body": "データを追加した順に取り出す、先入れ先出し(FIFO)のデータ構造はどれか。",
     "explanation": "追加した順番にデータを取り出す先入れ先出し(FIFO)の構造をキューと呼びます。スタックは後入れ先出し(LIFO)の構造です。",
     "choices": [
-      { "label": "ア", "text": "スタック", "is_correct": false },
-      { "label": "イ", "text": "キュー", "is_correct": true },
-      { "label": "ウ", "text": "二分木", "is_correct": false },
-      { "label": "エ", "text": "ハッシュ表", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "スタック",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "キュー",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "二分木",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ハッシュ表",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "basic-01",
     "category": "基礎理論",
     "difficulty": 2,
     "body": "2進数 1101 を10進数で表したものはどれか。",
     "explanation": "1101(2) = 1×2^3 + 1×2^2 + 0×2^1 + 1×2^0 = 8+4+0+1 = 13 です。",
     "choices": [
-      { "label": "ア", "text": "11", "is_correct": false },
-      { "label": "イ", "text": "13", "is_correct": true },
-      { "label": "ウ", "text": "15", "is_correct": false },
-      { "label": "エ", "text": "17", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "11",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "13",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "15",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "17",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "basic-02",
     "category": "基礎理論",
     "difficulty": 2,
     "body": "論理演算において、両方の入力が1のときだけ出力が1になる演算はどれか。",
     "explanation": "AND(論理積)は入力が両方とも1のときのみ出力が1になります。ORはどちらか一方でも1なら1、XORは入力が異なるときに1になります。",
     "choices": [
-      { "label": "ア", "text": "OR", "is_correct": false },
-      { "label": "イ", "text": "AND", "is_correct": true },
-      { "label": "ウ", "text": "NOT", "is_correct": false },
-      { "label": "エ", "text": "XOR", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "OR",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "AND",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "NOT",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "XOR",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "hw-01",
     "category": "コンピュータ構成要素",
     "difficulty": 3,
     "body": "CPUとメモリの速度差を埋め、処理の高速化を図るために使われる高速な記憶装置はどれか。",
     "explanation": "キャッシュメモリはCPUと主記憶(メインメモリ)の間に置かれる高速な記憶装置で、アクセス頻度の高いデータを一時的に保持することで処理を高速化します。",
     "choices": [
-      { "label": "ア", "text": "レジスタ", "is_correct": false },
-      { "label": "イ", "text": "キャッシュメモリ", "is_correct": true },
-      { "label": "ウ", "text": "補助記憶装置", "is_correct": false },
-      { "label": "エ", "text": "仮想記憶", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "レジスタ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "キャッシュメモリ",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "補助記憶装置",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "仮想記憶",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "hw-02",
     "category": "コンピュータ構成要素",
     "difficulty": 2,
     "body": "コンピュータの5大装置のうち、演算と制御を行う装置はどれか。",
     "explanation": "コンピュータの5大装置は入力・出力・記憶・演算・制御からなり、演算と制御はCPU(中央処理装置)が担います。",
     "choices": [
-      { "label": "ア", "text": "入力装置", "is_correct": false },
-      { "label": "イ", "text": "出力装置", "is_correct": false },
-      { "label": "ウ", "text": "記憶装置", "is_correct": false },
-      { "label": "エ", "text": "演算装置及び制御装置(CPU)", "is_correct": true }
+      {
+        "label": "ア",
+        "text": "入力装置",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "出力装置",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "記憶装置",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "演算装置及び制御装置(CPU)",
+        "is_correct": true
+      }
     ]
   },
   {
+    "key": "sw-01",
     "category": "ソフトウェア",
     "difficulty": 2,
     "body": "コンピュータのハードウェア資源を管理し、アプリケーションソフトウェアに実行環境を提供する基本ソフトウェアはどれか。",
     "explanation": "OSはCPU・メモリ・入出力装置などのハードウェア資源を管理し、アプリケーションソフトウェアが動作するための基盤を提供します。",
     "choices": [
-      { "label": "ア", "text": "OS(オペレーティングシステム)", "is_correct": true },
-      { "label": "イ", "text": "ミドルウェア", "is_correct": false },
-      { "label": "ウ", "text": "デバイスドライバ", "is_correct": false },
-      { "label": "エ", "text": "ファームウェア", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "OS(オペレーティングシステム)",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "ミドルウェア",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "デバイスドライバ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ファームウェア",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "sw-02",
     "category": "ソフトウェア",
     "difficulty": 3,
     "body": "複数のプログラムを短い時間間隔で切り替えながら実行し、同時に処理が進んでいるように見せるOSの機能を何と呼ぶか。",
     "explanation": "マルチタスクは、CPUの処理時間を細かく分割して複数のプログラムに割り当てることで、あたかも同時に実行されているように見せる仕組みです。",
     "choices": [
-      { "label": "ア", "text": "マルチタスク", "is_correct": true },
-      { "label": "イ", "text": "シングルタスク", "is_correct": false },
-      { "label": "ウ", "text": "バッチ処理", "is_correct": false },
-      { "label": "エ", "text": "リアルタイム処理", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "マルチタスク",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "シングルタスク",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "バッチ処理",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "リアルタイム処理",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "dev-01",
     "category": "システム開発技術",
     "difficulty": 2,
     "body": "要件定義→設計→実装→テストの各工程を順番に進め、前工程に戻らないことを前提とする開発モデルはどれか。",
     "explanation": "ウォーターフォールモデルは、工程を上流から下流へ順番に進める開発モデルです。前工程への手戻りを想定していないため、要件を早期に確定させる必要があります。",
     "choices": [
-      { "label": "ア", "text": "ウォーターフォールモデル", "is_correct": true },
-      { "label": "イ", "text": "アジャイル開発", "is_correct": false },
-      { "label": "ウ", "text": "スパイラルモデル", "is_correct": false },
-      { "label": "エ", "text": "プロトタイピングモデル", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "ウォーターフォールモデル",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "アジャイル開発",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "スパイラルモデル",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "プロトタイピングモデル",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "dev-02",
     "category": "システム開発技術",
     "difficulty": 3,
     "body": "短い期間(イテレーション)で開発とリリースを繰り返し、変化する要求に柔軟に対応する開発手法はどれか。",
     "explanation": "アジャイル開発は、短いサイクルで計画・実装・テスト・レビューを繰り返しながら、変化する要求に柔軟に対応する開発手法です。",
     "choices": [
-      { "label": "ア", "text": "ウォーターフォールモデル", "is_correct": false },
-      { "label": "イ", "text": "アジャイル開発", "is_correct": true },
-      { "label": "ウ", "text": "V字モデル", "is_correct": false },
-      { "label": "エ", "text": "構造化分析", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "ウォーターフォールモデル",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "アジャイル開発",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "V字モデル",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "構造化分析",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "pm-01",
     "category": "プロジェクトマネジメント",
     "difficulty": 2,
     "body": "プロジェクトの作業を階層的に分解し、管理可能な単位まで細分化した構成図を何と呼ぶか。",
     "explanation": "WBS(Work Breakdown Structure)は、プロジェクトの成果物や作業を階層的に分解し、管理しやすい単位にまとめた構成図です。",
     "choices": [
-      { "label": "ア", "text": "WBS(作業分解構成図)", "is_correct": true },
-      { "label": "イ", "text": "ガントチャート", "is_correct": false },
-      { "label": "ウ", "text": "PERT図", "is_correct": false },
-      { "label": "エ", "text": "特性要因図", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "WBS(作業分解構成図)",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "ガントチャート",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "PERT図",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "特性要因図",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "pm-02",
     "category": "プロジェクトマネジメント",
     "difficulty": 2,
     "body": "プロジェクトの各作業の開始・終了予定日や進捗を横棒で表す図はどれか。",
     "explanation": "ガントチャートは、縦軸に作業項目、横軸に時間をとり、各作業の予定期間や進捗を横棒で表す図です。スケジュール管理によく使われます。",
     "choices": [
-      { "label": "ア", "text": "ガントチャート", "is_correct": true },
-      { "label": "イ", "text": "WBS", "is_correct": false },
-      { "label": "ウ", "text": "特性要因図", "is_correct": false },
-      { "label": "エ", "text": "パレート図", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "ガントチャート",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "WBS",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "特性要因図",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "パレート図",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "sm-01",
     "category": "サービスマネジメント",
     "difficulty": 3,
     "body": "ITサービスの運用において、発生した障害を迅速に復旧させ、サービスへの影響を最小限に抑える活動を何と呼ぶか。",
     "explanation": "インシデント管理は、発生した障害(インシデント)を可能な限り迅速に解消し、サービスへの影響を最小化することを目的とした活動です。根本原因の恒久的な解決を目指す「問題管理」とは区別されます。",
     "choices": [
-      { "label": "ア", "text": "インシデント管理", "is_correct": true },
-      { "label": "イ", "text": "変更管理", "is_correct": false },
-      { "label": "ウ", "text": "構成管理", "is_correct": false },
-      { "label": "エ", "text": "問題管理", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "インシデント管理",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "変更管理",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "構成管理",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "問題管理",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "sm-02",
     "category": "サービスマネジメント",
     "difficulty": 3,
     "body": "インシデントの根本原因を調査し、再発防止のための恒久的な対策を行う活動を何と呼ぶか。",
     "explanation": "問題管理は、インシデントの根本原因(問題)を調査・特定し、恒久的な対策を講じることで再発を防止する活動です。",
     "choices": [
-      { "label": "ア", "text": "インシデント管理", "is_correct": false },
-      { "label": "イ", "text": "問題管理", "is_correct": true },
-      { "label": "ウ", "text": "リリース管理", "is_correct": false },
-      { "label": "エ", "text": "資産管理", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "インシデント管理",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "問題管理",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "リリース管理",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "資産管理",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "strat-01",
     "category": "システム戦略",
     "difficulty": 2,
     "body": "企業の強み(Strengths)・弱み(Weaknesses)・機会(Opportunities)・脅威(Threats)を分析する経営分析手法はどれか。",
     "explanation": "SWOT分析は、内部要因である強み・弱みと、外部要因である機会・脅威を整理し、経営戦略の立案に活用する分析手法です。",
     "choices": [
-      { "label": "ア", "text": "SWOT分析", "is_correct": true },
-      { "label": "イ", "text": "3C分析", "is_correct": false },
-      { "label": "ウ", "text": "PPM分析", "is_correct": false },
-      { "label": "エ", "text": "バリューチェーン分析", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "SWOT分析",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "3C分析",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "PPM分析",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "バリューチェーン分析",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "strat-02",
     "category": "システム戦略",
     "difficulty": 3,
     "body": "経営戦略の実現に向けて、中長期的に情報システムをどのように整備・活用していくかをまとめた計画を何と呼ぶか。",
     "explanation": "情報システム化基本計画は、経営戦略・事業戦略を踏まえ、中長期的に情報システムをどう整備・活用していくかを定めた計画です。",
     "choices": [
-      { "label": "ア", "text": "情報システム化基本計画", "is_correct": true },
-      { "label": "イ", "text": "システム要件定義書", "is_correct": false },
-      { "label": "ウ", "text": "プロジェクト憲章", "is_correct": false },
-      { "label": "エ", "text": "運用マニュアル", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "情報システム化基本計画",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "システム要件定義書",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "プロジェクト憲章",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "運用マニュアル",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "legal-01",
     "category": "経営戦略・法務",
     "difficulty": 2,
     "body": "プログラムやデータベースなどの著作物を保護し、作者の権利を守る法律はどれか。",
     "explanation": "著作権法は、プログラムを含む著作物の創作者の権利を保護する法律です。プログラムの著作物は、アイデア自体ではなく具体的な表現が保護対象となります。",
     "choices": [
-      { "label": "ア", "text": "著作権法", "is_correct": true },
-      { "label": "イ", "text": "特許法", "is_correct": false },
-      { "label": "ウ", "text": "個人情報保護法", "is_correct": false },
-      { "label": "エ", "text": "不正競争防止法", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "著作権法",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "特許法",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "個人情報保護法",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "不正競争防止法",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "legal-02",
     "category": "経営戦略・法務",
     "difficulty": 3,
     "body": "新規性・進歩性のある発明を保護し、一定期間その発明を独占的に実施できる権利を付与する法律はどれか。",
     "explanation": "特許法は、新規性・進歩性のある発明を保護し、一定期間その発明を独占的に実施できる権利(特許権)を付与する法律です。",
     "choices": [
-      { "label": "ア", "text": "著作権法", "is_correct": false },
-      { "label": "イ", "text": "特許法", "is_correct": true },
-      { "label": "ウ", "text": "商標法", "is_correct": false },
-      { "label": "エ", "text": "意匠法", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "著作権法",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "特許法",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "商標法",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "意匠法",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "cloud-01",
     "category": "クラウド",
     "difficulty": 3,
     "body": "サーバーやストレージ、ネットワークなどのインフラをインターネット経由で提供するクラウドサービスの形態はどれか。",
     "explanation": "IaaS(Infrastructure as a Service)は、サーバーやストレージ、ネットワークといったインフラ資源をインターネット経由で提供するサービス形態です。PaaSはアプリケーションの実行基盤、SaaSはアプリケーション自体を提供します。",
     "choices": [
-      { "label": "ア", "text": "SaaS", "is_correct": false },
-      { "label": "イ", "text": "PaaS", "is_correct": false },
-      { "label": "ウ", "text": "IaaS", "is_correct": true },
-      { "label": "エ", "text": "DaaS", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "SaaS",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "PaaS",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "IaaS",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "DaaS",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "cloud-02",
     "category": "クラウド",
     "difficulty": 2,
     "body": "Webメールやオンラインの表計算ソフトのように、ソフトウェアの機能そのものをインターネット経由で提供するサービス形態はどれか。",
     "explanation": "SaaS(Software as a Service)は、ソフトウェアの機能をインターネット経由でサービスとして提供する形態です。利用者は自分でサーバーやソフトウェアを管理する必要がありません。",
     "choices": [
-      { "label": "ア", "text": "IaaS", "is_correct": false },
-      { "label": "イ", "text": "PaaS", "is_correct": false },
-      { "label": "ウ", "text": "SaaS", "is_correct": true },
-      { "label": "エ", "text": "オンプレミス", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "IaaS",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "PaaS",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "SaaS",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "オンプレミス",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "web-01",
     "category": "Web技術",
     "difficulty": 2,
     "body": "Webブラウザとサーバーの間でHTMLなどのデータをやり取りするために使われるプロトコルはどれか。",
     "explanation": "HTTP(HyperText Transfer Protocol)は、Webブラウザとサーバーの間でHTMLなどのリソースをやり取りするための通信プロトコルです。暗号化されたやり取りにはHTTPSが使われます。",
     "choices": [
-      { "label": "ア", "text": "FTP", "is_correct": false },
-      { "label": "イ", "text": "HTTP", "is_correct": true },
-      { "label": "ウ", "text": "SMTP", "is_correct": false },
-      { "label": "エ", "text": "SSH", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "FTP",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "HTTP",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "SMTP",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "SSH",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "web-02",
     "category": "Web技術",
     "difficulty": 3,
     "body": "Webシステムにおいて、ログイン状態などクライアントとサーバー間の状態を維持するためによく使われる仕組みはどれか。",
     "explanation": "HTTPは本来、リクエストごとに状態を保持しないステートレスな通信ですが、Cookieを使ってクライアント側に情報を保存することで、ログイン状態などを維持できます。",
     "choices": [
-      { "label": "ア", "text": "Cookie(クッキー)", "is_correct": true },
-      { "label": "イ", "text": "DNS", "is_correct": false },
-      { "label": "ウ", "text": "ARP", "is_correct": false },
-      { "label": "エ", "text": "NAT", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "Cookie(クッキー)",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "DNS",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "ARP",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "NAT",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "ai-01",
     "category": "AI・データ活用",
     "difficulty": 2,
     "body": "大量のデータからコンピュータが自動的にパターンやルールを学習し、未知のデータに対する予測や分類を行う技術はどれか。",
     "explanation": "機械学習は、大量のデータからパターンやルールを自動的に学習し、その学習結果を使って未知のデータに対する予測・分類などを行う技術です。",
     "choices": [
-      { "label": "ア", "text": "機械学習", "is_correct": true },
-      { "label": "イ", "text": "データベース管理", "is_correct": false },
-      { "label": "ウ", "text": "表計算", "is_correct": false },
-      { "label": "エ", "text": "ファイル圧縮", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "機械学習",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "データベース管理",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "表計算",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ファイル圧縮",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "ai-02",
     "category": "AI・データ活用",
     "difficulty": 2,
     "body": "人間のように自然な文章や画像などを新たに生成できるAIの総称として、近年広く使われる用語はどれか。",
     "explanation": "生成AI(Generative AI)は、学習したデータをもとに文章・画像・音声などの新しいコンテンツを生成できるAIの総称です。",
     "choices": [
-      { "label": "ア", "text": "生成AI", "is_correct": true },
-      { "label": "イ", "text": "RPA", "is_correct": false },
-      { "label": "ウ", "text": "OCR", "is_correct": false },
-      { "label": "エ", "text": "IoT", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "生成AI",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "RPA",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "OCR",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "IoT",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "linux-01",
     "category": "Linux",
     "difficulty": 1,
     "body": "Linuxにおいて、カレントディレクトリ内のファイル一覧を表示するコマンドはどれか。",
     "explanation": "lsはカレントディレクトリのファイル・ディレクトリ一覧を表示するコマンドです。cdはディレクトリ移動、pwdはカレントディレクトリのパス表示、mkdirはディレクトリ作成を行います。",
     "choices": [
-      { "label": "ア", "text": "cd", "is_correct": false },
-      { "label": "イ", "text": "ls", "is_correct": true },
-      { "label": "ウ", "text": "pwd", "is_correct": false },
-      { "label": "エ", "text": "mkdir", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "cd",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "ls",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "pwd",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "mkdir",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "linux-02",
     "category": "Linux",
     "difficulty": 3,
     "body": "Linuxのファイルパーミッションを表す \"rwxr-xr--\" において、所有者(owner)に許可されている権限はどれか。",
     "explanation": "パーミッション表記は「所有者(owner)/グループ(group)/その他(other)」の3つに分かれ、それぞれr(読み取り)・w(書き込み)・x(実行)の可否を示します。\"rwxr-xr--\"の先頭3文字「rwx」は所有者が読み取り・書き込み・実行のすべてを許可されていることを表します。",
     "choices": [
-      { "label": "ア", "text": "読み取りのみ", "is_correct": false },
-      { "label": "イ", "text": "読み取りと書き込み", "is_correct": false },
-      { "label": "ウ", "text": "読み取り・書き込み・実行", "is_correct": true },
-      { "label": "エ", "text": "実行のみ", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "読み取りのみ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "読み取りと書き込み",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "読み取り・書き込み・実行",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "実行のみ",
+        "is_correct": false
+      }
     ]
   },
   {
+    "key": "linux-03",
     "category": "Linux",
     "difficulty": 3,
     "body": "Linuxで、あるコマンドの標準出力を別のコマンドの標準入力に接続し、複数のコマンドを連結して処理する仕組みを何と呼ぶか。",
     "explanation": "あるコマンドの標準出力を別のコマンドの標準入力へつなぐ仕組みをパイプ(|)と呼びます。リダイレクト(>や<)はファイルとの入出力の付け替えを指します。",
     "choices": [
-      { "label": "ア", "text": "リダイレクト", "is_correct": false },
-      { "label": "イ", "text": "パイプ", "is_correct": true },
-      { "label": "ウ", "text": "シンボリックリンク", "is_correct": false },
-      { "label": "エ", "text": "ジョブ制御", "is_correct": false }
+      {
+        "label": "ア",
+        "text": "リダイレクト",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "パイプ",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "シンボリックリンク",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ジョブ制御",
+        "is_correct": false
+      }
     ]
   }
 ]
