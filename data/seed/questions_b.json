@@ -158,5 +158,85 @@
     "answer_type": "value",
     "expected_answer": "81",
     "explanation": "resultを1から始め、baseを exp 回掛け合わせます。power(3,4)は 1×3×3×3×3 = 81 です。ループがexp回(この場合4回)実行される点を確認しながらトレースします。"
+  },
+  {
+    "key": "b-db-01",
+    "category": "データベース",
+    "difficulty": 3,
+    "body": "生徒の成績データ(生徒番号, 点数)の配列 data がある。関数 countAbove は、点数が threshold 以上の生徒数を数える。これはSQLの WHERE句による絞り込みと COUNT に相当する処理である。data ← {{1,80}, {2,65}, {3,90}, {4,75}, {5,60}}、threshold ← 70 のとき、countAbove(data, threshold) の戻り値を答えよ。",
+    "pseudocode": "○整数型: countAbove(整数型の二次元配列: data, 整数型: threshold)\n  整数型: i, count\n  count ← 0\n  i を 0 から (dataの要素数 - 1) まで 1 ずつ増やす\n    if (data[i][1] >= threshold)\n      count ← count + 1\n    endif\n  endfor\n  return count",
+    "answer_type": "value",
+    "expected_answer": "3",
+    "explanation": "各行の2列目(点数)がthreshold(70)以上かどうかを1件ずつ調べます。80、65、90、75、60のうち70以上は80・90・75の3件なので、戻り値は3です。SQLで言えば SELECT COUNT(*) FROM 生徒 WHERE 点数 >= 70 に相当する処理です。"
+  },
+  {
+    "key": "b-db-02",
+    "category": "データベース",
+    "difficulty": 3,
+    "body": "生徒データ(生徒番号, 点数)の配列 data から、最も点数の高い生徒の生徒番号を求める関数 findTopScorer がある。これはSQLの ORDER BY 点数 DESC LIMIT 1 に相当する処理である。data ← {{101,72}, {102,88}, {103,65}, {104,91}, {105,79}} のとき、findTopScorer(data) の戻り値を答えよ。",
+    "pseudocode": "○整数型: findTopScorer(整数型の二次元配列: data)\n  整数型: i, maxScore, maxId\n  maxId ← data[0][0]\n  maxScore ← data[0][1]\n  i を 1 から (dataの要素数 - 1) まで 1 ずつ増やす\n    if (data[i][1] > maxScore)\n      maxScore ← data[i][1]\n      maxId ← data[i][0]\n    endif\n  endfor\n  return maxId",
+    "answer_type": "value",
+    "expected_answer": "104",
+    "explanation": "先頭の生徒(101番, 72点)を仮の最高得点者とし、以降を1件ずつ比較します。102番(88点)で更新、104番(91点)でさらに更新され、以降はこれを超える点数がないため、最終的な戻り値は104です。"
+  },
+  {
+    "key": "b-db-03",
+    "category": "データベース",
+    "difficulty": 3,
+    "body": "取引データ(部門番号, 金額)の配列 data から、指定した部門の金額を合計する関数 sumByDept がある。これはSQLの GROUP BY と SUM に相当する処理である。data ← {{1,100}, {2,200}, {1,150}, {2,50}, {1,80}}、targetDept ← 1 のとき、sumByDept(data, targetDept) の戻り値を答えよ。",
+    "pseudocode": "○整数型: sumByDept(整数型の二次元配列: data, 整数型: targetDept)\n  整数型: i, sum\n  sum ← 0\n  i を 0 から (dataの要素数 - 1) まで 1 ずつ増やす\n    if (data[i][0] が targetDept と等しい)\n      sum ← sum + data[i][1]\n    endif\n  endfor\n  return sum",
+    "answer_type": "value",
+    "expected_answer": "330",
+    "explanation": "部門番号が1の行だけを合計します。1件目(100)、3件目(150)、5件目(80)が部門1に該当し、100+150+80=330です。SQLで言えば SELECT SUM(金額) FROM 取引 WHERE 部門番号=1 に相当します。"
+  },
+  {
+    "key": "b-sec-01",
+    "category": "セキュリティ",
+    "difficulty": 2,
+    "body": "簡易的なハッシュ関数 simpleHash(x) = (x × 7 + 3) を 11 で割った余り、として定義する。simpleHash(25) の戻り値を答えよ。",
+    "pseudocode": "○整数型: simpleHash(整数型: x)\n  return (x × 7 + 3) を 11 で割った余り",
+    "answer_type": "value",
+    "expected_answer": "2",
+    "explanation": "25×7=175、175+3=178。178を11で割ると16余り2なので(11×16=176)、戻り値は2です。ハッシュ関数は入力から計算によって格納場所を決めるため、探索の際に比較を行わずO(1)で目的地に到達できます。"
+  },
+  {
+    "key": "b-sec-02",
+    "category": "セキュリティ",
+    "difficulty": 4,
+    "body": "平文の値をXOR演算で暗号化する関数 xorEncrypt がある。xorEncrypt(92, 45) の戻り値を答えよ。ヒント: 92は2進数で01011100、45は2進数で00101101である。",
+    "pseudocode": "○整数型: xorEncrypt(整数型: plain, 整数型: key)\n  return plain を key でXORした値",
+    "answer_type": "value",
+    "expected_answer": "113",
+    "explanation": "01011100(92)と00101101(45)を1桁ずつXOR(異なるときだけ1)すると01110001となり、これは10進数で113です。XORには同じ鍵で2回演算すると元に戻る性質があり、xorEncrypt(113, 45)を計算すると92に戻ります。この性質が簡易的な暗号化に利用されています。"
+  },
+  {
+    "key": "b-sec-03",
+    "category": "セキュリティ",
+    "difficulty": 3,
+    "body": "偶数パリティ方式による誤り検出を行う。データビット列 bits の中の1の個数が偶数になるよう、付加すべきパリティビットの値を求める関数 parityBit がある。bits ← {1, 0, 1, 1, 0, 0, 1} のとき、parityBit(bits) の戻り値を答えよ。",
+    "pseudocode": "○整数型: parityBit(整数型の配列: bits)\n  整数型: i, count\n  count ← 0\n  i を 0 から (bitsの要素数 - 1) まで 1 ずつ増やす\n    if (bits[i] が 1 と等しい)\n      count ← count + 1\n    endif\n  endfor\n  if (count を 2 で割った余り が 0 と等しい)\n    return 0\n  else\n    return 1\n  endif",
+    "answer_type": "value",
+    "expected_answer": "0",
+    "explanation": "{1,0,1,1,0,0,1}の中の1の個数は4個(偶数)です。偶数パリティでは、1の個数がすでに偶数であればパリティビットは0(そのままで良い)、奇数であれば1を付加して偶数にします。この例では既に偶数なので戻り値は0です。"
+  },
+  {
+    "key": "b-nw-01",
+    "category": "ネットワーク",
+    "difficulty": 2,
+    "body": "サブネットのホスト部のビット数から、割り当て可能なホスト数を求める関数 hostCount がある。hostCount(6) の戻り値を答えよ。",
+    "pseudocode": "○整数型: hostCount(整数型: hostBits)\n  整数型: i, total\n  total ← 1\n  i を 1 から hostBits まで 1 ずつ増やす\n    total ← total × 2\n  endfor\n  return total - 2",
+    "answer_type": "value",
+    "expected_answer": "62",
+    "explanation": "ループでtotalを2倍ずつ繰り返し、2^hostBitsを計算しています。hostBits=6なので2^6=64。ここからネットワークアドレスとブロードキャストアドレスの2つを引いて、64-2=62が戻り値です。"
+  },
+  {
+    "key": "b-nw-02",
+    "category": "ネットワーク",
+    "difficulty": 3,
+    "body": "受信データの誤りを検出するため、送信するデータ列の各バイトを合計し、256で割った余りをチェックサムとする関数 checksum がある。data ← {200, 150, 90, 40} のとき、checksum(data) の戻り値を答えよ。",
+    "pseudocode": "○整数型: checksum(整数型の配列: data)\n  整数型: i, sum\n  sum ← 0\n  i を 0 から (dataの要素数 - 1) まで 1 ずつ増やす\n    sum ← sum + data[i]\n  endfor\n  return sum を 256 で割った余り",
+    "answer_type": "value",
+    "expected_answer": "224",
+    "explanation": "200+150+90+40=480を計算し、480を256で割った余りを求めます。256×1=256なので、480-256=224が戻り値です。受信側でも同じ計算をして送られてきたチェックサムと比較すれば、通信中にデータが化けていないか確認できます。"
   }
 ]
