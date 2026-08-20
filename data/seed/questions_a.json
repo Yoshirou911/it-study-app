@@ -1071,5 +1071,2557 @@
         "is_correct": false
       }
     ]
+  },
+  {
+    "key": "sys-01",
+    "category": "システム構成要素",
+    "difficulty": 2,
+    "body": "MTBFが95時間、MTTRが5時間であるシステムの稼働率はいくらか。",
+    "explanation": "稼働率 = MTBF ÷ (MTBF + MTTR) で求めます。95 ÷ (95 + 5) = 95 ÷ 100 = 0.95 です。MTBFは動いている時間、MTTRは修理している時間を表すので、分母は「全体の時間」になります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.05",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "0.90",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "0.95",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "1.00",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sys-02",
+    "category": "システム構成要素",
+    "difficulty": 3,
+    "body": "稼働率0.9の装置2台を直列に接続したシステム全体の稼働率はいくらか。",
+    "explanation": "直列システムは、すべての装置が正常でなければ動きません。そのため稼働率は掛け算になり、0.9 × 0.9 = 0.81 です。直列につなぐほど全体の稼働率は下がる、という点を覚えておくと検算に使えます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.81",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "0.90",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "0.99",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "1.80",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sys-03",
+    "category": "システム構成要素",
+    "difficulty": 3,
+    "body": "稼働率0.9の装置2台を並列に接続したシステム全体の稼働率はいくらか。",
+    "explanation": "並列システムは、どれか1台でも動いていれば全体が動きます。全体が止まるのは「両方が同時に故障したとき」だけなので、1 - (1-0.9) × (1-0.9) = 1 - 0.01 = 0.99 です。並列にすると稼働率は上がります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.81",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "0.90",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "0.99",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "1.00",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sys-04",
+    "category": "システム構成要素",
+    "difficulty": 4,
+    "body": "装置Aの後ろに、装置Bと装置Cを並列に接続した構成のシステムがある。A、B、Cの稼働率がいずれも0.9であるとき、システム全体の稼働率に最も近い値はどれか。",
+    "explanation": "複合構成は、先に並列部分を1つにまとめてから計算します。(1) BとCの並列部分: 1 - (1-0.9)(1-0.9) = 0.99。(2) Aとこの0.99の直列: 0.9 × 0.99 = 0.891。よって約0.89です。並列を先にまとめる手順を固定しておくと確実に解けます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.73",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "0.81",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "0.89",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "0.99",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sys-05",
+    "category": "システム構成要素",
+    "difficulty": 3,
+    "body": "1分間に平均4件の要求が到着し、1件あたりの平均処理時間が0.1分であるM/M/1の待ち行列システムがある。このときの利用率はいくらか。",
+    "explanation": "利用率 = 平均到着率 × 平均処理時間 で求めます。4 × 0.1 = 0.4 なので利用率は40%です。利用率が1(100%)を超えると処理が追いつかず、行列は無限に伸びていきます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.04",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "0.4",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "2.5",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "4.0",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sys-06",
+    "category": "システム構成要素",
+    "difficulty": 4,
+    "body": "M/M/1の待ち行列モデルにおいて、利用率が0.8、平均処理時間が0.2秒であるとき、平均待ち時間は何秒か。",
+    "explanation": "平均待ち時間 = ρ ÷ (1 - ρ) × 平均処理時間 です。0.8 ÷ (1 - 0.8) × 0.2 = 0.8 ÷ 0.2 × 0.2 = 4 × 0.2 = 0.8秒となります。なお応答時間を問われた場合は、これに処理時間0.2秒を足して1.0秒になります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.16",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "0.25",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "0.8",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "1.0",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sys-07",
+    "category": "システム構成要素",
+    "difficulty": 2,
+    "body": "システムの性能指標のうち、単位時間あたりに処理できる仕事量を表すものはどれか。",
+    "explanation": "スループットは単位時間あたりの処理量を表します。一方レスポンスタイムは、要求してから応答が返るまでの時間です。レジに例えると、スループットは「1時間に何人さばけるか」、レスポンスタイムは「自分の会計が終わるまで何分か」にあたります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "スループット",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "レスポンスタイム",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "ターンアラウンドタイム",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "クロック周波数",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sys-08",
+    "category": "システム構成要素",
+    "difficulty": 3,
+    "body": "システムが故障した際、安全側に制御を移すことで被害を防ぐ設計思想はどれか。",
+    "explanation": "フェールセーフは、故障したときに安全な側に倒す設計です。信号機が故障したら赤で停止させるのがその例です。フールプルーフは「人の誤操作」を防ぐ設計で、機械の故障を扱うフェールセーフとは対象が異なります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "フォールトトレラント",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "フェールセーフ",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "フールプルーフ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "フェールソフト",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sys-09",
+    "category": "システム構成要素",
+    "difficulty": 2,
+    "body": "利用者の誤った操作によって危険が生じないよう、そもそも誤操作ができない構造にする設計思想はどれか。",
+    "explanation": "フールプルーフは、利用者の誤操作を前提として、それが起こらないように設計する考え方です。蓋を閉めないと動かない電子レンジがその例です。フェールセーフは機械が故障したときの話であり、こちらは人の操作が対象という違いがあります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "フェールセーフ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "フェールソフト",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "フールプルーフ",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "フォールトトレラント",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sys-10",
+    "category": "システム構成要素",
+    "difficulty": 2,
+    "body": "1台の物理サーバ上で複数のOSを同時に動作させ、資源の利用効率を高める技術はどれか。",
+    "explanation": "仮想化は、1台の物理サーバ上に複数の仮想マシンを作る技術です。多くのサーバは能力を余らせているため、集約することで無駄を減らせます。クラウドのIaaSはこの技術の上に成り立っています。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "仮想化",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "多重化",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "正規化",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "最適化",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "biz-01",
+    "category": "企業活動",
+    "difficulty": 3,
+    "body": "固定費が300万円、変動費率が0.6であるとき、損益分岐点売上高はいくらか。",
+    "explanation": "損益分岐点売上高 = 固定費 ÷ (1 - 変動費率) で求めます。300 ÷ (1 - 0.6) = 300 ÷ 0.4 = 750万円です。分母の(1 - 変動費率)は限界利益率、つまり売上のうち手元に残る割合を意味します。変動費率で割らないよう注意してください。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "180万円",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "500万円",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "750万円",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "1,200万円",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "biz-02",
+    "category": "企業活動",
+    "difficulty": 3,
+    "body": "売上高1,000万円、変動費400万円、固定費300万円であるとき、損益分岐点売上高はいくらか。",
+    "explanation": "まず変動費率を求めます。400 ÷ 1,000 = 0.4。次に公式へ当てはめると 300 ÷ (1 - 0.4) = 300 ÷ 0.6 = 500万円です。検算すると、売上500万円のとき変動費は200万円、費用計は500万円で売上と一致し、利益がゼロになります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "300万円",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "500万円",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "700万円",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "750万円",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "biz-03",
+    "category": "企業活動",
+    "difficulty": 4,
+    "body": "固定費が200万円、変動費率が0.5である企業が、100万円の利益を確保するために必要な売上高はいくらか。",
+    "explanation": "目標利益がある場合は、分子に足します。(固定費 + 目標利益) ÷ (1 - 変動費率) = (200 + 100) ÷ 0.5 = 300 ÷ 0.5 = 600万円です。固定費も目標利益も、限界利益で埋めるべき金額という点では同じ扱いになります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "400万円",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "500万円",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "600万円",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "700万円",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "biz-04",
+    "category": "企業活動",
+    "difficulty": 3,
+    "body": "当期純利益が150万円、自己資本が1,000万円であるとき、ROE(自己資本利益率)は何%か。",
+    "explanation": "ROE = 当期純利益 ÷ 自己資本 × 100 で求めます。150 ÷ 1,000 × 100 = 15%です。分母が総資産であればROA(総資産利益率)になります。ROEは株主が出した資金でどれだけ稼いだかを示す指標です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "1.5%",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "15%",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "66%",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "150%",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "biz-05",
+    "category": "企業活動",
+    "difficulty": 3,
+    "body": "流動資産が800万円、流動負債が400万円であるとき、流動比率は何%か。",
+    "explanation": "流動比率 = 流動資産 ÷ 流動負債 × 100 で求めます。800 ÷ 400 × 100 = 200%です。1年以内に支払うべき400万円に対し、1年以内に現金化できる資産が800万円あることを意味し、短期の支払い能力に余裕がある状態を示します。一般に200%以上が望ましいとされます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "50%",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "100%",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "200%",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "400%",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "biz-06",
+    "category": "企業活動",
+    "difficulty": 4,
+    "body": "年間需要量が3,600個、1回あたりの発注費用が50円、1個あたりの年間保管費用が4円であるとき、経済的発注量(EOQ)は何個か。",
+    "explanation": "EOQ = √(2 × 年間需要量 × 1回の発注費用 ÷ 1個あたり年間保管費用) で求めます。分子は 2 × 3,600 × 50 = 360,000、これを4で割ると90,000、その平方根は300個です。発注費用と保管費用の合計が最小になる発注量を表します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "150個",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "300個",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "600個",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "900個",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "biz-07",
+    "category": "企業活動",
+    "difficulty": 2,
+    "body": "商品を売上金額の大きい順に並べ、累積比率によってA・B・Cの3グループに分類し、重点的に管理すべき対象を絞り込む手法はどれか。",
+    "explanation": "ABC分析は、金額の大きい順に並べて3群に分け、売上の大半を占めるAグループに管理の手間を集中させる手法です。パレートの法則(結果の80%は原因の20%から生じる)に基づいており、限られた資源をどこに使うかを判断するために用います。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ABC分析",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "SWOT分析",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "回帰分析",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "バリューチェーン分析",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "biz-08",
+    "category": "企業活動",
+    "difficulty": 3,
+    "body": "QC七つ道具のうち、データのばらつきの分布状況を、区間ごとの度数を棒グラフで表すことによって把握する図はどれか。",
+    "explanation": "ヒストグラムは、データを区間に区切って度数を棒グラフで表し、分布の形からばらつきや異常を読み取る図です。山が2つ現れた場合は、異なる条件のデータが混ざっている可能性を示します。散布図は2つの量の関係、管理図は時間経過による変化を見る図です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "パレート図",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "ヒストグラム",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "散布図",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "特性要因図",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "biz-09",
+    "category": "企業活動",
+    "difficulty": 3,
+    "body": "結果として生じている問題に対し、影響を与えていると考えられる要因を魚の骨のような形に整理して洗い出す図はどれか。",
+    "explanation": "特性要因図(フィッシュボーン図)は、問題(特性)に対する原因(要因)を枝分かれさせて整理する図です。思いつくままではなく、人・設備・方法・材料などに分類しながら網羅的に洗い出せる点に利点があります。パレート図は重点項目を絞り込む図で、目的が異なります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "パレート図",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "管理図",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "特性要因図",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "散布図",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "biz-10",
+    "category": "企業活動",
+    "difficulty": 2,
+    "body": "企業の組織形態のうち、従業員が職能部門と事業部門の両方に所属し、2つの指揮命令系統を持つものはどれか。",
+    "explanation": "マトリックス組織は、職能別と事業別の両方に所属する形態です。柔軟に人材を活用できる一方、1人が2人の上司を持つため、指示が食い違うと現場が混乱するという明確な弱点があります。どの組織形態にも一長一短があり、事業の性質で選ぶものです。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "職能別組織",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "事業部制組織",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "マトリックス組織",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "プロジェクト組織",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "basic-03",
+    "category": "基礎理論",
+    "difficulty": 2,
+    "body": "2進数 1101 を10進数で表したものはどれか。",
+    "explanation": "1101(2) = 1×2^3 + 1×2^2 + 0×2^1 + 1×2^0 = 8+4+0+1 = 13 です。1が立っている桁の重みを足すだけで求められます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "11",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "13",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "15",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "17",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "basic-04",
+    "category": "基礎理論",
+    "difficulty": 2,
+    "body": "10進数の 26 を2進数で表したものはどれか。",
+    "explanation": "26を2で割り続けて余りを下から読みます。26÷2=13余り0、13÷2=6余り1、6÷2=3余り0、3÷2=1余り1、1÷2=0余り1。下から読むと 11010 になります。検算すると 16+8+0+2+0=26 で一致します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "10110",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "11010",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "11100",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "10101",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "basic-05",
+    "category": "基礎理論",
+    "difficulty": 3,
+    "body": "2進数 10110101 を16進数で表したものはどれか。",
+    "explanation": "2進数4桁が16進数1桁に対応するので、右から4桁ずつ区切ります。1011 0101 となり、1011=B、0101=5なので、答えはB5です。10進数を経由せず直接変換するのが速い方法です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "A5",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "B5",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "C4",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "D5",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "basic-06",
+    "category": "基礎理論",
+    "difficulty": 2,
+    "body": "8ビットで表現できる符号なし整数の最大値はいくつか。",
+    "explanation": "nビットで表せる個数は2^n通りで、範囲は0〜2^n-1です。8ビットなら2^8=256通りなので、最大値は256-1=255になります。個数(256)と最大値(255)を混同しないよう注意が必要です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "128",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "255",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "256",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "511",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "basic-07",
+    "category": "基礎理論",
+    "difficulty": 3,
+    "body": "8ビットの2の補数表現で -5 を表すとどうなるか。",
+    "explanation": "2の補数は「全ビット反転して1を足す」手順で作ります。+5は00000101。全ビット反転すると11111010。1を足すと11111011になります。この手順は元に戻すときも同じ操作で使えます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "00000101",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "11111010",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "11111011",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "10000101",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "basic-08",
+    "category": "基礎理論",
+    "difficulty": 2,
+    "body": "8ビットの2の補数表現で表せる整数の範囲はどれか。",
+    "explanation": "8ビットの2の補数表現では、0が正の側に1つ含まれるため、範囲は-128〜127という左右非対称の形になります。0〜127で128個、-1〜-128で128個、合計256個です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0〜255",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "-127〜127",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "-128〜127",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "-128〜128",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "basic-09",
+    "category": "基礎理論",
+    "difficulty": 3,
+    "body": "論理式 A AND (NOT B) が真になるのは、A、Bがそれぞれどのような値のときか。",
+    "explanation": "ANDは両方が真のときだけ真になります。NOT Bは、Bが偽のときに真になります。したがって、Aが真かつBが偽のときにこの論理式全体が真になります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "Aが真、Bが真",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "Aが真、Bが偽",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "Aが偽、Bが真",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "Aが偽、Bが偽",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "basic-10",
+    "category": "基礎理論",
+    "difficulty": 3,
+    "body": "5人の中から代表委員長と副委員長を1人ずつ選ぶ場合の数は何通りか。",
+    "explanation": "委員長と副委員長は役職が異なるため、順序を区別する順列で数えます。5P2 = 5 × 4 = 20通りです。単に代表2人を選ぶだけ(順序を区別しない組合せ)であれば、5C2=10通りとなり答えが変わります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "10通り",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "20通り",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "25通り",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "120通り",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "basic-11",
+    "category": "基礎理論",
+    "difficulty": 3,
+    "body": "5人の中から3人の代表を選ぶ(順位はつけない)場合の数は何通りか。",
+    "explanation": "順序を区別しない組合せなので、5C3で求めます。5P3 = 5×4×3 = 60を、選んだ3人の並び替え通り数3!=6で割ります。60 ÷ 6 = 10通りです。「並べる」なら順列、「選ぶだけ」なら組合せという使い分けになります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "10通り",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "20通り",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "60通り",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "125通り",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "basic-12",
+    "category": "基礎理論",
+    "difficulty": 3,
+    "body": "サイコロを2回振ったとき、1回目も2回目も6の目が出る確率はいくらか。",
+    "explanation": "サイコロを振る2回の試行は互いに独立しているため、それぞれの確率を掛け算します。1/6 × 1/6 = 1/36です。独立な事象の同時発生確率は乗法定理で求めます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "1/6",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "1/12",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "1/36",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "2/6",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "basic-13",
+    "category": "基礎理論",
+    "difficulty": 4,
+    "body": "10MBのファイルを20Mbpsの回線で転送すると何秒かかるか。",
+    "explanation": "まず単位をビットにそろえます。10MB = 10 × 8 = 80Mビット。転送量を速度で割ると 80 ÷ 20 = 4秒です。バイトとビットの取り違えで8倍ずれた値が選択肢に紛れていることが多いので注意します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.5秒",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "4秒",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "32秒",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "160秒",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "db-03",
+    "category": "データベース",
+    "difficulty": 3,
+    "body": "「学生」と「科目」の間に、1人の学生が複数科目を履修し、1科目を複数の学生が履修する関係(多対多)がある。この関係を関係データベースで正しく表現する方法として適切なものはどれか。",
+    "explanation": "関係データベースは多対多をそのまま表現できません。間に連関エンティティ(履修テーブルなど)を挟み、学生と履修を1対多、履修と科目を多対1に分解します。連関エンティティの主キーは、学生番号と科目番号を組み合わせた複合キーになります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "学生表に履修科目の列を複数追加する",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "連関エンティティ(履修表)を間に挟み、複合キーで管理する",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "科目表に履修する学生の列を追加する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "学生表と科目表を1つの表に統合する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "db-04",
+    "category": "データベース",
+    "difficulty": 2,
+    "body": "E-R図において、実体(エンティティ)が持つ個々の項目を表す要素はどれか。",
+    "explanation": "E-R図では、エンティティ(管理したい対象)は四角、アトリビュート(属性、個々の項目)は楕円、リレーションシップ(関連)はひし形や線で表します。「学生」がエンティティなら、「学生番号」や「氏名」がアトリビュートにあたります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "エンティティ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "アトリビュート",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "リレーションシップ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "カーディナリティ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "db-05",
+    "category": "データベース",
+    "difficulty": 3,
+    "body": "索引(インデックス)に関する記述として適切なものはどれか。",
+    "explanation": "索引は特定の列の検索を高速化しますが、データを更新するたびに索引自体も更新が必要になるため、書き込み性能は低下します。検索が速くなる代わりに更新が遅くなるというトレードオフがあり、よく検索される列に絞って作成するのが原則です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "索引を増やすほど、検索も更新もすべて高速になる",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "索引は検索を高速化するが、更新の性能は低下する",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "索引は主キーの列にのみ作成できる",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "索引を作成すると正規化が不要になる",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "dev-03",
+    "category": "システム開発技術",
+    "difficulty": 3,
+    "body": "if (A > 0 かつ B > 0) という判定条件について、条件網羅(各条件式の真偽を少なくとも1回ずつ満たす)を満たすテストケースの組はどれか。",
+    "explanation": "条件網羅は「A>0」と「B>0」のそれぞれについて真と偽を1回ずつ満たせばよく、判定全体の真偽は問いません。(A=1,B=-1)でA>0が真・B>0が偽、(A=-1,B=1)でA>0が偽・B>0が真となり、両条件式の真偽をそれぞれ満たします。判定条件網羅とは異なり、全体が真になるケースを含まなくても成立する点に注意が必要です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "(A=1, B=1) の1ケースのみ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "(A=1, B=-1) と (A=-1, B=1)",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "(A=-1, B=-1) の1ケースのみ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "(A=1, B=1) と (A=-1, B=-1)",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "dev-04",
+    "category": "システム開発技術",
+    "difficulty": 2,
+    "body": "12歳未満は子供料金、12歳以上は大人料金となる料金体系がある。限界値分析(境界値分析)によるテストケースとして適切なものはどれか。",
+    "explanation": "限界値分析は、グループの境目を重点的に試す技法です。境界は11歳(子供の上限)と12歳(大人の下限)なので、この付近の値を選びます。年齢の真ん中の値だけを選ぶのは同値分割の考え方であり、限界値分析ではありません。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "5歳と30歳",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "11歳と12歳",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "0歳と100歳",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "6歳のみ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "dev-05",
+    "category": "システム開発技術",
+    "difficulty": 3,
+    "body": "モジュール分割の設計指針として最も適切なものはどれか。",
+    "explanation": "モジュール分割は「凝集度は高く、結合度は低く」を目標とします。凝集度はモジュール内のまとまりの強さ、結合度はモジュール間の依存の強さを表す指標で、それぞれ機能的凝集(最良)とデータ結合(最良)を目指します。凝集度と結合度をどちらも高くする、という設計目標は誤りです。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "凝集度と結合度をどちらも高くする",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "凝集度は高く、結合度は低くする",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "凝集度は低く、結合度は高くする",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "凝集度と結合度をどちらも低くする",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "dev-06",
+    "category": "システム開発技術",
+    "difficulty": 3,
+    "body": "結合テストをトップダウンで進める場合、まだ完成していない下位モジュールの代わりに用いる仮のプログラムを何と呼ぶか。",
+    "explanation": "トップダウンテストでは上位から下位へ順に結合していくため、まだできていない下位モジュールをスタブという仮のプログラムで代用します。逆にボトムアップテストでは、上位モジュールの代わりにドライバを用います。「スタブは下、ドライバは上」と対で覚えると区別しやすくなります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ドライバ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "スタブ",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "モック",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "シミュレータ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "dev-07",
+    "category": "システム開発技術",
+    "difficulty": 2,
+    "body": "次の決定表は、会員かどうかと購入金額に応じた割引を定めている。\n\n規則1: 会員=Y、1万円以上購入=Y → 10%割引\n規則2: 会員=Y、1万円以上購入=N → 5%割引\n規則3: 会員=N、1万円以上購入=Y → 5%割引\n規則4: 会員=N、1万円以上購入=N → 割引なし\n\n「会員である」がN(いいえ)、「1万円以上購入」がY(はい)のとき、適用される動作はどれか。",
+    "explanation": "条件部を上から順に照合し、すべて一致する規則を見つけます。「会員である=N」「1万円以上購入=Y」に一致するのは規則3で、動作は5%割引です。決定表は条件の組合せをすべて列挙するため、考慮漏れなく判定できます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "10%割引",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "5%割引",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "割引なし",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "該当する規則がない",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hw-03",
+    "category": "コンピュータ構成要素",
+    "difficulty": 3,
+    "body": "キャッシュメモリのアクセス時間が10ナノ秒、主記憶のアクセス時間が100ナノ秒、ヒット率が90%であるとき、実効アクセス時間は何ナノ秒か。",
+    "explanation": "実効アクセス時間 = キャッシュのアクセス時間×ヒット率 + 主記憶のアクセス時間×(1-ヒット率) で求めます。10×0.9 + 100×0.1 = 9 + 10 = 19ナノ秒です。主記憶だけの場合(100ナノ秒)より大幅に短縮されています。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "10ナノ秒",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "19ナノ秒",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "55ナノ秒",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "91ナノ秒",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hw-04",
+    "category": "コンピュータ構成要素",
+    "difficulty": 2,
+    "body": "CPUのクロック周波数が2GHzであるとき、1クロックサイクルの時間はいくらか。",
+    "explanation": "クロックサイクル時間は 1 ÷ クロック周波数 で求めます。1 ÷ 2,000,000,000 = 0.5ナノ秒です。周波数が高いほど1サイクルにかかる時間は短くなります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.5ナノ秒",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "2ナノ秒",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "5ナノ秒",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "50ナノ秒",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hw-05",
+    "category": "コンピュータ構成要素",
+    "difficulty": 3,
+    "body": "4台のディスクを使ってRAID5を構成した場合、実際にデータの格納に使用できる容量は、ディスク1台分の容量の何倍になるか。",
+    "explanation": "RAID5は、全体からディスク1台分をパリティ情報に使うため、n台構成であればn-1台分の容量が使用できます。4台構成なら4-1=3台分です。RAID1(ミラーリング)では使用できる容量は半分になる点と混同しないよう注意します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "1倍",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "2倍",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "3倍",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "4倍",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hw-06",
+    "category": "コンピュータ構成要素",
+    "difficulty": 2,
+    "body": "磁気ディスクを用い、可動部を持つことで衝撃に弱いが、容量あたりの価格が安い補助記憶装置はどれか。",
+    "explanation": "HDDは磁気ディスクを回転させ、磁気ヘッドで読み書きする補助記憶装置です。物理的に動く部分があるため衝撃に弱く速度も遅い一方、容量あたりの価格はSSDより安い傾向があります。SSDは半導体メモリを使い、可動部がないため衝撃に強く高速です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "SSD",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "HDD",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "DRAM",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "キャッシュメモリ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sw-03",
+    "category": "ソフトウェア",
+    "difficulty": 3,
+    "body": "3つのプロセスA、B、Cが到着した順に一定時間ずつ交代でCPUを使用し、使い切ったら次のプロセスに切り替えるスケジューリング方式はどれか。",
+    "explanation": "ラウンドロビンは、各プロセスに一定時間(タイムクウォンタム)を割り当て、使い切ったら次のプロセスに交代する方式です。全員に公平に順番が回るため、対話的な処理に適しています。優先度順は優先度の低いプロセスが実行され続けない(飢餓)恐れがあります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "到着順(FCFS)",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "処理時間順(SJF)",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "優先度順",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ラウンドロビン",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "sw-04",
+    "category": "ソフトウェア",
+    "difficulty": 3,
+    "body": "仮想記憶において、メモリ不足のためページの入れ替えが頻発し、本来の処理がほとんど進まなくなる現象を何と呼ぶか。",
+    "explanation": "スラッシングは、メモリが極端に不足し、ページフォールトが多発してCPUがページの入れ替え作業に忙殺される現象です。この場合CPU自体は暇なので、原因はメモリ不足にあり、対策はCPU交換ではなくメモリの増設になります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "デッドロック",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "スラッシング",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "スタベーション",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "フラグメンテーション",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sw-05",
+    "category": "ソフトウェア",
+    "difficulty": 2,
+    "body": "ページ置換えアルゴリズムのうち、最も長い間参照されていないページを優先して追い出す方式はどれか。",
+    "explanation": "LRU(Least Recently Used)は、最も長い間使われていないページを追い出す方式です。「しばらく使っていないものは今後も当分使わないだろう」という時間的局所性の考え方に基づいています。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "FIFO",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "LRU",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "LFU",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ランダム",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sw-06",
+    "category": "ソフトウェア",
+    "difficulty": 3,
+    "body": "月曜日にフルバックアップを取得し、火曜日以降は前日からの変更分のみを毎日バックアップする方式を何と呼ぶか。",
+    "explanation": "増分バックアップは、前回のバックアップ以降の変更分だけを毎回取得する方式です。1回あたりの取得は速い一方、復元時にはフルバックアップと、それ以降のすべての増分バックアップが必要になります。これに対し差分バックアップは、常にフルバックアップ以降の変更分すべてを取得するため、復元はフルと最新の差分の2つで済みます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "フルバックアップ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "差分バックアップ",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "増分バックアップ",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "ミラーリング",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "nw-05",
+    "category": "ネットワーク",
+    "difficulty": 3,
+    "body": "サブネットマスクが255.255.255.224であるとき、1つのサブネットに接続できるホスト数は何台か。",
+    "explanation": "224を2進数にすると11100000で、0の部分(ホスト部)は5ビットです。2^5-2=30台になります。-2はネットワークアドレスとブロードキャストアドレスの2つを除くためです。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "14台",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "30台",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "32台",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "62台",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "nw-06",
+    "category": "ネットワーク",
+    "difficulty": 2,
+    "body": "TCPが通信を開始する際、送信側と受信側が3回のやり取りを行って接続を確立する手順を何と呼ぶか。",
+    "explanation": "3ウェイハンドシェイクは、SYN(接続したい)→SYN/ACK(いいよ)→ACK(了解)という3回のやり取りで接続を確立するTCPの手順です。互いに準備ができたことを確認してから通信を始めます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "3ウェイハンドシェイク",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "カプセル化",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "ラウンドロビン",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ポーリング",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "nw-07",
+    "category": "ネットワーク",
+    "difficulty": 2,
+    "body": "電子メールの送信に使われるプロトコルはどれか。",
+    "explanation": "SMTPはメールの送信に使われるプロトコルです。SのSはSend(送信)と結びつけて覚えられます。メールの受信にはPOP3やIMAPが使われ、POPはサーバから取り込んで削除する方式、IMAPはサーバに残したまま閲覧する方式です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "SMTP",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "POP3",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "FTP",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "DHCP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "nw-08",
+    "category": "ネットワーク",
+    "difficulty": 3,
+    "body": "100Mbpsの回線を伝送効率80%で使用して、50MBのファイルを転送すると何秒かかるか。",
+    "explanation": "まず実効速度を求めます。100×0.8=80Mbps。次に転送量をビットにそろえます。50MB=50×8=400Mビット。最後に割ります。400÷80=5秒です。伝送効率は速度に掛けるのであって、時間に掛けるのではない点に注意します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "4秒",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "5秒",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "6.25秒",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "40秒",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "nw-09",
+    "category": "ネットワーク",
+    "difficulty": 2,
+    "body": "OSI基本参照モデルにおいて、MACアドレスを用いて隣接する機器間の伝送を担う層はどれか。",
+    "explanation": "データリンク層は、MACアドレスを用いて隣接する機器間の伝送を担います。ネットワーク層がIPアドレスによる最終的な経路制御を担うのに対し、データリンク層は「次にどの機器へ渡すか」を扱うという役割の違いがあります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "物理層",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "データリンク層",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "ネットワーク層",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "トランスポート層",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "nw-10",
+    "category": "ネットワーク",
+    "difficulty": 2,
+    "body": "無線LANの暗号化方式のうち、現在最も安全性が高いとされるものはどれか。",
+    "explanation": "WPA3は現在最も安全性の高い無線LAN暗号化方式です。WEPは古い規格で、短時間で解読されるため現在では暗号として機能しておらず、使用してはなりません。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "WEP",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "WPA2",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "WPA3",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "SSIDステルス",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sec-05",
+    "category": "セキュリティ",
+    "difficulty": 3,
+    "body": "公開鍵暗号方式を用いてデータを送信する際、送信者が受信者にデータを安全に送るには、どの鍵で暗号化すればよいか。",
+    "explanation": "機密性を守るためには、受信者の公開鍵で暗号化します。復号できるのは、対になる受信者の秘密鍵を持つ本人だけです。公開鍵は誰でも入手できますが、秘密鍵は本人しか持たないため、この仕組みで安全性が保たれます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "送信者の公開鍵",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "送信者の秘密鍵",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "受信者の公開鍵",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "受信者の秘密鍵",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sec-06",
+    "category": "セキュリティ",
+    "difficulty": 3,
+    "body": "共通鍵暗号方式と公開鍵暗号方式を組み合わせ、共通鍵の配送には公開鍵暗号を、実際のデータ通信には共通鍵暗号を用いる方式を何と呼ぶか。",
+    "explanation": "ハイブリッド暗号は、公開鍵暗号で共通鍵を安全に配送し、処理の重いデータ本体は高速な共通鍵暗号でやり取りする方式です。SSL/TLSで使われており、鍵配送の安全性と処理速度を両立させています。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "共通鍵暗号",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "公開鍵暗号",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "ハイブリッド暗号",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "ハッシュ暗号",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sec-07",
+    "category": "セキュリティ",
+    "difficulty": 2,
+    "body": "ディジタル署名によって保証される事項はどれか。",
+    "explanation": "ディジタル署名は、改ざんされていないこと(完全性)と、送信者本人が作成したこと(真正性・否認防止)を保証します。文書の中身そのものを隠すわけではないため、機密性は保証しません。機密性を守りたい場合は別途暗号化が必要です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "機密性のみ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "完全性と真正性",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "可用性のみ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "匿名性",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sec-08",
+    "category": "セキュリティ",
+    "difficulty": 3,
+    "body": "不審な通信を検知して管理者に通知するが、遮断は行わない仕組みはどれか。",
+    "explanation": "IDS(侵入検知システム)は、不審な通信を検知して通知するのみです。DのDetection(検知)が名前の由来になります。これに対しIPS(侵入防止システム)は検知に加えて自動的に遮断まで行い、PのPrevention(防止)が対応します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ファイアウォール",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "IDS",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "IPS",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "WAF",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sec-09",
+    "category": "セキュリティ",
+    "difficulty": 2,
+    "body": "外部に公開するWebサーバなどを、社内ネットワークとは別の区画に配置し、万一そのサーバが乗っ取られても社内へ被害が及ばないようにする仕組みを何と呼ぶか。",
+    "explanation": "DMZ(非武装地帯)は、公開サーバを社内ネットワークから隔離した区画に配置する仕組みです。店舗(DMZ)が荒らされても、鍵のかかった事務所(社内ネットワーク)までは被害が及ばないようにする発想にあたります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "VPN",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "DMZ",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "VLAN",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "NAT",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "algo-03",
+    "category": "アルゴリズム",
+    "difficulty": 3,
+    "body": "後置記法(逆ポーランド記法)で「3 4 + 5 ×」と表された式の値はいくつか。",
+    "explanation": "逆ポーランド記法はスタックを使って計算します。3を積み、4を積む。「+」が来たら2つ取り出して3+4=7を積む。5を積む。「×」が来たら2つ取り出して7×5=35を積む。答えは35です。これは中置記法の (3+4)×5 に相当します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "17",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "23",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "35",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "60",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "algo-04",
+    "category": "アルゴリズム",
+    "difficulty": 2,
+    "body": "スタックに対してpush(1)、push(2)、pop()、push(3)の順に操作した後、スタックに残っている要素を下から順に並べるとどうなるか。",
+    "explanation": "スタックは後入れ先出し(LIFO)です。push(1)で[1]、push(2)で[1,2]、pop()で最後に入れた2が取り出され[1]、push(3)で[1,3]となります。下から順に並べると1、3です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "1, 2",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "1, 3",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "2, 3",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "1, 2, 3",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "algo-05",
+    "category": "アルゴリズム",
+    "difficulty": 3,
+    "body": "二分探索木において、根の値が50、左の子が30、右の子が70であるとき、40を探索すると何回の比較で見つかるか。ただし30の右の子は40であるとする。",
+    "explanation": "まず50と比較し、40は小さいので左の子30へ進みます(1回目)。次に30と比較し、40は大きいので右の子40へ進みます(2回目)。3回目の比較で40と一致し発見します。比較のたびに候補が絞り込まれるため、二分探索木はO(log n)で探索できます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "1回",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "2回",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "3回",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "4回",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "algo-06",
+    "category": "アルゴリズム",
+    "difficulty": 2,
+    "body": "ハッシュ表において、異なるデータが同じ格納場所を指定してしまう現象を何と呼ぶか。",
+    "explanation": "衝突(コリジョン)は、異なるキーのハッシュ値が偶然一致してしまう現象です。対処法として、同じ場所にリストをぶら下げるチェイン法や、別の空いている場所を探すオープンアドレス法があります。衝突が多発すると、ハッシュ表本来の高速性(O(1))が損なわれます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "オーバーフロー",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "衝突(コリジョン)",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "デッドロック",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "スラッシング",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "algo-07",
+    "category": "アルゴリズム",
+    "difficulty": 3,
+    "body": "整列(ソート)アルゴリズムのうち、常に最悪の場合でもO(n log n)の計算量を保証するものはどれか。",
+    "explanation": "マージソートは、データを分割し尽くしてから整列しながら併合する方式で、最悪の場合でもO(n log n)を保証します。一方クイックソートは平均O(n log n)ですが、ピボットの選び方によって最悪O(n^2)まで悪化する可能性があります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "クイックソート",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "バブルソート",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "マージソート",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "選択ソート",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "linux-04",
+    "category": "Linux",
+    "difficulty": 2,
+    "body": "Linuxで、あるファイルの内容の先頭10行だけを表示したいときに使うコマンドはどれか。",
+    "explanation": "headコマンドは、ファイルの先頭から指定した行数だけを表示します(既定は10行)。反対に末尾から表示するにはtailコマンドを使います。巨大なファイルを丸ごと表示するcatとは異なり、必要な部分だけを効率よく確認できます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "cat",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "head",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "tail",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "grep",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "linux-05",
+    "category": "Linux",
+    "difficulty": 3,
+    "body": "ファイルのパーミッションを数値で表すとき、「rw-r--r--」に対応する数値はどれか。",
+    "explanation": "r=4、w=2、x=1として各組を合計します。所有者はrw-で4+2=6、グループはr--で4、その他もr--で4です。したがって644になります。よく使われる644は「所有者は読み書き、他は読み取りのみ」という一般的なファイルの権限です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "644",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "744",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "664",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "444",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "linux-06",
+    "category": "Linux",
+    "difficulty": 2,
+    "body": "コマンドAの標準出力をコマンドBの標準入力にそのまま渡して処理を連結する記号はどれか。",
+    "explanation": "パイプ(|)は、左のコマンドの出力を右のコマンドの入力にそのまま渡す記号です。小さな単機能のコマンドを組み合わせて複雑な処理を行うLinuxの設計思想を支える仕組みです。ファイルへの出力の付け替えにはリダイレクト(>)を使います。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": ">",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "|",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "&",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": ";",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "pm-03",
+    "category": "プロジェクトマネジメント",
+    "difficulty": 4,
+    "body": "あるプロジェクトには2つの経路がある。\n経路1: 作業A(3日)→作業C(4日)\n経路2: 作業B(2日)→作業D(6日)\nこのプロジェクト全体の所要日数は何日か。",
+    "explanation": "クリティカルパスは最も日数のかかる経路で、その長さが全体の所要日数になります。経路1はA+C=3+4=7日、経路2はB+D=2+6=8日です。最長は経路2の8日なので、全体の所要日数は8日になります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "7日",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "8日",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "9日",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "15日",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "pm-04",
+    "category": "プロジェクトマネジメント",
+    "difficulty": 3,
+    "body": "作業の楽観値が5日、最頻値が8日、悲観値が17日であるとき、三点見積りによる期待値は何日か。",
+    "explanation": "三点見積りの期待値は (楽観値 + 最頻値×4 + 悲観値) ÷ 6 で求めます。(5 + 8×4 + 17) ÷ 6 = (5+32+17) ÷ 6 = 54 ÷ 6 = 9日です。単純な3つの平均((5+8+17)÷3=10日)とは異なる点に注意します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "8日",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "9日",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "10日",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "30日",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "pm-05",
+    "category": "プロジェクトマネジメント",
+    "difficulty": 3,
+    "body": "プロジェクトの作業を、成果物や作業内容に基づいて階層的に分解し、管理可能な単位にまとめた構成図を何と呼ぶか。",
+    "explanation": "WBS(Work Breakdown Structure、作業分解構成図)は、プロジェクトの作業を階層的に分解した図です。管理できる大きさまで分解することで、見積り・担当割当て・進捗管理がしやすくなります。最下層の要素をワークパッケージと呼びます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ガントチャート",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "WBS",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "アローダイアグラム",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "E-R図",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "pm-06",
+    "category": "プロジェクトマネジメント",
+    "difficulty": 3,
+    "body": "EVM(アーンドバリューマネジメント)において、PV(計画価値)が100万円、EV(出来高)が80万円、AC(実コスト)が90万円であるとき、コスト差異(CV)はいくらか。",
+    "explanation": "コスト差異 CV = EV - AC で求めます。80 - 90 = -10万円です。マイナスは予算を超過していることを示します。なおスケジュール差異はSV = EV - PV で求め、この例では80-100=-20万円となり、計画より遅れていることが分かります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "-20万円",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "-10万円",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "10万円",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "20万円",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sm-03",
+    "category": "サービスマネジメント",
+    "difficulty": 3,
+    "body": "サーバが停止した際、原因の調査よりも先に、再起動などによってできるだけ早くサービスを復旧させることを目的とする活動はどれか。",
+    "explanation": "インシデント管理は、サービスの迅速な復旧を最優先する活動です。原因究明は後回しでよく、暫定的な回避策(ワークアラウンド)で凌ぐことも正当な対応とされます。根本原因を調査し再発を防止するのは問題管理の役割です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "インシデント管理",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "問題管理",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "変更管理",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "リリース管理",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sm-04",
+    "category": "サービスマネジメント",
+    "difficulty": 2,
+    "body": "稼働率99.9%のシステムでは、年間でおよそ何時間の停止が許容されることになるか。最も近いものはどれか。",
+    "explanation": "1年は約8,760時間です。稼働率99.9%は停止率0.1%(0.001)にあたるので、8,760×0.001=約8.8時間になります。稼働率を1桁上げるごとに、許容される停止時間は大きく減っていきます。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "約1時間",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "約9時間",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "約88時間",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "約876時間",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sm-05",
+    "category": "サービスマネジメント",
+    "difficulty": 3,
+    "body": "災害や障害が発生したとき、どの時点のデータまで復旧できるようにするかという目標を表す指標はどれか。",
+    "explanation": "RPO(目標復旧時点)は、障害発生時にどの時点までのデータを復旧できるようにするかを表す指標です。RPOは過去(データをどこまで戻せるか)、RTO(目標復旧時間)は未来(いつまでに復旧させるか)を表すという違いがあります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "RTO",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "RPO",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "SLA",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "MTBF",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "sm-06",
+    "category": "サービスマネジメント",
+    "difficulty": 2,
+    "body": "システム監査において、監査人が最も重視すべき条件はどれか。",
+    "explanation": "独立性は、システム監査で最も重視される条件です。監査対象と利害関係のない立場(外観上の独立性)と、公正・客観的に判断する姿勢(精神上の独立性)の両方が求められます。自分が構築に関わったシステムを自分で監査することはできません。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "処理速度",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "独立性",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "親密性",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "経験年数",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "strat-03",
+    "category": "システム戦略",
+    "difficulty": 2,
+    "body": "既存の業務プロセスを白紙に戻し、抜本的に再設計する取り組みを何と呼ぶか。",
+    "explanation": "BPR(Business Process Re-engineering)は、既存の業務プロセスを抜本的に見直し、再設計する取り組みです。継続的に少しずつ改善していくBPM(Business Process Management)とは、変革の規模とアプローチが異なります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "BPR",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "BPM",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "CRM",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "SCM",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "strat-04",
+    "category": "システム戦略",
+    "difficulty": 3,
+    "body": "会計・人事・在庫などの基幹業務のデータを1つのデータベースに統合し、全社で一元管理する情報システムはどれか。",
+    "explanation": "ERP(統合基幹業務システム)は、従来部門ごとに別々だった会計・人事・在庫などのシステムを1つに統合するものです。データの二重入力や数字の食い違いといった、部門ごとにシステムが分かれていたことによる問題を解消します。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ERP",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "CRM",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "SFA",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "SCM",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "strat-05",
+    "category": "システム戦略",
+    "difficulty": 3,
+    "body": "発注者が具体的な提案と見積りを外部の事業者に依頼する際に提示する文書はどれか。",
+    "explanation": "RFP(提案依頼書)は、要件を示し、具体的な提案と見積りを依頼する文書です。これに先立ち、技術情報や実績の提供を依頼するRFI(情報提供依頼書)を送ることもあります。RFI→RFPの順で調達を進めるのが一般的な流れです。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "RFI",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "RFP",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "SLA",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "NDA",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "strat-06",
+    "category": "システム戦略",
+    "difficulty": 2,
+    "body": "システム開発を外部に委託する契約のうち、成果物の完成に責任を負う契約形態はどれか。",
+    "explanation": "請負契約は、成果物を完成させる責任(完成責任)を負う契約です。指揮命令は受注者側が行います。一方、準委任契約は業務を誠実に遂行する義務を負いますが、完成責任は負いません。発注者が受注者の社員に直接指示を出すと偽装請負となり、法令違反になります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "準委任契約",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "請負契約",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "派遣契約",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "賃貸借契約",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "legal-03",
+    "category": "経営戦略・法務",
+    "difficulty": 2,
+    "body": "プログラムの著作権はいつ発生するか。",
+    "explanation": "著作権は、著作物を創作した時点で自動的に発生します。特許権のように出願や登録の手続きは不要です。ただし著作権が保護するのはプログラムの具体的な表現であって、そのアルゴリズムやプログラム言語自体は保護の対象になりません。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "創作した時点で自動的に発生する",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "特許庁に出願した時点で発生する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "登録が完了した時点で発生する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "販売を開始した時点で発生する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "legal-04",
+    "category": "経営戦略・法務",
+    "difficulty": 3,
+    "body": "発注者が受注者(請負契約)の社員に対して直接作業の指示を出す状態を何と呼ぶか。",
+    "explanation": "偽装請負は、契約形態は請負でありながら、実態としては発注者が受注者の社員に直接指揮命令を行っている状態を指し、法令違反となります。請負契約では、指揮命令は受注者側が行わなければなりません。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "業務委託",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "偽装請負",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "労働者派遣",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "下請けいじめ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "legal-05",
+    "category": "経営戦略・法務",
+    "difficulty": 2,
+    "body": "他人のIDとパスワードを不正に取得しただけで、実際にログインしていなくても違法となる法律はどれか。",
+    "explanation": "不正アクセス禁止法は、他人のIDとパスワードを不正に取得する行為自体を禁止しています。実際にログイン(侵入)しなくても、取得しただけで違法となります。技術的に可能かどうかと、法的に許されるかは別問題である点に注意が必要です。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "著作権法",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "不正アクセス禁止法",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "特定電子メール法",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "下請法",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "legal-06",
+    "category": "経営戦略・法務",
+    "difficulty": 3,
+    "body": "個人情報保護法において、事業者が個人データを第三者に提供する際の原則はどれか。",
+    "explanation": "個人情報保護法では、原則として本人の同意なく個人データを第三者へ提供してはならないとされています。事業者には、利用目的の特定・通知、目的外利用の禁止、安全管理措置、本人からの開示請求への対応なども義務付けられています。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "本人の同意があれば提供できるが、無ければ原則提供できない",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "事業者の判断で自由に提供できる",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "行政の許可があれば同意なく提供できる",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "個人データはそもそも第三者提供できない",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "cloud-03",
+    "category": "クラウド",
+    "difficulty": 2,
+    "body": "クラウドサービスのうち、OSやミドルウェアを含む実行環境まで提供され、利用者はアプリケーションの開発と運用に専念できる形態はどれか。",
+    "explanation": "PaaSは、OSやミドルウェアなどアプリケーションの実行環境まで提供するサービス形態です。利用者はアプリの開発と運用に集中できます。IaaSはインフラのみ、SaaSはソフトウェアそのものを提供するという違いがあります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "IaaS",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "PaaS",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "SaaS",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "オンプレミス",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "cloud-04",
+    "category": "クラウド",
+    "difficulty": 3,
+    "body": "クラウドの拡張方式のうち、サーバの台数を増やして全体の処理能力を高める方式を何と呼ぶか。",
+    "explanation": "スケールアウト(水平方向のスケーリング)は、サーバの台数を増やして処理能力を高める方式です。1台の性能を上げるスケールアップ(垂直方向)と異なり、物理的な上限がなく、1台ずつ追加できるため停止も不要という利点があります。クラウドでは基本の拡張方式になります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "スケールアップ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "スケールアウト",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "ロードシェディング",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "キャッシング",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "web-03",
+    "category": "Web技術",
+    "difficulty": 2,
+    "body": "Webのアクセスがサーバに正常に処理された場合に返されるHTTPステータスコードの先頭の数字はどれか。",
+    "explanation": "2xx番台は成功を表します(200 OKが代表例)。4xx番台はクライアント側の誤り(404は指定したページが見つからない)、5xx番台はサーバ側の誤りを表します。「4xxはあなたのせい、5xxはこちらのせい」と対比して覚えると区別しやすくなります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "2",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "3",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "4",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "5",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "web-04",
+    "category": "Web技術",
+    "difficulty": 3,
+    "body": "Webシステムにおいて、パスワードなど機密性の高い情報を送信する際に、URLにデータが含まれてしまうため使うべきでないHTTPメソッドはどれか。",
+    "explanation": "GETメソッドはデータをURLに含めて送信するため、機密情報を送るべきではありません。URLはブラウザの履歴やサーバのアクセスログに残ってしまいます。フォームでパスワードなどを送信する場合は、URLにデータが表れないPOSTメソッドを使います。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "GET",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "POST",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "PUT",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "DELETE",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "ai-03",
+    "category": "AI・データ活用",
+    "difficulty": 2,
+    "body": "正解ラベルが付いたデータを使って学習し、未知のデータに対する予測や分類を行う機械学習の手法はどれか。",
+    "explanation": "教師あり学習は、正解ラベル付きのデータを使って学習し、未知のデータへの予測(分類・回帰)を行う手法です。正解を与えずデータの構造を発見する教師なし学習、報酬をもとに試行錯誤する強化学習とは学習の仕方が異なります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "教師あり学習",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "教師なし学習",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "強化学習",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "転移学習",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "ai-04",
+    "category": "AI・データ活用",
+    "difficulty": 3,
+    "body": "生成AI(大規模言語モデル)が、事実と異なる内容をもっともらしく生成してしまう現象を何と呼ぶか。",
+    "explanation": "ハルシネーション(幻覚)は、生成AIが事実と異なる内容を自信をもって出力してしまう現象です。大規模言語モデルは意味を理解しているのではなく、統計的にもっともらしい語を並べているにすぎないため起こります。出力は必ず自分で検証する必要があります。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "オーバーフィッティング",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "ハルシネーション",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "スラッシング",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "バイアス",
+        "is_correct": false
+      }
+    ]
   }
 ]
