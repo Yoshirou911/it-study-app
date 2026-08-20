@@ -38,5 +38,125 @@
     "answer_type": "value",
     "expected_answer": "8",
     "explanation": "fib(n) は fib(n-1) + fib(n-2) を再帰的に計算します。fib(0)=0, fib(1)=1 から順に 1, 2, 3, 5, 8 と続くため、fib(6) = 8 になります。"
+  },
+  {
+    "key": "b-algo-05",
+    "category": "アルゴリズム",
+    "difficulty": 3,
+    "body": "次の擬似言語で書かれた関数 bubbleSort は、配列を昇順に並べ替える(バブルソート)。data ← {5, 2, 8, 1, 9} のとき、bubbleSort(data) 実行後の配列の中身を答えよ(例: {1, 2, 3} の形式で答えること)。",
+    "pseudocode": "○整数型の配列: bubbleSort(整数型の配列: data)\n  整数型: i, j, tmp, n\n  n ← dataの要素数\n  i を 0 から (n - 2) まで 1 ずつ増やす\n    j を 0 から (n - 2 - i) まで 1 ずつ増やす\n      if (data[j] > data[j + 1])\n        tmp ← data[j]\n        data[j] ← data[j + 1]\n        data[j + 1] ← tmp\n      endif\n    endfor\n  endfor\n  return data",
+    "answer_type": "value",
+    "expected_answer": "{1, 2, 5, 8, 9}",
+    "explanation": "隣り合う要素を比較し、逆順なら交換することを繰り返します。1周目で{2,5,1,8,9}、2周目で{2,1,5,8,9}、3周目で{1,2,5,8,9}となり、以降は交換が起きず確定します。最終結果は{1,2,5,8,9}です。"
+  },
+  {
+    "key": "b-algo-06",
+    "category": "アルゴリズム",
+    "difficulty": 3,
+    "body": "次の擬似言語で書かれた関数 binarySearch は、整列済みの配列から二分探索で目的の値を探し、見つかった添字を返す。data ← {2, 5, 8, 11, 14, 17, 20}、target ← 14 のとき、binarySearch(data, target) の戻り値を答えよ。",
+    "pseudocode": "○整数型: binarySearch(整数型の配列: data, 整数型: target)\n  整数型: low, high, mid\n  low ← 0\n  high ← dataの要素数 - 1\n  while (low <= high)\n    mid ← (low + high) ÷ 2 (小数点以下切り捨て)\n    if (data[mid] が target と等しい)\n      return mid\n    elseif (data[mid] < target)\n      low ← mid + 1\n    else\n      high ← mid - 1\n    endif\n  endwhile\n  return -1",
+    "answer_type": "value",
+    "expected_answer": "4",
+    "explanation": "low=0, high=6でmid=3となり、data[3]=11はtarget14より小さいのでlow=4。次にlow=4,high=6でmid=5、data[5]=17はtargetより大きいのでhigh=4。次にlow=4,high=4でmid=4、data[4]=14がtargetと一致し、添字4を返します。"
+  },
+  {
+    "key": "b-algo-07",
+    "category": "アルゴリズム",
+    "difficulty": 2,
+    "body": "空のスタックに対して、push(3)、push(7)、pop()、push(5)、push(9)、pop()、push(2) の順に操作したとき、最終的なスタックの中身を下から順に答えよ(例: {1, 2, 3} の形式で答えること)。",
+    "pseudocode": "push(3)   … スタックは {3}\npush(7)   … スタックは {3, 7}\npop()     … 最後に入れた7を取り出す。スタックは {3}\npush(5)   … スタックは {3, 5}\npush(9)   … スタックは {3, 5, 9}\npop()     … 最後に入れた9を取り出す。スタックは {3, 5}\npush(2)   … スタックは {3, 5, 2}",
+    "answer_type": "value",
+    "expected_answer": "{3, 5, 2}",
+    "explanation": "スタックは後入れ先出し(LIFO)なので、popするたびに直前にpushした値が取り出されます。7を入れて直後にpopで7が消え、9を入れて直後にpopで9が消えるため、最終的に残るのは{3, 5, 2}です。"
+  },
+  {
+    "key": "b-algo-08",
+    "category": "アルゴリズム",
+    "difficulty": 2,
+    "body": "空のキューに対して、enqueue(10)、enqueue(20)、dequeue()、enqueue(30)、enqueue(40)、dequeue()、enqueue(50) の順に操作したとき、最終的なキューの中身を先頭から順に答えよ(例: {1, 2, 3} の形式で答えること)。",
+    "pseudocode": "enqueue(10) … キューは {10}\nenqueue(20) … キューは {10, 20}\ndequeue()   … 最初に入れた10を取り出す。キューは {20}\nenqueue(30) … キューは {20, 30}\nenqueue(40) … キューは {20, 30, 40}\ndequeue()   … 最初に入れた20を取り出す。キューは {30, 40}\nenqueue(50) … キューは {30, 40, 50}",
+    "answer_type": "value",
+    "expected_answer": "{30, 40, 50}",
+    "explanation": "キューは先入れ先出し(FIFO)なので、dequeueするたびに最も古くpushした値が取り出されます。1回目のdequeueで10が、2回目のdequeueで20が取り除かれるため、最終的に残るのは{30, 40, 50}です。"
+  },
+  {
+    "key": "b-algo-09",
+    "category": "アルゴリズム",
+    "difficulty": 3,
+    "body": "次の擬似言語で書かれた再帰関数 fact は、階乗を計算する。fact(5) の戻り値を答えよ。",
+    "pseudocode": "○整数型: fact(整数型: n)\n  if (n が 0 と等しい)\n    return 1\n  else\n    return n × fact(n - 1)\n  endif",
+    "answer_type": "value",
+    "expected_answer": "120",
+    "explanation": "fact(5) = 5×fact(4) = 5×4×fact(3) = ... と展開され、最終的に 5×4×3×2×1×1 = 120 になります。fact(0)が1を返す部分が再帰の終了条件です。"
+  },
+  {
+    "key": "b-algo-10",
+    "category": "アルゴリズム",
+    "difficulty": 4,
+    "body": "次の擬似言語で書かれた再帰関数 gcd は、ユークリッドの互除法で最大公約数を求める。gcd(48, 18) の戻り値を答えよ。",
+    "pseudocode": "○整数型: gcd(整数型: a, 整数型: b)\n  if (b が 0 と等しい)\n    return a\n  else\n    return gcd(b, a を b で割った余り)\n  endif",
+    "answer_type": "value",
+    "expected_answer": "6",
+    "explanation": "gcd(48,18) → gcd(18, 48÷18の余り=12) → gcd(12, 18÷12の余り=6) → gcd(6, 12÷6の余り=0) → bが0になったのでaの6を返します。ユークリッドの互除法は「割り切れるまで、割る数と余りの組で繰り返す」計算です。"
+  },
+  {
+    "key": "b-algo-11",
+    "category": "アルゴリズム",
+    "difficulty": 3,
+    "body": "次の擬似言語で書かれた関数 matrixSum は、2次元配列のすべての要素の合計を求める。data ← {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}} のとき、matrixSum(data) の戻り値を答えよ。",
+    "pseudocode": "○整数型: matrixSum(整数型の二次元配列: data)\n  整数型: i, j, sum\n  sum ← 0\n  i を 0 から 2 まで 1 ずつ増やす\n    j を 0 から 2 まで 1 ずつ増やす\n      sum ← sum + data[i][j]\n    endfor\n  endfor\n  return sum",
+    "answer_type": "value",
+    "expected_answer": "45",
+    "explanation": "外側のループが行(i)、内側のループが列(j)を巡り、すべての要素をsumに加算していきます。1から9までの整数の合計なので、1+2+...+9 = 45になります。"
+  },
+  {
+    "key": "b-algo-12",
+    "category": "アルゴリズム",
+    "difficulty": 2,
+    "body": "次の擬似言語で書かれた関数 countChar は、文字列の中で指定した文字が出現する回数を数える。str ← \"banana\"、target ← \"a\" のとき、countChar(str, target) の戻り値を答えよ。",
+    "pseudocode": "○整数型: countChar(文字列型: str, 文字型: target)\n  整数型: i, count\n  count ← 0\n  i を 0 から (strの文字数 - 1) まで 1 ずつ増やす\n    if (str[i] が target と等しい)\n      count ← count + 1\n    endif\n  endfor\n  return count",
+    "answer_type": "value",
+    "expected_answer": "3",
+    "explanation": "\"banana\"の文字を先頭から順に調べ、\"a\"と一致するたびにcountを増やします。b-a-n-a-n-aのうち、aは3文字目・5文字目・7文字目の位置に3回現れるため、戻り値は3です。"
+  },
+  {
+    "key": "b-algo-13",
+    "category": "アルゴリズム",
+    "difficulty": 2,
+    "body": "次の擬似言語で書かれた関数 linearSearch は、配列を先頭から順に調べ、目的の値が見つかった添字を返す(見つからなければ-1を返す)。data ← {12, 45, 7, 23, 56, 9}、target ← 23 のとき、linearSearch(data, target) の戻り値を答えよ。",
+    "pseudocode": "○整数型: linearSearch(整数型の配列: data, 整数型: target)\n  整数型: i\n  i を 0 から (dataの要素数 - 1) まで 1 ずつ増やす\n    if (data[i] が target と等しい)\n      return i\n    endif\n  endfor\n  return -1",
+    "answer_type": "value",
+    "expected_answer": "3",
+    "explanation": "先頭(添字0)から順にtarget(23)と一致するか調べます。添字0は12、1は45、2は7、3は23で一致するため、添字3を返します。線形探索は最悪の場合すべての要素を調べるためO(n)の計算量になります。"
+  },
+  {
+    "key": "b-algo-14",
+    "category": "アルゴリズム",
+    "difficulty": 4,
+    "body": "次の擬似言語で書かれた関数 selectionSort は、配列を昇順に並べ替える(選択ソート)。data ← {29, 10, 14, 37, 13} のとき、外側のループの1回目(i=0)が終了した直後の配列の中身を答えよ(例: {1, 2, 3} の形式で答えること)。",
+    "pseudocode": "○整数型の配列: selectionSort(整数型の配列: data)\n  整数型: i, j, minIndex, tmp, n\n  n ← dataの要素数\n  i を 0 から (n - 2) まで 1 ずつ増やす\n    minIndex ← i\n    j を (i + 1) から (n - 1) まで 1 ずつ増やす\n      if (data[j] < data[minIndex])\n        minIndex ← j\n      endif\n    endfor\n    tmp ← data[i]\n    data[i] ← data[minIndex]\n    data[minIndex] ← tmp\n  endfor\n  return data",
+    "answer_type": "value",
+    "expected_answer": "{10, 29, 14, 37, 13}",
+    "explanation": "i=0のとき、data[1]〜data[4]({10,14,37,13})の中から最小値10(添字1)を探し、data[0]の29と交換します。交換後の配列は{10, 29, 14, 37, 13}です。選択ソートは、未整列部分から最小値を探して先頭と交換することをi回繰り返します。"
+  },
+  {
+    "key": "b-algo-15",
+    "category": "アルゴリズム",
+    "difficulty": 3,
+    "body": "次の擬似言語で書かれた関数 digitSum は、整数の各桁の数字を合計する。digitSum(6789) の戻り値を答えよ。",
+    "pseudocode": "○整数型: digitSum(整数型: n)\n  整数型: sum\n  sum ← 0\n  while (n > 0)\n    sum ← sum + (n を 10 で割った余り)\n    n ← n ÷ 10 (小数点以下切り捨て)\n  endwhile\n  return sum",
+    "answer_type": "value",
+    "expected_answer": "30",
+    "explanation": "10で割った余りが「一番右の桁」、10で割って切り捨てると「右端の桁を取り除いた数」になります。6789→余り9(sum=9)→678→余り8(sum=17)→67→余り7(sum=24)→6→余り6(sum=30)→0でループ終了。6+7+8+9=30と一致します。"
+  },
+  {
+    "key": "b-algo-16",
+    "category": "アルゴリズム",
+    "difficulty": 2,
+    "body": "次の擬似言語で書かれた関数 power は、base の exp 乗を計算する。power(3, 4) の戻り値を答えよ。",
+    "pseudocode": "○整数型: power(整数型: base, 整数型: exp)\n  整数型: i, result\n  result ← 1\n  i を 1 から exp まで 1 ずつ増やす\n    result ← result × base\n  endfor\n  return result",
+    "answer_type": "value",
+    "expected_answer": "81",
+    "explanation": "resultを1から始め、baseを exp 回掛け合わせます。power(3,4)は 1×3×3×3×3 = 81 です。ループがexp回(この場合4回)実行される点を確認しながらトレースします。"
   }
 ]
