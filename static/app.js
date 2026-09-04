@@ -71,6 +71,14 @@ const el = {
   streakDays: document.getElementById("streak-days"),
   dailyChart: document.getElementById("daily-chart"),
 
+  playerRankCard: document.getElementById("player-rank-card"),
+  playerRankRing: document.getElementById("player-rank-ring"),
+  playerRankIcon: document.getElementById("player-rank-icon"),
+  playerRankName: document.getElementById("player-rank-name"),
+  playerRankXp: document.getElementById("player-rank-xp"),
+  playerRankBarFill: document.getElementById("player-rank-bar-fill"),
+  playerRankNext: document.getElementById("player-rank-next"),
+
   labExerciseNav: document.getElementById("lab-exercise-nav"),
   labWorkbench: document.getElementById("lab-workbench"),
   labTitle: document.getElementById("lab-title"),
@@ -475,6 +483,7 @@ async function loadDashboard(subject) {
 
   renderRankHero(data.stats);
   loadStreakAndChart(subject);
+  loadPlayerRank();
 
   if (data.stats.length === 0) {
     const empty = document.createElement("div");
@@ -529,6 +538,47 @@ async function loadDashboard(subject) {
 }
 
 /** 連続学習日数と、直近14日の解答数を棒グラフで表示する。 */
+// 英語名の頭文字だけだとSilverとSovereignが衝突するため、2文字の略称を個別に持つ。
+const PLAYER_RANK_ICON = {
+  bronze: "Br",
+  silver: "Si",
+  gold: "Au",
+  platinum: "Pt",
+  diamond: "Di",
+  master: "Ma",
+  sovereign: "So",
+};
+
+/**
+ * XPに応じた総合ランク(Bronze〜Sovereign)を表示する。分野別正答率(S〜D)とは
+ * 別物で、こちらは科目・分野を横断した「これまでの積み上げ」を示す。
+ */
+async function loadPlayerRank() {
+  const res = await fetch("/api/study/rank");
+  if (!res.ok) {
+    el.playerRankCard.hidden = true;
+    return;
+  }
+  const data = await res.json();
+
+  if (data.xp === 0) {
+    el.playerRankCard.hidden = true;
+    return;
+  }
+
+  el.playerRankCard.hidden = false;
+  el.playerRankCard.dataset.rank = data.current.id;
+  el.playerRankCard.style.setProperty("--rank-color", data.current.color);
+  el.playerRankRing.style.setProperty("--pct", data.next ? data.progress_pct : 100);
+  el.playerRankIcon.textContent = PLAYER_RANK_ICON[data.current.id] || "";
+  el.playerRankName.textContent = `${data.current.name} ${data.current.label}`;
+  el.playerRankXp.textContent = `${data.xp} XP`;
+  el.playerRankBarFill.style.width = `${data.next ? data.progress_pct : 100}%`;
+  el.playerRankNext.textContent = data.next
+    ? `次のランク ${data.next.label} まで あと${data.remaining_xp} XP`
+    : "最高ランクに到達済み";
+}
+
 async function loadStreakAndChart(subject) {
   const res = await fetch(`/api/study/daily/stats?subject=${subject}&days=14`);
   if (!res.ok) {

@@ -16,13 +16,24 @@ from app.schemas import (
     DailyStatsOut,
     MockExamOut,
     MockExamSetOut,
+    PlayerRankOut,
     QuestionOut,
     ReviewSummaryOut,
 )
-from app.services import daily, mock_exam, review
+from app.services import daily, mock_exam, rank, review
 from app.services.questions import to_question_out
 
 router = APIRouter(prefix="/api/study", tags=["study"])
+
+
+# ---------------------------------------------------------------------------
+# プレイヤーランク(XPに応じたBronze〜Sovereignの総合ランク)
+# ---------------------------------------------------------------------------
+
+
+@router.get("/rank", response_model=PlayerRankOut)
+def player_rank(db: Session = Depends(get_db)):
+    return rank.get_player_rank(db)
 
 
 def _require_subject(subject: str) -> None:

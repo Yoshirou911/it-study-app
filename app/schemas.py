@@ -102,3 +102,19 @@ class MockExamOut(BaseModel):
     set_number: int
     time_limit_minutes: int
     questions: list[QuestionOut]
+
+
+class RankTierOut(BaseModel):
+    id: str
+    name: str
+    label: str
+    xp_min: int
+    color: str
+
+
+class PlayerRankOut(BaseModel):
+    xp: int
+    current: RankTierOut
+    next: RankTierOut | None
+    progress_pct: int
+    remaining_xp: int

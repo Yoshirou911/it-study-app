@@ -134,7 +134,24 @@
     </section>
 
     <section id="dashboard-view" class="view">
-      <h2>分野別正答率</h2>
+      <h2>ダッシュボード</h2>
+
+      <div id="player-rank-card" class="panel-card player-rank-card" hidden data-rank="bronze">
+        <div class="player-rank-ring" id="player-rank-ring">
+          <span id="player-rank-icon"></span>
+        </div>
+        <div class="player-rank-info">
+          <span class="player-rank-eyebrow">プレイヤーランク</span>
+          <span id="player-rank-name" class="player-rank-name"></span>
+          <span id="player-rank-xp" class="player-rank-xp"></span>
+          <div class="player-rank-bar-track">
+            <div id="player-rank-bar-fill" class="player-rank-bar-fill"></div>
+          </div>
+          <span id="player-rank-next" class="player-rank-next"></span>
+        </div>
+      </div>
+
+      <h3 class="dashboard-subheading">分野別正答率</h3>
 
       <div id="rank-hero" hidden>
         <div class="rank-ring" id="rank-hero-ring">

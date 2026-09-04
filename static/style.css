@@ -1064,6 +1064,102 @@ h2 {
   margin-left: 0.3rem;
 }
 
+/* ---------- Player rank(XPによる総合ランク) ---------- */
+/* 分野別正答率(#rank-hero、S〜D)とは別物。科目・分野を横断した
+   「これまでの積み上げ」を示す。--rank-colorはJS側でランクごとに設定する。 */
+
+#player-rank-card[hidden] { display: none; }
+
+.player-rank-card {
+  --rank-color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-bottom: 1.6rem;
+  text-align: left;
+}
+
+.player-rank-ring {
+  --pct: 0;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: conic-gradient(var(--rank-color) calc(var(--pct) * 1%), var(--border) 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.player-rank-ring::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.player-rank-ring span {
+  position: relative;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--rank-color);
+}
+
+.player-rank-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.25rem; }
+
+.player-rank-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.player-rank-name {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--rank-color);
+  letter-spacing: 0.03em;
+}
+
+.player-rank-xp {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.15rem;
+}
+
+.player-rank-bar-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.player-rank-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--rank-color);
+  transition: width 0.3s ease;
+}
+
+.player-rank-next {
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+  margin-top: 0.1rem;
+}
+
+.dashboard-subheading {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.8rem;
+  font-weight: 600;
+}
+
 .stat-bar-track {
   height: 6px;
   border-radius: 999px;
