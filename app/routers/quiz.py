@@ -3,25 +3,12 @@ from sqlalchemy.orm import Session
 
 from app.db import get_db
 from app.models import Attempt, Question
-from app.schemas import AnswerIn, AnswerResult, ChoiceOut, QuestionOut
+from app.schemas import AnswerIn, AnswerResult, QuestionOut
 from app.services.grading import get_grader
+from app.services.questions import to_question_out
 from app.services.weighting import select_next_question
 
 router = APIRouter(prefix="/api/quiz", tags=["quiz"])
-
-
-def _to_question_out(question: Question) -> QuestionOut:
-    return QuestionOut(
-        id=question.id,
-        subject=question.subject,
-        category=question.category,
-        difficulty=question.difficulty,
-        body=question.body,
-        pseudocode=question.trace.pseudocode if question.subject == "B" else None,
-        choices=[ChoiceOut.model_validate(c) for c in question.choices]
-        if question.subject == "A"
-        else [],
-    )
 
 
 @router.get("/next", response_model=QuestionOut)
@@ -32,7 +19,7 @@ def next_question(subject: str, exclude_id: int | None = None, db: Session = Dep
     question = select_next_question(db, subject, exclude_id=exclude_id)
     if question is None:
         raise HTTPException(status_code=404, detail="出題可能な問題がありません")
-    return _to_question_out(question)
+    return to_question_out(question)
 
 
 @router.post("/answer", response_model=AnswerResult)

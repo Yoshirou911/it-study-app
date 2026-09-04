@@ -2753,5 +2753,1919 @@
       }
     ],
     "key": "agile-04"
+  },
+  {
+    "key": "hp-theory-01",
+    "category": "基礎理論",
+    "difficulty": 2,
+    "body": "2進数101101を10進数で表した値はどれか。",
+    "explanation": "32+8+4+1=45。各桁の重みを足す。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "45",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "41",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "43",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "47",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-theory-02",
+    "category": "基礎理論",
+    "difficulty": 2,
+    "body": "10進数0.625を2進小数で表したものはどれか。",
+    "explanation": "1/2+1/8=0.625なので0.101。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.011",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "0.110",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "0.111",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "0.101",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-theory-03",
+    "category": "基礎理論",
+    "difficulty": 2,
+    "body": "A=真、B=偽のとき、A AND (NOT B)の値はどれか。",
+    "explanation": "NOT Bは真なので、真AND真は真。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "未定義",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "Aと同じとは限らない",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "真",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "偽",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-theory-04",
+    "category": "基礎理論",
+    "difficulty": 2,
+    "body": "8ビットの符号なし整数で表せる最大値はどれか。",
+    "explanation": "0から2の8乗-1までなので255。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "511",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "255",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "127",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "256",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-theory-05",
+    "category": "基礎理論",
+    "difficulty": 2,
+    "body": "データ圧縮で、展開後に元データを完全復元できる方式はどれか。",
+    "explanation": "可逆圧縮は情報を失わず元へ戻せる。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "可逆圧縮",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "非可逆圧縮",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "量子化",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "標本化",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-theory-06",
+    "category": "基礎理論",
+    "difficulty": 2,
+    "body": "命題P→Qが偽になる組合せはどれか。",
+    "explanation": "含意が偽なのは前件が真で後件が偽のときだけ。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "Pが真、Qが真",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "Pが偽、Qが真",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "Pが偽、Qが偽",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "Pが真、Qが偽",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-hw-01",
+    "category": "コンピュータ構成要素",
+    "difficulty": 2,
+    "body": "20億命令を平均CPI 2、4GHzで実行すると理論上何秒か。",
+    "explanation": "20億×2÷40億=1秒。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.5秒",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "2秒",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "4秒",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "1秒",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-hw-02",
+    "category": "コンピュータ構成要素",
+    "difficulty": 2,
+    "body": "キャッシュメモリを置く主な目的はどれか。",
+    "explanation": "局所性を利用し平均アクセス時間を短縮する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "電源断でも必ず保持する",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "通信を暗号化する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "CPUと主記憶の速度差を緩和する",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "主記憶容量を永久に増やす",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-hw-03",
+    "category": "コンピュータ構成要素",
+    "difficulty": 2,
+    "body": "RAID 1の説明として適切なものはどれか。",
+    "explanation": "RAID 1はミラーリング。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "バックアップを遠隔地へ送る",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "同じデータを複数ディスクへ複製する",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "パリティだけを保存する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "圧縮して容量を倍にする",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-hw-04",
+    "category": "コンピュータ構成要素",
+    "difficulty": 2,
+    "body": "DMAの効果として適切なものはどれか。",
+    "explanation": "DMAは転送処理によるCPU負荷を減らす。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "CPUを介さず入出力装置と主記憶間を転送する",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "CPUクロックを自動で倍にする",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "仮想記憶を暗号化する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ディスクを論理分割する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-hw-05",
+    "category": "コンピュータ構成要素",
+    "difficulty": 2,
+    "body": "仮想記憶でページが主記憶にないときに起きるものはどれか。",
+    "explanation": "必要ページを補助記憶から読み込む契機になる。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "デッドロック",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "チェックサム",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "スプーリング",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ページフォールト",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-hw-06",
+    "category": "コンピュータ構成要素",
+    "difficulty": 2,
+    "body": "直列接続した装置Aの稼働率0.9、Bの稼働率0.8の全体稼働率はどれか。",
+    "explanation": "両方稼働が必要なので0.9×0.8=0.72。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.90",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "1.70",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "0.72",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "0.85",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-os-01",
+    "category": "オペレーティングシステム",
+    "difficulty": 2,
+    "body": "プロセスと比較したスレッドの一般的な特徴はどれか。",
+    "explanation": "スレッドはアドレス空間などを共有する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "主記憶を共有できない",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "CPUを使わない",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "同一プロセス内の資源を共有する",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "必ず別のOSで動く",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-os-02",
+    "category": "オペレーティングシステム",
+    "difficulty": 2,
+    "body": "ラウンドロビン方式で各プロセスへ割り当てる短い時間を何というか。",
+    "explanation": "一定時間ごとに実行権を切り替える。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "スワップ領域",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "タイムクォンタム",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "ページフレーム",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "セマフォ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-os-03",
+    "category": "オペレーティングシステム",
+    "difficulty": 2,
+    "body": "デッドロックの必要条件に含まれないものはどれか。",
+    "explanation": "4条件は相互排除・占有待ち・横取り不可・循環待ち。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "資源の無制限な複製",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "相互排除",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "占有待ち",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "循環待ち",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-os-04",
+    "category": "オペレーティングシステム",
+    "difficulty": 2,
+    "body": "セマフォの主な用途はどれか。",
+    "explanation": "排他や処理順序の同期に使う。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ファイルを圧縮する",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "IPアドレスを割り当てる",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "SQLを最適化する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "共有資源へのアクセスを同期・制御する",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-os-05",
+    "category": "オペレーティングシステム",
+    "difficulty": 2,
+    "body": "コンテナの一般的な特徴はどれか。",
+    "explanation": "VMより軽量になりやすい理由。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ネットワークを利用できない",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "ゲストOSが必須である",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "ホストOSのカーネルを共有する",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "各コンテナが必ず物理CPUを占有する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-os-06",
+    "category": "オペレーティングシステム",
+    "difficulty": 2,
+    "body": "SaaSで利用者が主に管理する対象はどれか。",
+    "explanation": "サービス形態でもデータとIDの責任は残る。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "データセンターの電源",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "利用者データとアカウント設定",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "物理サーバの交換",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ハイパーバイザ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-nw-01",
+    "category": "ネットワーク",
+    "difficulty": 2,
+    "body": "192.168.1.70/26のネットワークアドレスはどれか。",
+    "explanation": "/26のブロック幅は64。70は64〜127に属する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "192.168.1.128",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "192.168.1.64",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "192.168.1.0",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "192.168.1.70",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-nw-02",
+    "category": "ネットワーク",
+    "difficulty": 2,
+    "body": "TCPの特徴として適切なものはどれか。",
+    "explanation": "TCPは信頼性を提供する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "再送と順序制御を行う接続型通信",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "宛先を確認しない放送専用通信",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "暗号化だけを行う",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "IPアドレスを名前へ変換する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-nw-03",
+    "category": "ネットワーク",
+    "difficulty": 2,
+    "body": "DNSの役割はどれか。",
+    "explanation": "名前解決を担う。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "メール本文を暗号化する",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "時刻を同期する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "ファイルを圧縮する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ドメイン名とIPアドレスを対応付ける",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-nw-04",
+    "category": "ネットワーク",
+    "difficulty": 2,
+    "body": "ルータが主に参照して転送先を決める情報はどれか。",
+    "explanation": "ネットワーク層の宛先と経路表を使う。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "HTMLのタイトル",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "利用者の氏名",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "宛先IPアドレス",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "送信元MACアドレスだけ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-nw-05",
+    "category": "ネットワーク",
+    "difficulty": 2,
+    "body": "HTTPSがHTTPへ追加する主な保護はどれか。",
+    "explanation": "盗聴・改ざん・なりすまし対策になる。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "CPUの高速化",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "TLSによる暗号化とサーバ認証",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "画像の自動圧縮",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "IPアドレスの自動配布",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-nw-06",
+    "category": "ネットワーク",
+    "difficulty": 2,
+    "body": "NATの主な役割はどれか。",
+    "explanation": "境界でアドレスを変換する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "プライベートIPとグローバルIPを変換する",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "URLをHTMLへ変換する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "パスワードをハッシュ化する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "SQLを結合する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-db-01",
+    "category": "データベース",
+    "difficulty": 3,
+    "body": "表の各行を一意に識別する列または列の組はどれか。",
+    "explanation": "主キーは重複せずNULLにできない。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "主キー",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "外部キー",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "ビュー",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "トリガ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-db-02",
+    "category": "データベース",
+    "difficulty": 3,
+    "body": "第3正規形で除去する依存関係はどれか。",
+    "explanation": "更新異常を減らすため推移的従属を分離する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "主キーによる一意識別",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "外部キーによる参照",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "全ての列",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "非キー属性から非キー属性への推移的関数従属",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-db-03",
+    "category": "データベース",
+    "difficulty": 3,
+    "body": "LEFT JOINの結果に必ず残るものはどれか。",
+    "explanation": "右側に一致がなくても左行は残る。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "一致しない行は全て削除",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "NULLを含む列は全て削除",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "左表の全行",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "右表の全行だけ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-db-04",
+    "category": "データベース",
+    "difficulty": 3,
+    "body": "集約結果を条件で絞る句はどれか。",
+    "explanation": "GROUP BY後の集約値はHAVINGで絞る。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "VALUES",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "HAVING",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "WHERE",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "ORDER BY",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-db-05",
+    "category": "データベース",
+    "difficulty": 3,
+    "body": "SQLでNULLかどうかを判定する式はどれか。",
+    "explanation": "NULLは通常の等価比較を使わない。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "IS NULL",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "= NULL",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "LIKE NULL",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "IN NULL",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-db-06",
+    "category": "データベース",
+    "difficulty": 3,
+    "body": "トランザクションを確定する命令はどれか。",
+    "explanation": "COMMIT後の更新を永続化する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ROLLBACK",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "SELECT",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "GRANT",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "COMMIT",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-sec-01",
+    "category": "セキュリティ",
+    "difficulty": 3,
+    "body": "ハッシュ関数の主な性質はどれか。",
+    "explanation": "完全性確認やパスワード保護に用いる。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "秘密鍵で必ず復号できる",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "通信経路を物理的に分離する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "IPアドレスを自動配布する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "入力から固定長の値を求め、元へ戻すのが困難",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-sec-02",
+    "category": "セキュリティ",
+    "difficulty": 3,
+    "body": "電子署名を生成するとき署名者が使う鍵はどれか。",
+    "explanation": "検証は署名者の公開鍵で行う。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "署名者の公開鍵",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "共有されたパスワードだけ",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "署名者の秘密鍵",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "受信者の秘密鍵",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-sec-03",
+    "category": "セキュリティ",
+    "difficulty": 3,
+    "body": "MFAの説明として適切なものはどれか。",
+    "explanation": "知識・所持・生体など異なる要素を組み合わせる。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "毎日パスワードを公開する",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "異なる種類の認証要素を二つ以上使う",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "同じパスワードを二回入力する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "複数人で一つのIDを共有する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-sec-04",
+    "category": "セキュリティ",
+    "difficulty": 3,
+    "body": "SQLインジェクションの基本対策はどれか。",
+    "explanation": "入力を命令として解釈させない。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "プレースホルダを使ったパラメータ化クエリ",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "SQLエラーを詳しく公開する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "全利用者へ管理者権限を与える",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "入力をそのままSQLへ連結する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-sec-05",
+    "category": "セキュリティ",
+    "difficulty": 3,
+    "body": "最小権限の原則とはどれか。",
+    "explanation": "侵害時の影響も小さくする。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "全員へ最大権限を与える",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "権限確認を省略する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "退職後も権限を残す",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "業務に必要な最小限の権限だけ与える",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-sec-06",
+    "category": "セキュリティ",
+    "difficulty": 3,
+    "body": "脆弱性と脅威の関係として適切なものはどれか。",
+    "explanation": "資産・脅威・脆弱性・影響を分けて評価する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "脅威は必ずソフトウェアのバグ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "両者はリスクと無関係",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "脅威が脆弱性を突くと損失につながり得る",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "脆弱性は必ず攻撃者そのもの",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-sdlc-01",
+    "category": "システム開発技術",
+    "difficulty": 3,
+    "body": "機能要件の例はどれか。",
+    "explanation": "システムが何を行うかを表す。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "年間稼働率を99.9%にする",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "画面を誰でも学習しやすくする",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "利用者が注文を登録できる",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "応答時間を2秒以内にする",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-sdlc-02",
+    "category": "システム開発技術",
+    "difficulty": 3,
+    "body": "オブジェクト間の時系列のメッセージを表すUML図はどれか。",
+    "explanation": "縦方向に時間を追う。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "状態遷移表だけ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "シーケンス図",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "クラス図",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "配置図",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-sdlc-03",
+    "category": "システム開発技術",
+    "difficulty": 3,
+    "body": "入力範囲が1〜100の境界値テストで優先する組合せはどれか。",
+    "explanation": "境界の直前・境界・直後を試す。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0, 1, 100, 101",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "25, 50, 75",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "1だけ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "1000だけ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-sdlc-04",
+    "category": "システム開発技術",
+    "difficulty": 3,
+    "body": "コードを実行せず欠陥を探す活動はどれか。",
+    "explanation": "レビューや静的解析が該当する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "負荷テスト",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "回帰テスト",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "運用テスト",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "静的テスト",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-sdlc-05",
+    "category": "システム開発技術",
+    "difficulty": 3,
+    "body": "CIの目的として適切なものはどれか。",
+    "explanation": "統合問題を早期に検出する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "本番障害を隠す",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "テストを最後に一度だけ行う",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "変更を頻繁に統合し自動ビルド・テストする",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "設計書を印刷する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-sdlc-06",
+    "category": "システム開発技術",
+    "difficulty": 3,
+    "body": "凝集度が高く結合度が低い設計の利点はどれか。",
+    "explanation": "責務をまとめ、外部依存を抑える。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "テストできなくなる",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "変更影響を局所化しやすい",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "全機能が一つに集中する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "依存関係が必ず循環する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-pm-01",
+    "category": "プロジェクトマネジメント",
+    "difficulty": 3,
+    "body": "WBSの目的はどれか。",
+    "explanation": "見積り・担当・進捗の基礎になる。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "データを正規化する",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "成果物と作業を管理可能な単位へ分解する",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "暗号鍵を配布する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "IP経路を選ぶ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-pm-02",
+    "category": "プロジェクトマネジメント",
+    "difficulty": 3,
+    "body": "クリティカルパスが遅れた場合の一般的な影響はどれか。",
+    "explanation": "全体所要期間を決める経路。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "対策しなければプロジェクト全体が遅れる",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "必ずコストが下がる",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "他作業に影響しない",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "品質が自動で上がる",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-pm-03",
+    "category": "プロジェクトマネジメント",
+    "difficulty": 3,
+    "body": "PV=100、EV=80のときSVはいくつか。",
+    "explanation": "SV=EV-PV=80-100=-20。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "20",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "80",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "180",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "-20",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-pm-04",
+    "category": "プロジェクトマネジメント",
+    "difficulty": 3,
+    "body": "EV=80、AC=90のときCVはいくつか。",
+    "explanation": "CV=EV-AC=80-90=-10。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "0.89",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "170",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "-10",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "10",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-pm-05",
+    "category": "プロジェクトマネジメント",
+    "difficulty": 3,
+    "body": "インシデント管理が最優先するものはどれか。",
+    "explanation": "利用者への影響を早く抑える。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "全サーバの交換",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "サービスの迅速な復旧",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "根本原因の研究だけ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "新規事業の企画",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-pm-06",
+    "category": "プロジェクトマネジメント",
+    "difficulty": 3,
+    "body": "問題管理の主な目的はどれか。",
+    "explanation": "繰返すインシデントの原因を扱う。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "根本原因を特定し再発を防ぐ",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "全問を暗記する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "売上を記録する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "IPアドレスを変換する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-strategy-01",
+    "category": "システム戦略",
+    "difficulty": 4,
+    "body": "SWOT分析で外部環境に分類されるものはどれか。",
+    "explanation": "Strength/Weaknessは内部、Opportunity/Threatは外部。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "機会と脅威",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "強みと弱み",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "売上と費用",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "品質と納期",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-strategy-02",
+    "category": "システム戦略",
+    "difficulty": 4,
+    "body": "BPRの説明として適切なものはどれか。",
+    "explanation": "Business Process Re-engineering。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "毎日の小さな修正だけを指す",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "バックアップを複製する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "暗号方式を変更する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "業務プロセスを抜本的に再設計する",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-strategy-03",
+    "category": "システム戦略",
+    "difficulty": 4,
+    "body": "KPIの役割はどれか。",
+    "explanation": "戦略の進み具合を測定する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "データベースの主キー",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "CPUの命令形式",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "目標達成に向けた重要な業績指標",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "秘密鍵の保管場所",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-strategy-04",
+    "category": "システム戦略",
+    "difficulty": 4,
+    "body": "PPMで市場成長率・占有率とも高い事業はどれか。",
+    "explanation": "投資を続け成長を狙う領域。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "負け犬",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "花形",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "金のなる木",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "問題児",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-strategy-05",
+    "category": "システム戦略",
+    "difficulty": 4,
+    "body": "DXの本質に最も近いものはどれか。",
+    "explanation": "技術導入だけでなく価値と変革が中心。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "デジタル技術で事業や組織を変革する",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "紙をPDFにするだけ",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "PCを新しくするだけ",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "全業務を外注する",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-strategy-06",
+    "category": "システム戦略",
+    "difficulty": 4,
+    "body": "ベンチマーキングの説明はどれか。",
+    "explanation": "比較から目標と改善方法を学ぶ。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "CPU速度だけを測る",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "契約を自動更新する",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "乱数を作る",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "優れた組織や手法と比較し改善点を見つける",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-biz-01",
+    "category": "経営戦略・法務",
+    "difficulty": 4,
+    "body": "著作権が原則として保護するものはどれか。",
+    "explanation": "表現を保護し、アイデア自体とは区別する。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "単なるアイデア",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "数学上の法則",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "事実そのもの",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "創作的な表現",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-biz-02",
+    "category": "経営戦略・法務",
+    "difficulty": 4,
+    "body": "OSSを利用するとき最初に確認すべきものはどれか。",
+    "explanation": "表示・再配布・ソース公開などの条件が異なる。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "ファイル名の長さ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "PCの壁紙",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "適用ライセンスの条件",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "作者の年齢",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-biz-03",
+    "category": "経営戦略・法務",
+    "difficulty": 4,
+    "body": "固定費300万円、変動費率60%の損益分岐点売上高はどれか。",
+    "explanation": "300÷(1-0.6)=750万円。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "1200万円",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "750万円",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "500万円",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "180万円",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-biz-04",
+    "category": "経営戦略・法務",
+    "difficulty": 4,
+    "body": "売上1000万円、変動費600万円、固定費300万円の利益はどれか。",
+    "explanation": "1000-600-300=100万円。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "100万円",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "400万円",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "700万円",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "1900万円",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-biz-05",
+    "category": "経営戦略・法務",
+    "difficulty": 4,
+    "body": "個人データの取扱いで重要な考え方はどれか。",
+    "explanation": "目的・権限・安全管理を明確にする。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "取得後は無制限に公開する",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "退職者が自由に持ち出す",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "目的を示さず永久保存する",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "利用目的と権限に沿って必要範囲で扱う",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-biz-06",
+    "category": "経営戦略・法務",
+    "difficulty": 4,
+    "body": "標準化の主な効果はどれか。",
+    "explanation": "接続性・評価・再利用を高める。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "競争を法律で禁止する",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "障害を必ずゼロにする",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "互換性や品質の共通基準を作る",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "全製品を同じ価格にする",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-ai-01",
+    "category": "AI・データ活用",
+    "difficulty": 4,
+    "body": "教師あり学習に必要なものはどれか。",
+    "explanation": "分類や回帰の対応関係を学ぶ。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "乱数だけ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "暗号鍵だけ",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "入力と正解ラベルの組",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "ラベルのないデータだけ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-ai-02",
+    "category": "AI・データ活用",
+    "difficulty": 4,
+    "body": "過学習の状態はどれか。",
+    "explanation": "汎化性能が不足した状態。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "必ず計算量がゼロ",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "訓練データには合うが未知データで性能が低い",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "全データで同じ性能",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "学習を一度もしていない",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-ai-03",
+    "category": "AI・データ活用",
+    "difficulty": 4,
+    "body": "相関係数が高いとき必ず言えることはどれか。",
+    "explanation": "相関だけでは因果を証明できない。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "線形な関連が強い可能性がある",
+        "is_correct": true
+      },
+      {
+        "label": "イ",
+        "text": "一方が他方の原因である",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "外れ値が存在しない",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "平均値が同じ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-ai-04",
+    "category": "AI・データ活用",
+    "difficulty": 4,
+    "body": "再現率を重視しやすい場面はどれか。",
+    "explanation": "再現率は実際の正例を拾えた割合。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "誤検知を完全にゼロにしたい",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "データを暗号化したい",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "平均だけ求めたい",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "重大な異常の見逃しを減らしたい",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "key": "hp-ai-05",
+    "category": "AI・データ活用",
+    "difficulty": 4,
+    "body": "中央値が平均値より有効なことが多い場面はどれか。",
+    "explanation": "中央値は外れ値の影響を受けにくい。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "データが存在しない",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "必ず正規分布",
+        "is_correct": false
+      },
+      {
+        "label": "ウ",
+        "text": "極端な外れ値が含まれる",
+        "is_correct": true
+      },
+      {
+        "label": "エ",
+        "text": "全値が同じ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "key": "hp-ai-06",
+    "category": "AI・データ活用",
+    "difficulty": 4,
+    "body": "クラスタリングはどの学習に分類されるか。",
+    "explanation": "ラベルなしデータの似た集合を見つける。",
+    "choices": [
+      {
+        "label": "ア",
+        "text": "暗号学習",
+        "is_correct": false
+      },
+      {
+        "label": "イ",
+        "text": "教師なし学習",
+        "is_correct": true
+      },
+      {
+        "label": "ウ",
+        "text": "教師あり学習",
+        "is_correct": false
+      },
+      {
+        "label": "エ",
+        "text": "強化学習だけ",
+        "is_correct": false
+      }
+    ]
   }
 ]

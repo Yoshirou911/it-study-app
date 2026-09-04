@@ -7,7 +7,7 @@ from fastapi.templating import Jinja2Templates
 
 from app import network
 from app.db import Base, engine, ensure_schema
-from app.routers import notes, progress, quiz
+from app.routers import notes, progress, quiz, study
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,6 +39,7 @@ templates.env.globals["static_url"] = static_url
 app.include_router(quiz.router)
 app.include_router(progress.router)
 app.include_router(notes.router)
+app.include_router(study.router)
 
 
 @app.get("/", response_class=HTMLResponse)

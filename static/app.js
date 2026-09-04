@@ -5,6 +5,22 @@ const state = {
   textbookLevel: null,
   textbookCategory: null,
   curriculum: null, // [{ level, groups: [{ group, categories }] }]
+
+  quizMode: "normal", // "normal" | "review" | "daily" | "mock"
+  daily: { questions: [], index: 0 },
+  mock: {
+    setNumber: null,
+    questions: [],
+    index: 0,
+    correct: 0,
+    timeLimitMinutes: 0,
+    deadline: null,
+    timerId: null,
+  },
+  lab: {
+    exercises: null, // 初回だけ取得してキャッシュする
+    currentId: null,
+  },
 };
 
 const el = {
@@ -34,6 +50,44 @@ const el = {
   rankHeroLetter: document.getElementById("rank-hero-letter"),
   rankHeroPct: document.getElementById("rank-hero-pct"),
   rankHeroCount: document.getElementById("rank-hero-count"),
+
+  quizModeBtns: document.querySelectorAll(".quiz-mode-btn"),
+  reviewDueBadge: document.getElementById("review-due-badge"),
+  quizProgress: document.getElementById("quiz-progress"),
+  quizProgressLabel: document.getElementById("quiz-progress-label"),
+  quizTimer: document.getElementById("quiz-timer"),
+  quizCard: document.getElementById("quiz-card"),
+  mockSetup: document.getElementById("mock-setup"),
+  mockSetList: document.getElementById("mock-set-list"),
+  mockSummary: document.getElementById("mock-summary"),
+  mockSummaryPct: document.getElementById("mock-summary-pct"),
+  mockSummaryDetail: document.getElementById("mock-summary-detail"),
+  mockSummaryRetry: document.getElementById("mock-summary-retry"),
+  quizEmptyPanel: document.getElementById("quiz-empty-panel"),
+  quizEmptyTitle: document.getElementById("quiz-empty-title"),
+  quizEmptyLead: document.getElementById("quiz-empty-lead"),
+
+  streakCard: document.getElementById("streak-card"),
+  streakDays: document.getElementById("streak-days"),
+  dailyChart: document.getElementById("daily-chart"),
+
+  labExerciseNav: document.getElementById("lab-exercise-nav"),
+  labWorkbench: document.getElementById("lab-workbench"),
+  labTitle: document.getElementById("lab-title"),
+  labClearedBadge: document.getElementById("lab-cleared-badge"),
+  labRequirement: document.getElementById("lab-requirement"),
+  labTags: document.getElementById("lab-tags"),
+  labCode: document.getElementById("lab-code"),
+  labRun: document.getElementById("lab-run"),
+  labReset: document.getElementById("lab-reset"),
+  labToggleHints: document.getElementById("lab-toggle-hints"),
+  labToggleSolution: document.getElementById("lab-toggle-solution"),
+  labHints: document.getElementById("lab-hints"),
+  labSolution: document.getElementById("lab-solution"),
+  labResult: document.getElementById("lab-result"),
+  labResultSummary: document.getElementById("lab-result-summary"),
+  labCases: document.getElementById("lab-cases"),
+  labLogs: document.getElementById("lab-logs"),
 };
 
 const RANK_THRESHOLDS = [
@@ -65,12 +119,19 @@ el.tabBtns.forEach((btn) => {
     } else if (tab === "textbook") {
       switchView("textbook-view");
       loadTextbook();
+    } else if (tab === "lab") {
+      switchView("lab-view");
+      loadLab();
     } else {
       state.subject = btn.dataset.subject;
       switchView("quiz-view");
-      loadNextQuestion();
+      setQuizMode("normal");
     }
   });
+});
+
+el.quizModeBtns.forEach((btn) => {
+  btn.addEventListener("click", () => setQuizMode(btn.dataset.mode));
 });
 
 el.dashSubjectBtns.forEach((btn) => {
@@ -82,6 +143,76 @@ el.dashSubjectBtns.forEach((btn) => {
   });
 });
 
+// ─── 出題モード(通常/復習/今日の10問/模試)の切り替え ─────────────────────
+//
+// 「次にどの問題を出すか」だけが4モードで違い、問題の表示(renderQuestion)と
+// 採点(submitAnswer)はすべて共通で使い回す。
+
+function stopMockTimer() {
+  if (state.mock.timerId) {
+    clearInterval(state.mock.timerId);
+    state.mock.timerId = null;
+  }
+}
+
+function showQuizEmpty(title, lead) {
+  el.quizCard.hidden = true;
+  el.quizProgress.hidden = true;
+  el.quizEmptyTitle.textContent = title;
+  el.quizEmptyLead.textContent = lead;
+  el.quizEmptyPanel.hidden = false;
+}
+
+function setQuizMode(mode) {
+  stopMockTimer();
+  state.quizMode = mode;
+  state.currentQuestion = null;
+
+  el.quizModeBtns.forEach((b) => b.classList.toggle("active", b.dataset.mode === mode));
+  el.quizEmptyPanel.hidden = true;
+  el.mockSetup.hidden = true;
+  el.mockSummary.hidden = true;
+  el.quizProgress.hidden = true;
+  el.quizTimer.hidden = true;
+  el.quizCard.hidden = false;
+  el.resultArea.hidden = true;
+
+  if (mode === "normal") loadNextQuestion();
+  else if (mode === "review") loadReviewNext();
+  else if (mode === "daily") startDailyMode();
+  else if (mode === "mock") showMockSetup();
+}
+
+/** 「次の問題へ」ボタンの挙動は、モードによって「次に何を出すか」が違う。 */
+function advanceQuiz() {
+  if (state.quizMode === "normal") loadNextQuestion();
+  else if (state.quizMode === "review") loadReviewNext();
+  else if (state.quizMode === "daily") {
+    state.daily.index += 1;
+    showDailyQuestion();
+  } else if (state.quizMode === "mock") {
+    state.mock.index += 1;
+    if (state.mock.index >= state.mock.questions.length) finishMockExam();
+    else showMockQuestion();
+  }
+}
+
+async function refreshReviewBadge() {
+  try {
+    const res = await fetch(`/api/study/review/summary?subject=${state.subject}`);
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data.due > 0) {
+      el.reviewDueBadge.textContent = data.due;
+      el.reviewDueBadge.hidden = false;
+    } else {
+      el.reviewDueBadge.hidden = true;
+    }
+  } catch {
+    // バッジは付加情報なので、失敗しても黙って諦める
+  }
+}
+
 async function loadNextQuestion() {
   el.resultArea.hidden = true;
   const excludeId = state.currentQuestion ? state.currentQuestion.id : "";
@@ -90,15 +221,138 @@ async function loadNextQuestion() {
 
   const res = await fetch(`/api/quiz/next?${params}`);
   if (!res.ok) {
-    el.body.textContent = "出題可能な問題がありません。シードデータを投入してください。";
-    el.choicesArea.hidden = true;
-    el.textAnswerArea.hidden = true;
+    showQuizEmpty("出題可能な問題がありません", "シードデータを投入してください。");
+    return;
+  }
+  const question = await res.json();
+  state.currentQuestion = question;
+  renderQuestion(question);
+  refreshReviewBadge();
+}
+
+// ─── 復習(間隔反復) ─────────────────────────────────────────────────────
+
+async function loadReviewNext() {
+  el.resultArea.hidden = true;
+  const res = await fetch(`/api/study/review/next?subject=${state.subject}`);
+  if (!res.ok) {
+    showQuizEmpty(
+      "復習対象はありません",
+      "正解した問題は、時間をおいて忘れかけた頃に復習として出てくる。まずは通常演習で解いてみよう。"
+    );
+    refreshReviewBadge();
     return;
   }
   const question = await res.json();
   state.currentQuestion = question;
   renderQuestion(question);
 }
+
+// ─── 今日の10問 ─────────────────────────────────────────────────────────
+
+async function startDailyMode() {
+  const res = await fetch(`/api/study/daily/plan?subject=${state.subject}`);
+  const data = await res.json();
+  state.daily.questions = data.questions;
+  state.daily.index = 0;
+  if (state.daily.questions.length === 0) {
+    showQuizEmpty("今日の10問はまだ準備できません", "問題データが投入されていないようです。");
+    return;
+  }
+  showDailyQuestion();
+}
+
+function showDailyQuestion() {
+  el.resultArea.hidden = true;
+  const { questions, index } = state.daily;
+  if (index >= questions.length) {
+    showQuizEmpty("今日の10問、完了!", "お疲れさま。続きは通常演習や復習でどうぞ。");
+    return;
+  }
+  el.quizProgress.hidden = false;
+  el.quizProgressLabel.textContent = `${index + 1} / ${questions.length}問`;
+  const question = questions[index];
+  state.currentQuestion = question;
+  renderQuestion(question);
+}
+
+// ─── 模試 ───────────────────────────────────────────────────────────────
+
+async function showMockSetup() {
+  el.quizCard.hidden = true;
+  el.mockSetup.hidden = false;
+  const res = await fetch(`/api/study/mock/sets?subject=${state.subject}`);
+  const sets = await res.json();
+  el.mockSetList.innerHTML = "";
+  sets.forEach((s) => {
+    const btn = document.createElement("button");
+    btn.className = "mock-set-btn";
+    btn.innerHTML = `<span class="mock-set-name">セット${s.set_number}</span><span class="mock-set-meta">${s.size}問 ・ ${s.time_limit_minutes}分</span>`;
+    btn.addEventListener("click", () => startMockExam(s.set_number));
+    el.mockSetList.appendChild(btn);
+  });
+}
+
+async function startMockExam(setNumber) {
+  const res = await fetch(`/api/study/mock/start?subject=${state.subject}&set=${setNumber}`);
+  const data = await res.json();
+  state.mock = {
+    setNumber,
+    questions: data.questions,
+    index: 0,
+    correct: 0,
+    timeLimitMinutes: data.time_limit_minutes,
+    deadline: Date.now() + data.time_limit_minutes * 60 * 1000,
+    timerId: null,
+  };
+  el.mockSetup.hidden = true;
+  el.mockSummary.hidden = true;
+  el.quizCard.hidden = false;
+  el.quizTimer.hidden = false;
+  startMockTimer();
+  showMockQuestion();
+}
+
+function startMockTimer() {
+  stopMockTimer();
+  updateMockTimerLabel();
+  state.mock.timerId = setInterval(() => {
+    updateMockTimerLabel();
+    if (Date.now() >= state.mock.deadline) finishMockExam();
+  }, 1000);
+}
+
+function updateMockTimerLabel() {
+  const remainingMs = Math.max(0, state.mock.deadline - Date.now());
+  const totalSec = Math.floor(remainingMs / 1000);
+  const m = String(Math.floor(totalSec / 60)).padStart(2, "0");
+  const s = String(totalSec % 60).padStart(2, "0");
+  el.quizTimer.textContent = `残り ${m}:${s}`;
+}
+
+function showMockQuestion() {
+  el.resultArea.hidden = true;
+  const { questions, index } = state.mock;
+  el.quizProgress.hidden = false;
+  el.quizProgressLabel.textContent = `${index + 1} / ${questions.length}問`;
+  const question = questions[index];
+  state.currentQuestion = question;
+  renderQuestion(question);
+}
+
+function finishMockExam() {
+  stopMockTimer();
+  el.quizCard.hidden = true;
+  el.quizProgress.hidden = true;
+  el.quizTimer.hidden = true;
+  el.mockSummary.hidden = false;
+  const total = state.mock.questions.length;
+  const pct = total > 0 ? Math.round((state.mock.correct / total) * 100) : 0;
+  el.mockSummaryPct.textContent = pct;
+  el.mockSummaryDetail.textContent = `${total}問中${state.mock.correct}問正解`;
+}
+
+el.mockSummaryRetry.addEventListener("click", () => setQuizMode("mock"));
 
 function renderDifficultyDots(level) {
   el.difficulty.innerHTML = "";
@@ -124,7 +378,9 @@ function renderQuestion(question) {
     el.pseudocode.hidden = true;
   }
 
-  if (question.subject === "A") {
+  // 科目Aは常に選択式。科目Bは基本は自由入力だが、選択式トレース問題では
+  // choicesが渡ってくるので、その有無で表示を切り替える。
+  if (question.choices.length > 0) {
     el.choicesArea.innerHTML = "";
     el.choicesArea.hidden = false;
     el.textAnswerArea.hidden = true;
@@ -176,9 +432,13 @@ function showResult(result) {
   } else {
     el.explanationBlock.hidden = true;
   }
+
+  if (state.quizMode === "mock" && result.correct) {
+    state.mock.correct += 1;
+  }
 }
 
-el.nextQuestion.addEventListener("click", loadNextQuestion);
+el.nextQuestion.addEventListener("click", advanceQuiz);
 
 function renderRankHero(stats) {
   if (stats.length === 0) {
@@ -214,6 +474,7 @@ async function loadDashboard(subject) {
   el.statsList.innerHTML = "";
 
   renderRankHero(data.stats);
+  loadStreakAndChart(subject);
 
   if (data.stats.length === 0) {
     const empty = document.createElement("div");
@@ -264,6 +525,46 @@ async function loadDashboard(subject) {
     row.appendChild(top);
     row.appendChild(track);
     el.statsList.appendChild(row);
+  });
+}
+
+/** 連続学習日数と、直近14日の解答数を棒グラフで表示する。 */
+async function loadStreakAndChart(subject) {
+  const res = await fetch(`/api/study/daily/stats?subject=${subject}&days=14`);
+  if (!res.ok) {
+    el.streakCard.hidden = true;
+    return;
+  }
+  const data = await res.json();
+  const hasAnyActivity = data.days.some((d) => d.answered > 0);
+  if (!hasAnyActivity && data.streak_days === 0) {
+    el.streakCard.hidden = true;
+    return;
+  }
+
+  el.streakCard.hidden = false;
+  el.streakDays.textContent = data.streak_days;
+
+  const max = Math.max(1, ...data.days.map((d) => d.answered));
+  el.dailyChart.innerHTML = "";
+  data.days.forEach((day) => {
+    const col = document.createElement("div");
+    col.className = "daily-chart-col";
+    col.title = `${day.date}: ${day.answered}問(${day.correct}問正解)`;
+
+    const bar = document.createElement("div");
+    bar.className = "daily-chart-bar";
+    const heightPct = day.answered > 0 ? Math.max(6, Math.round((day.answered / max) * 100)) : 0;
+    bar.style.height = `${heightPct}%`;
+    if (day.answered === 0) bar.classList.add("is-empty");
+
+    const label = document.createElement("span");
+    label.className = "daily-chart-label";
+    label.textContent = day.date.slice(8); // 日だけ表示
+
+    col.appendChild(bar);
+    col.appendChild(label);
+    el.dailyChart.appendChild(col);
   });
 }
 
@@ -514,6 +815,264 @@ function buildInlineElement(tagName, text) {
     }
   });
   return node;
+}
+
+// ─── ラボ(サンドボックス実行つきコード演習) ───────────────────────────────
+//
+// 課題データ(static/lab-exercises.json)は静的なJSONで、採点はブラウザ内の
+// Web Worker(static/lab-runner.js)で完結する。サーバへは何も送らない。
+// 「書きかけのコード」「クリア済みかどうか」は端末のlocalStorageだけに置き、
+// 弱点克服のための解答履歴(Attempt)とは別扱いにする。演習の失敗は「弱点」
+// ではなく練習の一部なので、ここを混ぜると分野別正答率の意味がぼやける。
+
+const LAB_DRAFTS_KEY = "stack-lab-drafts";
+const LAB_CLEARED_KEY = "stack-lab-cleared";
+const LAB_RUN_TIMEOUT_MS = 2000;
+
+function readLabStorage(key) {
+  try {
+    const value = JSON.parse(localStorage.getItem(key) || "{}");
+    return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+  } catch {
+    return {};
+  }
+}
+
+function getLabDraft(exerciseId) {
+  const draft = readLabStorage(LAB_DRAFTS_KEY)[exerciseId];
+  return typeof draft === "string" ? draft : null;
+}
+
+function saveLabDraft(exerciseId, code) {
+  try {
+    const drafts = readLabStorage(LAB_DRAFTS_KEY);
+    drafts[exerciseId] = code.slice(0, 20000);
+    localStorage.setItem(LAB_DRAFTS_KEY, JSON.stringify(drafts));
+  } catch {
+    // 端末のストレージが使えなくても、実行自体は妨げない
+  }
+}
+
+function isLabCleared(exerciseId) {
+  return Boolean(readLabStorage(LAB_CLEARED_KEY)[exerciseId]);
+}
+
+function markLabCleared(exerciseId) {
+  try {
+    const cleared = readLabStorage(LAB_CLEARED_KEY);
+    if (cleared[exerciseId]) return;
+    cleared[exerciseId] = new Date().toISOString();
+    localStorage.setItem(LAB_CLEARED_KEY, JSON.stringify(cleared));
+  } catch {
+    // クリア記録の保存に失敗しても、結果表示自体は既に済んでいる
+  }
+}
+
+async function loadLab() {
+  if (state.lab.exercises === null) {
+    const res = await fetch("/static/lab-exercises.json");
+    state.lab.exercises = await res.json();
+  }
+  renderLabNav();
+  if (state.lab.currentId === null && state.lab.exercises.length > 0) {
+    selectLabExercise(state.lab.exercises[0].id);
+  }
+}
+
+const LAB_LEVEL_LABEL = { beginner: "入門", intermediate: "標準", advanced: "発展" };
+
+function renderLabNav() {
+  el.labExerciseNav.innerHTML = "";
+  state.lab.exercises.forEach((ex) => {
+    const btn = document.createElement("button");
+    btn.className = "dash-subject-btn lab-nav-btn";
+    if (ex.id === state.lab.currentId) btn.classList.add("active");
+    btn.innerHTML = `${isLabCleared(ex.id) ? "✓ " : ""}${escapeForBadge(ex.title)}<span class="lab-nav-level">${LAB_LEVEL_LABEL[ex.level] || ex.level}</span>`;
+    btn.addEventListener("click", () => selectLabExercise(ex.id));
+    el.labExerciseNav.appendChild(btn);
+  });
+}
+
+function escapeForBadge(text) {
+  // innerHTMLへ差し込む前提の小さなヘルパー。演習タイトルは自前データのみ対象。
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function selectLabExercise(exerciseId) {
+  state.lab.currentId = exerciseId;
+  const exercise = state.lab.exercises.find((e) => e.id === exerciseId);
+  if (!exercise) return;
+
+  renderLabNav();
+  el.labWorkbench.hidden = false;
+  el.labTitle.textContent = exercise.title;
+  el.labClearedBadge.hidden = !isLabCleared(exerciseId);
+  el.labRequirement.textContent = exercise.requirement;
+
+  el.labTags.innerHTML = "";
+  exercise.tags.forEach((tag) => {
+    const span = document.createElement("span");
+    span.className = "lab-tag";
+    span.textContent = tag;
+    el.labTags.appendChild(span);
+  });
+
+  el.labCode.value = getLabDraft(exerciseId) ?? exercise.starterCode;
+
+  el.labHints.innerHTML = "";
+  exercise.hints.forEach((hint) => {
+    const li = document.createElement("li");
+    li.textContent = hint;
+    el.labHints.appendChild(li);
+  });
+  el.labHints.hidden = true;
+  el.labToggleHints.textContent = "ヒントを見る";
+
+  el.labSolution.textContent = exercise.solution;
+  el.labSolution.hidden = true;
+  el.labToggleSolution.textContent = "解答例を見る";
+
+  el.labResult.hidden = true;
+}
+
+el.labCode.addEventListener("input", () => {
+  if (state.lab.currentId) saveLabDraft(state.lab.currentId, el.labCode.value);
+});
+
+el.labReset.addEventListener("click", () => {
+  const exercise = state.lab.exercises.find((e) => e.id === state.lab.currentId);
+  if (!exercise) return;
+  el.labCode.value = exercise.starterCode;
+  saveLabDraft(exercise.id, exercise.starterCode);
+});
+
+el.labToggleHints.addEventListener("click", () => {
+  el.labHints.hidden = !el.labHints.hidden;
+  el.labToggleHints.textContent = el.labHints.hidden ? "ヒントを見る" : "ヒントを隠す";
+});
+
+el.labToggleSolution.addEventListener("click", () => {
+  el.labSolution.hidden = !el.labSolution.hidden;
+  el.labToggleSolution.textContent = el.labSolution.hidden ? "解答例を見る" : "解答例を隠す";
+});
+
+/**
+ * 利用者のコードをWeb Worker(lab-runner.js)の中だけで実行する。
+ * fetch等の通信系グローバルはWorker側で無効化されており、DOMや
+ * localStorageにも触れない。無限ループ対策として、時間内に終わらなければ
+ * Workerごと強制終了する。
+ */
+function runLabExercise({ code, functionName, cases }, timeoutMs = LAB_RUN_TIMEOUT_MS) {
+  return new Promise((resolve) => {
+    let worker;
+    try {
+      worker = new Worker("/static/lab-runner.js");
+    } catch (error) {
+      resolve({ logs: [], cases: [], error: `実行環境を起動できませんでした: ${error.message}` });
+      return;
+    }
+
+    let settled = false;
+    const finish = (result) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timerId);
+      worker.terminate();
+      resolve(result);
+    };
+
+    const timerId = window.setTimeout(() => {
+      finish({
+        logs: [],
+        cases: [],
+        error: `${timeoutMs}ミリ秒以内に終了しませんでした。無限ループになっていないか確認してください。`,
+      });
+    }, timeoutMs);
+
+    worker.onmessage = (event) => {
+      const data = event.data || {};
+      finish({ logs: data.logs || [], cases: data.cases || [], error: data.error || null });
+    };
+    worker.onerror = (event) => {
+      finish({ logs: [], cases: [], error: `実行中にエラーが発生しました: ${event.message || "詳細不明"}` });
+    };
+
+    worker.postMessage({ type: "run", code, functionName, cases });
+  });
+}
+
+el.labRun.addEventListener("click", async () => {
+  const exercise = state.lab.exercises.find((e) => e.id === state.lab.currentId);
+  if (!exercise) return;
+
+  el.labRun.disabled = true;
+  el.labRun.textContent = "実行中...";
+
+  const result = await runLabExercise({
+    code: el.labCode.value,
+    functionName: exercise.functionName,
+    cases: exercise.cases,
+  });
+
+  el.labRun.disabled = false;
+  el.labRun.textContent = "実行する";
+  renderLabResult(exercise, result);
+});
+
+function renderLabResult(exercise, result) {
+  el.labResult.hidden = false;
+
+  if (result.error) {
+    el.labResultSummary.textContent = result.error;
+    el.labResultSummary.className = "incorrect";
+    el.labCases.innerHTML = "";
+    el.labLogs.hidden = true;
+    return;
+  }
+
+  const total = result.cases.length;
+  const passed = result.cases.filter((c) => c.passed).length;
+  const allPassed = total > 0 && passed === total;
+
+  el.labResultSummary.textContent = allPassed
+    ? `全${total}件のテストに合格!`
+    : `${total}件中${passed}件に合格`;
+  el.labResultSummary.className = allPassed ? "correct" : "incorrect";
+
+  el.labCases.innerHTML = "";
+  result.cases.forEach((c) => {
+    const li = document.createElement("li");
+    li.className = c.passed ? "lab-case is-pass" : "lab-case is-fail";
+    const label = document.createElement("span");
+    label.className = "lab-case-label";
+    label.textContent = `${c.passed ? "✓" : "✗"} ${c.label}`;
+    li.appendChild(label);
+
+    if (!c.passed) {
+      const detail = document.createElement("span");
+      detail.className = "lab-case-detail";
+      detail.textContent = c.error
+        ? `エラー: ${c.error}`
+        : `入力: ${c.argsText} / 期待値: ${c.expectedText} / 実際: ${c.actualText}`;
+      li.appendChild(detail);
+    }
+    el.labCases.appendChild(li);
+  });
+
+  if (result.logs.length > 0) {
+    el.labLogs.hidden = false;
+    el.labLogs.textContent = result.logs.join("\n");
+  } else {
+    el.labLogs.hidden = true;
+  }
+
+  if (allPassed) {
+    markLabCleared(exercise.id);
+    el.labClearedBadge.hidden = false;
+    renderLabNav();
+  }
 }
 
 loadTextbook();

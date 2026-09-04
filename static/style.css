@@ -282,6 +282,196 @@ h2 {
 .btn-primary:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
 .btn-primary:active { transform: translateY(0); }
 
+/* ---------- Quiz mode switch (通常/復習/今日の10問/模試) ---------- */
+
+.quiz-mode-switch {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
+
+.quiz-mode-btn {
+  position: relative;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  transition: all 0.18s ease;
+}
+
+.quiz-mode-btn:hover { border-color: var(--accent); color: var(--accent-dark); }
+
+.quiz-mode-btn.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fdf9f0;
+}
+
+.mode-badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background: var(--incorrect);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  vertical-align: 1px;
+}
+
+/* .hiddenと同じ特異性のdisplay:flex等を独自に指定しているため、
+   [hidden]属性のブラウザ既定を明示的に上書きしないと消えなくなる。 */
+#quiz-progress[hidden],
+#streak-card[hidden],
+.mode-badge[hidden] { display: none; }
+
+.quiz-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+
+#quiz-timer {
+  font-family: "Cascadia Code", "Consolas", monospace;
+  font-weight: 700;
+  color: var(--accent-dark);
+}
+
+/* ---------- Panel card(復習なし/今日の10完了/模試セット選択・結果) ---------- */
+
+.panel-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 2.2rem;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.panel-card h3 {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  margin: 0 0 0.6rem;
+  color: var(--ink);
+}
+
+.panel-lead {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  margin: 0;
+}
+
+#mock-setup h3, #mock-setup .panel-lead { text-align: left; }
+
+.mock-set-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+.mock-set-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-alt);
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: all 0.18s ease;
+}
+
+.mock-set-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: var(--shadow-sm);
+}
+
+.mock-set-name {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.mock-set-meta {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.mock-summary-score {
+  font-family: var(--serif);
+  margin: 0.6rem 0 0.8rem;
+}
+
+.mock-summary-score #mock-summary-pct { font-size: 3rem; font-weight: 700; color: var(--accent-dark); }
+.mock-summary-pct-sign { font-size: 1.3rem; color: var(--ink-soft); margin-left: 0.15rem; }
+
+#mock-summary-retry { margin-top: 1.2rem; }
+
+/* ---------- Streak & daily chart(ダッシュボード) ---------- */
+
+.streak-card {
+  margin: 1.2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  text-align: left;
+  padding: 1.4rem 1.6rem;
+}
+
+.streak-count {
+  flex: 0 0 auto;
+  font-family: var(--serif);
+}
+
+.streak-count #streak-days { font-size: 2.1rem; font-weight: 700; color: var(--accent-dark); }
+.streak-unit { font-size: 0.8rem; color: var(--ink-soft); margin-left: 0.3rem; }
+
+.daily-chart {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.4rem;
+  height: 64px;
+}
+
+.daily-chart-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  gap: 0.3rem;
+}
+
+.daily-chart-bar {
+  width: 100%;
+  max-width: 18px;
+  border-radius: 4px 4px 2px 2px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-dark) 100%);
+  min-height: 0;
+}
+
+.daily-chart-bar.is-empty { background: var(--border); height: 3px !important; }
+
+.daily-chart-label {
+  font-size: 0.62rem;
+  color: var(--ink-faint);
+}
+
 #result-area { margin-top: 1.5rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
 
 #result-message {
@@ -296,6 +486,169 @@ h2 {
 
 #result-message.correct { color: var(--correct); background: var(--correct-soft); }
 #result-message.incorrect { color: var(--incorrect); background: var(--incorrect-soft); }
+
+/* ---------- ラボ ---------- */
+
+.lab-intro { text-align: left; margin: -0.4rem 0 1.4rem; }
+
+.lab-exercise-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.lab-nav-btn { display: inline-flex; align-items: center; gap: 0.5rem; }
+
+.lab-nav-level {
+  font-size: 0.68rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: inherit;
+  opacity: 0.75;
+}
+
+.lab-workbench {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 2.2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.lab-brief-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.lab-brief-head h3 { font-family: var(--serif); font-size: 1.1rem; margin: 0; color: var(--ink); }
+
+.lab-cleared-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--correct-soft);
+  color: var(--correct);
+}
+
+#lab-requirement { font-size: 0.92rem; line-height: 1.8; color: var(--ink); margin: 0 0 0.7rem; }
+
+.lab-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+
+.lab-tag {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.lab-code {
+  width: 100%;
+  min-height: 220px;
+  padding: 1.1rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #1c1a22;
+  color: #e7e0cf;
+  font-family: "Cascadia Code", "Consolas", monospace;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  resize: vertical;
+  box-shadow: inset 0 0 0 1px rgba(169, 120, 47, 0.25);
+}
+
+.lab-code:focus { outline: none; box-shadow: inset 0 0 0 1px var(--accent), 0 0 0 3px var(--accent-soft); }
+
+.lab-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.lab-secondary-btn {
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--ink-soft);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: var(--sans);
+  transition: all 0.18s ease;
+}
+
+.lab-secondary-btn:hover { border-color: var(--accent); color: var(--accent-dark); }
+
+.lab-hints {
+  margin: 1rem 0 0;
+  padding: 1rem 1.2rem 1rem 2rem;
+  background: var(--surface-alt);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+.lab-solution { margin-top: 1rem; }
+
+.lab-result {
+  margin-top: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+#lab-result-summary {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.9rem;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+#lab-result-summary.correct { color: var(--correct); background: var(--correct-soft); }
+#lab-result-summary.incorrect { color: var(--incorrect); background: var(--incorrect-soft); }
+
+.lab-cases { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+
+.lab-case {
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: var(--surface-alt);
+}
+
+.lab-case.is-pass { color: var(--correct); }
+.lab-case.is-fail { color: var(--ink); }
+
+.lab-case-label { font-weight: 600; }
+
+.lab-case-detail {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: "Cascadia Code", "Consolas", monospace;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  word-break: break-word;
+}
+
+.lab-logs {
+  margin-top: 0.9rem;
+  padding: 0.8rem 1rem;
+  background: #1c1a22;
+  color: #e7e0cf;
+  border-radius: 8px;
+  font-family: "Cascadia Code", "Consolas", monospace;
+  font-size: 0.78rem;
+  white-space: pre-wrap;
+}
 
 #explanation-block {
   margin: 0 0 1.4rem;
@@ -761,4 +1114,18 @@ h2 {
 
   /* 入力欄のフォントが16px未満だと、iOSが自動でズームしてしまう */
   #text-answer-input { font-size: 16px; }
+
+  /* モード切替タブも横スクロールで詰める */
+  .quiz-mode-switch {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .quiz-mode-switch::-webkit-scrollbar { display: none; }
+  .quiz-mode-btn { flex: 0 0 auto; }
+
+  .panel-card, #mock-setup, #mock-summary { padding: 1.5rem 1.2rem; }
+  .streak-card { flex-direction: column; align-items: stretch; gap: 1rem; }
+  .daily-chart { height: 52px; }
 }

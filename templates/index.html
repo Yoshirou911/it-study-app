@@ -25,6 +25,7 @@
         <button class="tab-btn active" data-tab="textbook">教本</button>
         <button class="tab-btn" data-tab="quiz-a" data-subject="A">科目A</button>
         <button class="tab-btn" data-tab="quiz-b" data-subject="B">科目B</button>
+        <button class="tab-btn" data-tab="lab">ラボ</button>
         <button class="tab-btn" data-tab="dashboard">ダッシュボード</button>
       </nav>
     </div>
@@ -39,6 +40,38 @@
     </section>
 
     <section id="quiz-view" class="view">
+      <div class="quiz-mode-switch">
+        <button class="quiz-mode-btn active" data-mode="normal">通常演習</button>
+        <button class="quiz-mode-btn" data-mode="review">復習<span id="review-due-badge" class="mode-badge" hidden></span></button>
+        <button class="quiz-mode-btn" data-mode="daily">今日の10問</button>
+        <button class="quiz-mode-btn" data-mode="mock">模試</button>
+      </div>
+
+      <div id="quiz-progress" class="quiz-progress" hidden>
+        <span id="quiz-progress-label"></span>
+        <span id="quiz-timer" hidden></span>
+      </div>
+
+      <div id="mock-setup" class="panel-card" hidden>
+        <h3>模試を選ぶ</h3>
+        <p class="panel-lead">分野を横断した固定セットを、時間を意識して通しで解く。同じセット番号は毎回同じ問題になる。</p>
+        <div id="mock-set-list" class="mock-set-list"></div>
+      </div>
+
+      <div id="quiz-empty-panel" class="panel-card" hidden>
+        <h3 id="quiz-empty-title"></h3>
+        <p id="quiz-empty-lead" class="panel-lead"></p>
+      </div>
+
+      <div id="mock-summary" class="panel-card" hidden>
+        <h3>模試の結果</h3>
+        <div class="mock-summary-score">
+          <span id="mock-summary-pct">0</span><span class="mock-summary-pct-sign">%</span>
+        </div>
+        <p id="mock-summary-detail" class="panel-lead"></p>
+        <button id="mock-summary-retry" class="btn-primary">セット選択に戻る</button>
+      </div>
+
       <div id="quiz-card">
         <div class="meta">
           <span id="q-category" class="badge-category"></span>
@@ -64,6 +97,42 @@
       </div>
     </section>
 
+    <section id="lab-view" class="view">
+      <h2>ラボ</h2>
+      <p class="panel-lead lab-intro">実際にコードを書いて動かす演習。ブラウザの中だけで実行され、外部へは何も送信されない。</p>
+
+      <div id="lab-exercise-nav" class="lab-exercise-nav"></div>
+
+      <div id="lab-workbench" class="lab-workbench" hidden>
+        <div class="lab-brief">
+          <div class="lab-brief-head">
+            <h3 id="lab-title"></h3>
+            <span id="lab-cleared-badge" class="lab-cleared-badge" hidden>クリア済み</span>
+          </div>
+          <p id="lab-requirement"></p>
+          <div id="lab-tags" class="lab-tags"></div>
+        </div>
+
+        <textarea id="lab-code" class="lab-code" spellcheck="false"></textarea>
+
+        <div class="lab-actions">
+          <button id="lab-run" class="btn-primary">実行する</button>
+          <button id="lab-reset" class="lab-secondary-btn">初期コードに戻す</button>
+          <button id="lab-toggle-hints" class="lab-secondary-btn">ヒントを見る</button>
+          <button id="lab-toggle-solution" class="lab-secondary-btn">解答例を見る</button>
+        </div>
+
+        <ul id="lab-hints" class="lab-hints" hidden></ul>
+        <pre id="lab-solution" class="pseudocode lab-solution" hidden></pre>
+
+        <div id="lab-result" class="lab-result" hidden>
+          <p id="lab-result-summary"></p>
+          <ul id="lab-cases" class="lab-cases"></ul>
+          <div id="lab-logs" class="lab-logs" hidden></div>
+        </div>
+      </div>
+    </section>
+
     <section id="dashboard-view" class="view">
       <h2>分野別正答率</h2>
 
@@ -81,6 +150,14 @@
         <button class="dash-subject-btn active" data-subject="A">科目A</button>
         <button class="dash-subject-btn" data-subject="B">科目B</button>
       </div>
+
+      <div id="streak-card" class="panel-card streak-card" hidden>
+        <div class="streak-count">
+          <span id="streak-days">0</span><span class="streak-unit">日連続</span>
+        </div>
+        <div id="daily-chart" class="daily-chart"></div>
+      </div>
+
       <div id="stats-list"></div>
     </section>
   </main>

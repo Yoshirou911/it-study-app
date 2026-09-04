@@ -66,3 +66,39 @@ class CurriculumOut(BaseModel):
 
     level: str
     groups: list[CategoryGroupOut]
+
+
+class ReviewSummaryOut(BaseModel):
+    due: int
+    scheduled: int
+    mastered: int
+    untracked: int
+
+
+class DailyPlanOut(BaseModel):
+    date: str
+    questions: list[QuestionOut]
+    answered_today: list[int]  # このプランのうち、今日すでに解答したquestion_id
+
+
+class DailyStatOut(BaseModel):
+    date: str
+    answered: int
+    correct: int
+
+
+class DailyStatsOut(BaseModel):
+    streak_days: int
+    days: list[DailyStatOut]
+
+
+class MockExamSetOut(BaseModel):
+    set_number: int
+    size: int
+    time_limit_minutes: int
+
+
+class MockExamOut(BaseModel):
+    set_number: int
+    time_limit_minutes: int
+    questions: list[QuestionOut]

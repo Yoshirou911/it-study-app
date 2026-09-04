@@ -89,6 +89,23 @@ class Attempt(Base):
     question: Mapped["Question"] = relationship(back_populates="attempts")
 
 
+class DailyPlan(Base):
+    """「今日の10問」の固定セット。同じ日のうちは何度開いても同じ問題を出す。
+
+    復習の定着度(streak)や日別成績は Attempt から都度計算できるため専用の
+    テーブルを持たないが、「今日の10問」だけは選定結果そのものを固定する
+    必要があるため、これだけは明示的に保存する。
+    """
+
+    __tablename__ = "daily_plans"
+    __table_args__ = (UniqueConstraint("date", "subject", name="uq_daily_plan_date_subject"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    date: Mapped[str] = mapped_column(String(10), index=True)  # "YYYY-MM-DD"(端末のローカル日付)
+    subject: Mapped[str] = mapped_column(String(1))  # "A" or "B"
+    question_ids_json: Mapped[str] = mapped_column(Text)  # 問題idのJSON配列
+
+
 class StudyNote(Base):
     """分野別の教本的な解説ページ"""
 
