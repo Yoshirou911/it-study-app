@@ -517,3 +517,11 @@ function buildInlineElement(tagName, text) {
 }
 
 loadTextbook();
+
+// PWAとして「インストール」できるようにする。失敗しても通常のWeb表示は
+// 問題なく動くため、対応していないブラウザでも安全に無視できる。
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/static/sw.js").catch(() => {});
+  });
+}

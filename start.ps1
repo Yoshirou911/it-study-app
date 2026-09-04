@@ -75,12 +75,39 @@ Write-Host ""
 # 待ってからブラウザを開く。
 Start-Job -ScriptBlock {
     param($Port)
+
+    # 通常のタブではなく、アドレスバーやタブのない「アプリのウィンドウ」として開く。
+    # レジストリのApp Pathsから実体を探すので、インストール場所が違っても見つかる。
+    function Find-BrowserExe($exeName) {
+        $keys = @(
+            "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\$exeName",
+            "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\$exeName",
+            "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\$exeName"
+        )
+        foreach ($key in $keys) {
+            $path = (Get-ItemProperty -Path $key -ErrorAction SilentlyContinue).'(default)'
+            if ($path -and (Test-Path $path)) { return $path }
+        }
+        return $null
+    }
+
+    function Open-App($Url) {
+        $browser = Find-BrowserExe "msedge.exe"
+        if (-not $browser) { $browser = Find-BrowserExe "chrome.exe" }
+        if ($browser) {
+            Start-Process $browser -ArgumentList "--app=$Url"
+        } else {
+            # Edge/Chromeが見つからなければ、既定のブラウザで普通のタブとして開く
+            Start-Process $Url
+        }
+    }
+
     $deadline = (Get-Date).AddSeconds(60)
     while ((Get-Date) -lt $deadline) {
         try {
             $response = Invoke-WebRequest "http://127.0.0.1:$Port/" -UseBasicParsing -TimeoutSec 2
             if ($response.StatusCode -eq 200) {
-                Start-Process "http://127.0.0.1:$Port/"
+                Open-App "http://127.0.0.1:$Port/"
                 return
             }
         } catch {
@@ -88,7 +115,7 @@ Start-Job -ScriptBlock {
         }
     }
     # 60秒待っても応答しない場合でも、いちおう開いておく(手動再読み込みで復帰できる)
-    Start-Process "http://127.0.0.1:$Port/"
+    Open-App "http://127.0.0.1:$Port/"
 } -ArgumentList $port | Out-Null
 
 # 0.0.0.0 で待ち受けると、LAN内の他の端末からも接続できるようになる。
