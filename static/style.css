@@ -105,6 +105,17 @@ header h1 {
   letter-spacing: 0.06em;
 }
 
+.version-tag {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  vertical-align: middle;
+  margin-left: 0.3rem;
+  opacity: 0.8;
+}
+
 nav { display: flex; gap: 1.6rem; }
 
 .tab-btn {

@@ -11,10 +11,22 @@ from app.routers import notes, progress, quiz, study
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+def _read_version() -> str:
+    """VERSIONファイル(1行だけのプレーンテキスト)からバージョン番号を読む。
+
+    起動時に1度だけ読めばよい。CHANGELOG.mdの運用ルールも参照。
+    """
+    path = BASE_DIR / "VERSION"
+    return path.read_text(encoding="utf-8").strip() if path.exists() else "0.0.0"
+
+
+APP_VERSION = _read_version()
+
 Base.metadata.create_all(bind=engine)
 ensure_schema()
 
-app = FastAPI(title="STACK — IT学習帳")
+app = FastAPI(title="STACK — IT学習帳", version=APP_VERSION)
 
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
@@ -35,11 +47,17 @@ def static_url(filename: str) -> str:
 
 
 templates.env.globals["static_url"] = static_url
+templates.env.globals["app_version"] = APP_VERSION
 
 app.include_router(quiz.router)
 app.include_router(progress.router)
 app.include_router(notes.router)
 app.include_router(study.router)
+
+
+@app.get("/api/version")
+def version():
+    return {"version": APP_VERSION}
 
 
 @app.get("/", response_class=HTMLResponse)
