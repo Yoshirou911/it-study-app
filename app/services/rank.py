@@ -44,6 +44,34 @@ def compute_total_xp(db: Session) -> int:
     return int(total or 0)
 
 
+# 個々の問題のdifficulty(1〜5)を、Bronze/Silver/Goldの3段階に丸める。
+# プレイヤーランクの最初の3段階(RANKS[0:3])と同じ名称・色をそのまま流用し、
+# 「難易度も総合ランクも同じ物差しの延長」という一貫性を持たせている。
+DIFFICULTY_RANGES = {"bronze": (1, 2), "silver": (3, 3), "gold": (4, 5)}
+DIFFICULTY_RANK_IDS = ["bronze", "silver", "gold"]
+
+_RANKS_BY_ID = {r["id"]: r for r in RANKS}
+
+
+def difficulty_rank_tier(difficulty: int) -> dict:
+    """問題のdifficulty(1〜5)から、対応するランク定義(dict)を返す。"""
+    for rank_id, (lo, hi) in DIFFICULTY_RANGES.items():
+        if lo <= difficulty <= hi:
+            return _RANKS_BY_ID[rank_id]
+    # 想定外の値が来ても、一番低いランクへ丸めて落ちないようにする
+    return _RANKS_BY_ID["bronze"]
+
+
+def difficulty_range_of(rank_id: str) -> tuple[int, int]:
+    if rank_id not in DIFFICULTY_RANGES:
+        raise ValueError(f"未定義の難易度ランクです: {rank_id}")
+    return DIFFICULTY_RANGES[rank_id]
+
+
+def difficulty_rank_tiers() -> list[dict]:
+    return [_RANKS_BY_ID[rank_id] for rank_id in DIFFICULTY_RANK_IDS]
+
+
 def get_player_rank(db: Session) -> dict:
     """現在のランク・次のランクまでの進捗を返す。"""
     xp = compute_total_xp(db)

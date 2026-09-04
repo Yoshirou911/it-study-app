@@ -9,11 +9,20 @@ class ChoiceOut(BaseModel):
         from_attributes = True
 
 
+class RankTierOut(BaseModel):
+    id: str
+    name: str
+    label: str
+    xp_min: int
+    color: str
+
+
 class QuestionOut(BaseModel):
     id: int
     subject: str
     category: str
     difficulty: int
+    difficulty_rank: RankTierOut
     body: str
     pseudocode: str | None = None
     choices: list[ChoiceOut] = []
@@ -104,12 +113,8 @@ class MockExamOut(BaseModel):
     questions: list[QuestionOut]
 
 
-class RankTierOut(BaseModel):
-    id: str
-    name: str
-    label: str
-    xp_min: int
-    color: str
+class DifficultyRankTierOut(RankTierOut):
+    question_count: int
 
 
 class PlayerRankOut(BaseModel):

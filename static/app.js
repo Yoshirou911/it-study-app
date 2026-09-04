@@ -21,6 +21,9 @@ const state = {
     exercises: null, // 初回だけ取得してキャッシュする
     currentId: null,
   },
+  rankPractice: {
+    tier: null, // "bronze" | "silver" | "gold"
+  },
 };
 
 const el = {
@@ -29,6 +32,7 @@ const el = {
   dashboardView: document.getElementById("dashboard-view"),
   category: document.getElementById("q-category"),
   difficulty: document.getElementById("q-difficulty"),
+  difficultyBadge: document.getElementById("q-difficulty-badge"),
   body: document.getElementById("q-body"),
   pseudocode: document.getElementById("q-pseudocode"),
   choicesArea: document.getElementById("choices-area"),
@@ -59,6 +63,8 @@ const el = {
   quizCard: document.getElementById("quiz-card"),
   mockSetup: document.getElementById("mock-setup"),
   mockSetList: document.getElementById("mock-set-list"),
+  rankSetup: document.getElementById("rank-setup"),
+  rankTierList: document.getElementById("rank-tier-list"),
   mockSummary: document.getElementById("mock-summary"),
   mockSummaryPct: document.getElementById("mock-summary-pct"),
   mockSummaryDetail: document.getElementById("mock-summary-detail"),
@@ -180,6 +186,7 @@ function setQuizMode(mode) {
   el.quizEmptyPanel.hidden = true;
   el.mockSetup.hidden = true;
   el.mockSummary.hidden = true;
+  el.rankSetup.hidden = true;
   el.quizProgress.hidden = true;
   el.quizTimer.hidden = true;
   el.quizCard.hidden = false;
@@ -189,6 +196,7 @@ function setQuizMode(mode) {
   else if (mode === "review") loadReviewNext();
   else if (mode === "daily") startDailyMode();
   else if (mode === "mock") showMockSetup();
+  else if (mode === "rank") showRankSetup();
 }
 
 /** 「次の問題へ」ボタンの挙動は、モードによって「次に何を出すか」が違う。 */
@@ -202,6 +210,8 @@ function advanceQuiz() {
     state.mock.index += 1;
     if (state.mock.index >= state.mock.questions.length) finishMockExam();
     else showMockQuestion();
+  } else if (state.quizMode === "rank") {
+    loadRankPracticeNext();
   }
 }
 
@@ -362,6 +372,47 @@ function finishMockExam() {
 
 el.mockSummaryRetry.addEventListener("click", () => setQuizMode("mock"));
 
+// ─── ランク練習(難易度をBronze/Silver/Goldで絞り込んで出題) ─────────────────
+
+async function showRankSetup() {
+  el.quizCard.hidden = true;
+  el.rankSetup.hidden = false;
+  const res = await fetch(`/api/study/rank-practice/tiers?subject=${state.subject}`);
+  const tiers = await res.json();
+  el.rankTierList.innerHTML = "";
+  tiers.forEach((tier) => {
+    const btn = document.createElement("button");
+    btn.className = "mock-set-btn rank-tier-btn";
+    btn.style.setProperty("--rank-color", tier.color);
+    btn.innerHTML = `<span class="mock-set-name">${tier.name} <span class="rank-tier-label">${tier.label}</span></span><span class="mock-set-meta">${tier.question_count}問</span>`;
+    btn.disabled = tier.question_count === 0;
+    btn.addEventListener("click", () => selectRankTier(tier.id));
+    el.rankTierList.appendChild(btn);
+  });
+}
+
+function selectRankTier(tierId) {
+  state.rankPractice.tier = tierId;
+  el.rankSetup.hidden = true;
+  el.quizCard.hidden = false;
+  loadRankPracticeNext();
+}
+
+async function loadRankPracticeNext() {
+  el.resultArea.hidden = true;
+  const params = new URLSearchParams({ subject: state.subject, tier: state.rankPractice.tier });
+  if (state.currentQuestion) params.set("exclude_id", state.currentQuestion.id);
+
+  const res = await fetch(`/api/study/rank-practice/next?${params}`);
+  if (!res.ok) {
+    showQuizEmpty("このランクに問題がありません", "別のランクを選んでみてください。");
+    return;
+  }
+  const question = await res.json();
+  state.currentQuestion = question;
+  renderQuestion(question);
+}
+
 function renderDifficultyDots(level) {
   el.difficulty.innerHTML = "";
   const wrap = document.createElement("span");
@@ -374,8 +425,15 @@ function renderDifficultyDots(level) {
   el.difficulty.appendChild(wrap);
 }
 
+function renderDifficultyBadge(rank) {
+  el.difficultyBadge.textContent = rank.label;
+  el.difficultyBadge.style.setProperty("--rank-color", rank.color);
+  el.difficultyBadge.dataset.rank = rank.id;
+}
+
 function renderQuestion(question) {
   el.category.textContent = question.category;
+  renderDifficultyBadge(question.difficulty_rank);
   renderDifficultyDots(question.difficulty);
   el.body.textContent = question.body;
 

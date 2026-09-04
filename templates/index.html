@@ -45,6 +45,7 @@
         <button class="quiz-mode-btn" data-mode="review">復習<span id="review-due-badge" class="mode-badge" hidden></span></button>
         <button class="quiz-mode-btn" data-mode="daily">今日の10問</button>
         <button class="quiz-mode-btn" data-mode="mock">模試</button>
+        <button class="quiz-mode-btn" data-mode="rank">ランク別</button>
       </div>
 
       <div id="quiz-progress" class="quiz-progress" hidden>
@@ -56,6 +57,12 @@
         <h3>模試を選ぶ</h3>
         <p class="panel-lead">分野を横断した固定セットを、時間を意識して通しで解く。同じセット番号は毎回同じ問題になる。</p>
         <div id="mock-set-list" class="mock-set-list"></div>
+      </div>
+
+      <div id="rank-setup" class="panel-card" hidden>
+        <h3>ランクを選んで練習する</h3>
+        <p class="panel-lead">難易度をBronze/Silver/Goldの3段階に分けて、狙った難易度だけを練習できる。</p>
+        <div id="rank-tier-list" class="mock-set-list"></div>
       </div>
 
       <div id="quiz-empty-panel" class="panel-card" hidden>
@@ -75,7 +82,10 @@
       <div id="quiz-card">
         <div class="meta">
           <span id="q-category" class="badge-category"></span>
-          <span class="difficulty-wrap">難易度 <span id="q-difficulty"></span></span>
+          <span class="difficulty-wrap">
+            <span id="q-difficulty-badge" class="difficulty-badge"></span>
+            <span id="q-difficulty"></span>
+          </span>
         </div>
         <p id="q-body" class="q-body"></p>
         <pre id="q-pseudocode" class="pseudocode" hidden></pre>

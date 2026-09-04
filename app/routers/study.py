@@ -14,6 +14,7 @@ from app.models import Attempt, Question
 from app.schemas import (
     DailyPlanOut,
     DailyStatsOut,
+    DifficultyRankTierOut,
     MockExamOut,
     MockExamSetOut,
     PlayerRankOut,
@@ -22,6 +23,7 @@ from app.schemas import (
 )
 from app.services import daily, mock_exam, rank, review
 from app.services.questions import to_question_out
+from app.services.weighting import select_next_question
 
 router = APIRouter(prefix="/api/study", tags=["study"])
 
@@ -138,3 +140,48 @@ def mock_start(subject: str, set: int, db: Session = Depends(get_db)):
         time_limit_minutes=mock_exam.TIME_LIMIT_MINUTES[subject],
         questions=[to_question_out(q) for q in questions],
     )
+
+
+# ---------------------------------------------------------------------------
+# ランク練習(難易度をBronze/Silver/Goldで絞り込んで出題する)
+# ---------------------------------------------------------------------------
+
+
+@router.get("/rank-practice/tiers", response_model=list[DifficultyRankTierOut])
+def rank_practice_tiers(subject: str, db: Session = Depends(get_db)):
+    _require_subject(subject)
+    tiers = []
+    for tier in rank.difficulty_rank_tiers():
+        lo, hi = rank.difficulty_range_of(tier["id"])
+        count = (
+            db.query(Question)
+            .filter(
+                Question.subject == subject,
+                Question.difficulty >= lo,
+                Question.difficulty <= hi,
+            )
+            .count()
+        )
+        tiers.append(DifficultyRankTierOut(**tier, question_count=count))
+    return tiers
+
+
+@router.get("/rank-practice/next", response_model=QuestionOut)
+def rank_practice_next(
+    subject: str,
+    tier: str,
+    exclude_id: int | None = None,
+    db: Session = Depends(get_db),
+):
+    _require_subject(subject)
+    try:
+        difficulty_range = rank.difficulty_range_of(tier)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    question = select_next_question(
+        db, subject, exclude_id=exclude_id, difficulty_range=difficulty_range
+    )
+    if question is None:
+        raise HTTPException(status_code=404, detail="このランクに出題可能な問題がありません")
+    return to_question_out(question)

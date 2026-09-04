@@ -7,7 +7,8 @@
 import json
 
 from app.models import Question
-from app.schemas import ChoiceOut, QuestionOut
+from app.schemas import ChoiceOut, QuestionOut, RankTierOut
+from app.services.rank import difficulty_rank_tier
 
 
 def to_question_out(question: Question) -> QuestionOut:
@@ -26,6 +27,7 @@ def to_question_out(question: Question) -> QuestionOut:
         subject=question.subject,
         category=question.category,
         difficulty=question.difficulty,
+        difficulty_rank=RankTierOut(**difficulty_rank_tier(question.difficulty)),
         body=question.body,
         pseudocode=question.trace.pseudocode if question.subject == "B" else None,
         choices=choices,
