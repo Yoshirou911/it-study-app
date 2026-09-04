@@ -5,6 +5,17 @@ $host.UI.RawUI.WindowTitle = "STACK - IT学習帳"
 $port = 8000
 $venvPy = Join-Path $PSScriptRoot ".venv\Scripts\python.exe"
 
+# 起動アイコンはコンソールを隠して実行するため、Write-Host だけではエラーが
+# 利用者の目に触れない。致命的な失敗はメッセージボックスでも知らせる。
+function Show-FatalError($message) {
+    Write-Host ""
+    Write-Host "エラー: $message" -ForegroundColor Red
+    Add-Type -AssemblyName System.Windows.Forms
+    [System.Windows.Forms.MessageBox]::Show(
+        $message, "STACK", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error
+    ) | Out-Null
+}
+
 # python.exe の有無だけでは、venv作成後にインストールが失敗した状態を見逃してしまう。
 # 実際に必要なパッケージを読み込めるかどうかで判定する。
 $venvReady = $false
@@ -14,11 +25,24 @@ if (Test-Path $venvPy) {
 }
 
 if (-not $venvReady) {
+    if (-not (Test-Path $venvPy) -and -not (Get-Command python -ErrorAction SilentlyContinue)) {
+        Show-FatalError "Python が見つかりません。`nhttps://www.python.org/downloads/ からインストールしてください。`nインストール時に「Add python.exe to PATH」に必ずチェックを入れてください。"
+        exit 1
+    }
+
     Write-Host "初回セットアップを行っています。少々お待ちください..."
     if (-not (Test-Path $venvPy)) {
         python -m venv (Join-Path $PSScriptRoot ".venv")
+        if (-not (Test-Path $venvPy)) {
+            Show-FatalError "仮想環境の作成に失敗しました。"
+            exit 1
+        }
     }
     & $venvPy -m pip install -q -r (Join-Path $PSScriptRoot "requirements.txt")
+    if ($LASTEXITCODE -ne 0) {
+        Show-FatalError "依存パッケージのインストールに失敗しました。インターネット接続を確認してください。"
+        exit 1
+    }
 }
 
 $dbPath = Join-Path $PSScriptRoot "data\study.db"

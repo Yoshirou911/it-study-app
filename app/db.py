@@ -12,8 +12,13 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 # 既存DBに後から追加した列。(テーブル名, 列名, DDL断片)
+# key列はここではNULL許容のまま追加するだけにとどめる。値の割り当てと
+# UNIQUEインデックスの作成は、再投入データと突き合わせが必要なため
+# seed_db.py の migrate_schema() が担当する。
 _ADDED_COLUMNS = [
     ("study_notes", "level", "VARCHAR(4) DEFAULT '基礎'"),
+    ("questions", "key", "VARCHAR(50)"),
+    ("study_notes", "key", "VARCHAR(50)"),
 ]
 
 

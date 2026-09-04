@@ -25,7 +25,8 @@
         "text": "128",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "nw-01"
   },
   {
     "category": "ネットワーク",
@@ -53,7 +54,8 @@
         "text": "トランスポート層",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "nw-02"
   },
   {
     "category": "ネットワーク",
@@ -81,7 +83,8 @@
         "text": "VPN",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "nw-03"
   },
   {
     "category": "ネットワーク",
@@ -109,7 +112,8 @@
         "text": "VLAN",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "nw-04"
   },
   {
     "category": "データベース",
@@ -137,7 +141,8 @@
         "text": "外部キー制約",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "db-01"
   },
   {
     "category": "データベース",
@@ -165,7 +170,8 @@
         "text": "ボイスコッド正規形",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "db-02"
   },
   {
     "category": "セキュリティ",
@@ -193,7 +199,8 @@
         "text": "ファイアウォール",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sec-01"
   },
   {
     "category": "セキュリティ",
@@ -221,7 +228,8 @@
         "text": "スパイウェア",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sec-02"
   },
   {
     "category": "セキュリティ",
@@ -249,7 +257,8 @@
         "text": "ブルートフォース攻撃",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sec-03"
   },
   {
     "category": "セキュリティ",
@@ -277,7 +286,8 @@
         "text": "標的型攻撃",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sec-04"
   },
   {
     "category": "アルゴリズム",
@@ -305,7 +315,8 @@
         "text": "O(log n)",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "algo-01"
   },
   {
     "category": "アルゴリズム",
@@ -333,7 +344,8 @@
         "text": "ハッシュ表",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "algo-02"
   },
   {
     "category": "基礎理論",
@@ -361,7 +373,8 @@
         "text": "17",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "theory-01"
   },
   {
     "category": "基礎理論",
@@ -389,7 +402,8 @@
         "text": "XOR",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "theory-02"
   },
   {
     "category": "コンピュータ構成要素",
@@ -417,7 +431,8 @@
         "text": "仮想記憶",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "hw-01"
   },
   {
     "category": "コンピュータ構成要素",
@@ -445,7 +460,8 @@
         "text": "演算装置及び制御装置(CPU)",
         "is_correct": true
       }
-    ]
+    ],
+    "key": "hw-02"
   },
   {
     "category": "ソフトウェア",
@@ -473,7 +489,8 @@
         "text": "ファームウェア",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sw-01"
   },
   {
     "category": "ソフトウェア",
@@ -501,7 +518,8 @@
         "text": "リアルタイム処理",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sw-02"
   },
   {
     "category": "システム開発技術",
@@ -529,7 +547,8 @@
         "text": "プロトタイピングモデル",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sdlc-01"
   },
   {
     "category": "システム開発技術",
@@ -557,7 +576,8 @@
         "text": "構造化分析",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sdlc-02"
   },
   {
     "category": "プロジェクトマネジメント",
@@ -585,7 +605,8 @@
         "text": "特性要因図",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "pm-01"
   },
   {
     "category": "プロジェクトマネジメント",
@@ -613,7 +634,8 @@
         "text": "パレート図",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "pm-02"
   },
   {
     "category": "サービスマネジメント",
@@ -641,7 +663,8 @@
         "text": "問題管理",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sm-01"
   },
   {
     "category": "サービスマネジメント",
@@ -669,7 +692,8 @@
         "text": "資産管理",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sm-02"
   },
   {
     "category": "システム戦略",
@@ -697,7 +721,8 @@
         "text": "バリューチェーン分析",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "strategy-01"
   },
   {
     "category": "システム戦略",
@@ -725,7 +750,8 @@
         "text": "運用マニュアル",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "strategy-02"
   },
   {
     "category": "経営戦略・法務",
@@ -753,7 +779,8 @@
         "text": "不正競争防止法",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "biz-01"
   },
   {
     "category": "経営戦略・法務",
@@ -781,7 +808,8 @@
         "text": "意匠法",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "biz-02"
   },
   {
     "category": "クラウド",
@@ -809,7 +837,8 @@
         "text": "DaaS",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "cloud-01"
   },
   {
     "category": "クラウド",
@@ -837,7 +866,8 @@
         "text": "オンプレミス",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "cloud-02"
   },
   {
     "category": "Web技術",
@@ -865,7 +895,8 @@
         "text": "SSH",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "web-01"
   },
   {
     "category": "Web技術",
@@ -893,7 +924,8 @@
         "text": "NAT",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "web-02"
   },
   {
     "category": "AI・データ活用",
@@ -921,7 +953,8 @@
         "text": "ファイル圧縮",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "ai-01"
   },
   {
     "category": "AI・データ活用",
@@ -949,7 +982,8 @@
         "text": "IoT",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "ai-02"
   },
   {
     "category": "Linux",
@@ -977,7 +1011,8 @@
         "text": "mkdir",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "linux-01"
   },
   {
     "category": "Linux",
@@ -1005,7 +1040,8 @@
         "text": "実行のみ",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "linux-02"
   },
   {
     "category": "Linux",
@@ -1033,7 +1069,8 @@
         "text": "ジョブ制御",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "linux-03"
   },
   {
     "category": "データ表現",
@@ -1061,7 +1098,8 @@
         "text": "0 〜 255",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "repr-01"
   },
   {
     "category": "データ表現",
@@ -1089,7 +1127,8 @@
         "text": "オーバーフロー",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "repr-02"
   },
   {
     "category": "データ表現",
@@ -1117,7 +1156,8 @@
         "text": "Unicodeとは無関係に定義された独自の文字集合である",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "repr-03"
   },
   {
     "category": "オペレーティングシステム",
@@ -1145,7 +1185,8 @@
         "text": "プロセス同士はメモリを共有するが、スレッド同士は共有しない",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "os-01"
   },
   {
     "category": "オペレーティングシステム",
@@ -1173,7 +1214,8 @@
         "text": "コンテキストスイッチ",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "os-02"
   },
   {
     "category": "オペレーティングシステム",
@@ -1201,7 +1243,8 @@
         "text": "横取り不可",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "os-03"
   },
   {
     "category": "オペレーティングシステム",
@@ -1229,7 +1272,8 @@
         "text": "ラウンドロビン",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "os-04"
   },
   {
     "category": "プログラミング基礎",
@@ -1257,7 +1301,8 @@
         "text": "i <= n + 1",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "prog-01"
   },
   {
     "category": "プログラミング基礎",
@@ -1285,7 +1330,8 @@
         "text": "発生した例外を上位に再送出する",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "prog-02"
   },
   {
     "category": "プログラミング基礎",
@@ -1313,7 +1359,8 @@
         "text": "変数名は短くするほど保守性が高まる",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "prog-03"
   },
   {
     "category": "プログラミング基礎",
@@ -1341,7 +1388,8 @@
         "text": "どちらも実行回数はあらかじめ決まっている必要がある",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "prog-04"
   },
   {
     "category": "データ構造",
@@ -1369,7 +1417,8 @@
         "text": "1",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "ds-01"
   },
   {
     "category": "データ構造",
@@ -1397,7 +1446,8 @@
         "text": "連結リストは要素が連続したメモリ領域に配置される",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "ds-02"
   },
   {
     "category": "データ構造",
@@ -1425,7 +1475,8 @@
         "text": "デッドロック",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "ds-03"
   },
   {
     "category": "データ構造",
@@ -1453,7 +1504,8 @@
         "text": "挿入した順に並ぶ",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "ds-04"
   },
   {
     "category": "データ構造",
@@ -1481,7 +1533,8 @@
         "text": "ハッシュ表",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "ds-05"
   },
   {
     "category": "オブジェクト指向",
@@ -1509,7 +1562,8 @@
         "text": "共通する性質を抽出して抽象的なクラスを定義すること",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "oop-01"
   },
   {
     "category": "オブジェクト指向",
@@ -1537,7 +1591,8 @@
         "text": "複数のクラスから同時に継承すること",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "oop-02"
   },
   {
     "category": "オブジェクト指向",
@@ -1565,7 +1620,8 @@
         "text": "委譲",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "oop-03"
   },
   {
     "category": "オブジェクト指向",
@@ -1593,7 +1649,8 @@
         "text": "「社員」と「人」のように、性質を引き継ぐ関係",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "oop-04"
   },
   {
     "category": "SQL",
@@ -1621,7 +1678,8 @@
         "text": "HAVINGはGROUP BYを使わない場合にのみ利用できる",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sql-01"
   },
   {
     "category": "SQL",
@@ -1649,7 +1707,8 @@
         "text": "右外部結合(RIGHT OUTER JOIN)",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sql-02"
   },
   {
     "category": "SQL",
@@ -1677,7 +1736,8 @@
         "text": "WHERE 列名 = ''",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sql-03"
   },
   {
     "category": "SQL",
@@ -1705,7 +1765,8 @@
         "text": "WHERE → FROM → SELECT → HAVING → GROUP BY → ORDER BY",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "sql-04"
   },
   {
     "category": "HTTP・API設計",
@@ -1733,7 +1794,8 @@
         "text": "どちらも同じ意味であり、実装者の好みで選んでよい",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "http-01"
   },
   {
     "category": "HTTP・API設計",
@@ -1761,7 +1823,8 @@
         "text": "冪等性とは、応答が必ずキャッシュされる性質のことである",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "http-02"
   },
   {
     "category": "HTTP・API設計",
@@ -1789,7 +1852,8 @@
         "text": "GET /user/update/123",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "http-03"
   },
   {
     "category": "HTTP・API設計",
@@ -1817,7 +1881,8 @@
         "text": "SQLインジェクション と プレースホルダ",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "http-04"
   },
   {
     "category": "フロントエンド",
@@ -1845,7 +1910,8 @@
         "text": "evalで評価してから出力する",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "fe-01"
   },
   {
     "category": "フロントエンド",
@@ -1873,7 +1939,8 @@
         "text": "同一オリジンへのリクエストにしか使用できない",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "fe-02"
   },
   {
     "category": "フロントエンド",
@@ -1901,7 +1968,8 @@
         "text": "setTimeoutで実行間隔を空ける",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "fe-03"
   },
   {
     "category": "暗号・認証",
@@ -1929,7 +1997,8 @@
         "text": "送信者の秘密鍵",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "crypto-01"
   },
   {
     "category": "暗号・認証",
@@ -1957,7 +2026,8 @@
         "text": "平文のまま保存し、データベースへのアクセス権限で保護する",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "crypto-02"
   },
   {
     "category": "暗号・認証",
@@ -1985,7 +2055,8 @@
         "text": "利用者IDと、パスワード",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "crypto-03"
   },
   {
     "category": "暗号・認証",
@@ -2013,7 +2084,8 @@
         "text": "送信日時が正確であること と、内容が圧縮されていること",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "crypto-04"
   },
   {
     "category": "コンテナ・仮想化",
@@ -2041,7 +2113,8 @@
         "text": "仮想マシンのほうがコンテナより起動が高速である",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "container-01"
   },
   {
     "category": "コンテナ・仮想化",
@@ -2069,7 +2142,8 @@
         "text": "本番稼働中のコンテナに直接ログインして設定を変更し、その状態を維持する",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "container-02"
   },
   {
     "category": "コンテナ・仮想化",
@@ -2097,7 +2171,8 @@
         "text": "サービスを停止せずに新バージョンへ順次入れ替える",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "container-03"
   },
   {
     "category": "インフラ運用・監視",
@@ -2125,7 +2200,8 @@
         "text": "0.01",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "ops-01"
   },
   {
     "category": "インフラ運用・監視",
@@ -2153,7 +2229,8 @@
         "text": "パーセンタイル値は負荷が変動しても常に一定になるから",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "ops-02"
   },
   {
     "category": "インフラ運用・監視",
@@ -2181,7 +2258,8 @@
         "text": "スナップショット",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "ops-03"
   },
   {
     "category": "インフラ運用・監視",
@@ -2209,7 +2287,8 @@
         "text": "1年間に許容される最大の停止回数を表す",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "ops-04"
   },
   {
     "category": "システム構成・性能",
@@ -2237,7 +2316,8 @@
         "text": "処理を夜間バッチにまとめて実行する",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "perf-01"
   },
   {
     "category": "システム構成・性能",
@@ -2265,7 +2345,8 @@
         "text": "データベースのインデックスが不足している",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "perf-02"
   },
   {
     "category": "システム構成・性能",
@@ -2293,7 +2374,8 @@
         "text": "コールドスタンバイ",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "perf-03"
   },
   {
     "category": "設計原則・パターン",
@@ -2321,7 +2403,8 @@
         "text": "凝集度も結合度も低い",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "design-01"
   },
   {
     "category": "設計原則・パターン",
@@ -2349,7 +2432,8 @@
         "text": "上位クラスは下位クラスで置き換えても正しく動作すべきである",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "design-02"
   },
   {
     "category": "設計原則・パターン",
@@ -2377,7 +2461,8 @@
         "text": "SOLID",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "design-03"
   },
   {
     "category": "テスト",
@@ -2405,7 +2490,8 @@
         "text": "1、2、3、4",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "test-01"
   },
   {
     "category": "テスト",
@@ -2433,7 +2519,8 @@
         "text": "シミュレータ",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "test-02"
   },
   {
     "category": "テスト",
@@ -2461,7 +2548,8 @@
         "text": "カバレッジはブラックボックステストの網羅性を測る指標である",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "test-03"
   },
   {
     "category": "バージョン管理",
@@ -2489,7 +2577,8 @@
         "text": "スタッシュ",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "vcs-01"
   },
   {
     "category": "バージョン管理",
@@ -2517,7 +2606,8 @@
         "text": "ファイルの排他ロックにより、同時編集が防止される",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "vcs-02"
   },
   {
     "category": "バージョン管理",
@@ -2545,7 +2635,8 @@
         "text": "リポジトリが非公開であれば、特に対応は不要である",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "vcs-03"
   },
   {
     "category": "アジャイル・DevOps",
@@ -2573,7 +2664,8 @@
         "text": "メンバーの個人成績を評価し、順位付けする",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "agile-01"
   },
   {
     "category": "アジャイル・DevOps",
@@ -2601,7 +2693,8 @@
         "text": "開発者ごとに独立したブランチを長期間維持する",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "agile-02"
   },
   {
     "category": "アジャイル・DevOps",
@@ -2629,7 +2722,8 @@
         "text": "ロールバック",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "agile-03"
   },
   {
     "category": "アジャイル・DevOps",
@@ -2657,6 +2751,7 @@
         "text": "SLA(サービスレベル合意)",
         "is_correct": false
       }
-    ]
+    ],
+    "key": "agile-04"
   }
 ]
